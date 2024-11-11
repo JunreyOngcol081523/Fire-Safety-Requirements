@@ -41,6 +41,52 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiAsset Include="Resources\FireCodeRequirements\daycare.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\healthcare.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\resboardcare.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\detention.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\residential.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\mercantile.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\business.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\industrial.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\storage.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\special.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\highrise.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\firedrill.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\inspectonflowchart.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\unname.html" />
+		<MauiAsset Include="Resources\FireCodeRequirements\educational.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\assembly.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
 		<MauiAsset Include="Resources\Json\data.json" />
 
 		<!-- Splash Screen -->
@@ -58,6 +104,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\FireCodeRequirements\assembly_table9.png" />
+	  <None Remove="Resources\FireCodeRequirements\business.html" />
+	  <None Remove="Resources\FireCodeRequirements\daycare.html" />
+	  <None Remove="Resources\FireCodeRequirements\detention.html" />
+	  <None Remove="Resources\FireCodeRequirements\educational.html" />
+	  <None Remove="Resources\FireCodeRequirements\firedrill.html" />
+	  <None Remove="Resources\FireCodeRequirements\healthcare.html" />
+	  <None Remove="Resources\FireCodeRequirements\highrise.html" />
+	  <None Remove="Resources\FireCodeRequirements\industrial.html" />
+	  <None Remove="Resources\FireCodeRequirements\inspectonflowchart.html" />
+	  <None Remove="Resources\FireCodeRequirements\mercantile.html" />
+	  <None Remove="Resources\FireCodeRequirements\resboardcare.html" />
+	  <None Remove="Resources\FireCodeRequirements\residential.html" />
+	  <None Remove="Resources\FireCodeRequirements\special.html" />
+	  <None Remove="Resources\FireCodeRequirements\storage.html" />
+	  <None Remove="Resources\FireCodeRequirements\unname.html" />
 	  <None Remove="Resources\Images\fsed.png" />
 	  <None Remove="Resources\Json\data.json" />
 	</ItemGroup>
@@ -79,6 +141,16 @@
 	  <MauiXaml Update="Resources\Styles\ColorThemeLight.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Include="Resources\FireCodeRequirements\assembly_table9.png">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiAsset>
 	</ItemGroup>
 
 </Project>

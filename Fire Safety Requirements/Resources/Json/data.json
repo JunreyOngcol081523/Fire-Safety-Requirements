@@ -1,14 +1,14 @@
 ﻿[
   {
-    "Column1": "Row 1, Col 1",
-    "Column2": "Row 1, Col 2"
+    "name": "Junrey",
+    "age": 29
   },
   {
-    "Column1": "Row 2, Col 1",
-    "Column2": "Row 2, Col 2"
+    "name": "Jane Smith",
+    "age": 34
   },
   {
-    "Column1": "Row 3, Col 1",
-    "Column2": "Row 3, Col 2"
+    "name": "Emily Johnson",
+    "age": 22
   }
 ]
