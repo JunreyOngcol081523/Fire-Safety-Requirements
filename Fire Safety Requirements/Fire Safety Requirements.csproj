@@ -88,10 +88,9 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</MauiAsset>
 		<MauiAsset Include="Resources\Json\data.json" />
+		
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
@@ -122,6 +121,7 @@
 	  <None Remove="Resources\FireCodeRequirements\unname.html" />
 	  <None Remove="Resources\Images\fsed.png" />
 	  <None Remove="Resources\Json\data.json" />
+	  <None Remove="Resources\Splash\splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -144,13 +144,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiAsset Include="Resources\FireCodeRequirements\assembly_table9.png">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </MauiAsset>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\splash.png" />
 	</ItemGroup>
 
 </Project>

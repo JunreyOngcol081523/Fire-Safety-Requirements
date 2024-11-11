@@ -27,7 +27,7 @@
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand"/>
 
-                <Label Text="© 2024" 
+                <Label Text="Junrey Ongcol © 2024" 
                        TextColor="#ac99ea" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center" />
