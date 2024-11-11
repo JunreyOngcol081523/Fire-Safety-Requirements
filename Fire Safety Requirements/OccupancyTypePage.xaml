@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fire_Safety_Requirements.OccupancyTypePage"
+             Title="Occupancy Type Page"
+             xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
+             x:DataType="viewmodel:OccupancyTypeViewModel">
+    
+    <ScrollView>
+    <StackLayout Margin="20"
+                 >
+        <Label 
+            Padding="10"
+            Text="Select Types of Occupancy"
+            FontSize="25"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        
+            <CollectionView Grid.Row="2" Grid.ColumnSpan="2"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Details" 
+                                   BackgroundColor="Orange"
+                                   Command="{Binding Source={RelativeSource 
+                                    AncestorType={x:Type viewmodel:OccupancyTypeViewModel}}, 
+                                    Path=ShowDetailCommand}"
+                                   CommandParameter="{Binding .}"/>
+                            </SwipeView.RightItems>
+                            <Grid Padding="0,5">
+                                <Frame BackgroundColor="#512BD4">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource 
+                                            AncestorType={x:Type viewmodel:OccupancyTypeViewModel}}, 
+                                            Path=TapCommand}"
+                                        CommandParameter="{Binding .}"/>    
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="{Binding .}"
+                                           TextColor="#DFD8F7"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Center"
+                                           FontSize="18"/>
+                                </Frame>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

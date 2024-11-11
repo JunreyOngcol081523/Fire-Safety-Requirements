@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Fire_Safety_Requirements.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Fire_Safety_Requirements"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Guidelines for Fire Safety Inspectors">
+
+    
+        
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+
+        <ShellContent Title="OccupancyTypePage"
+            ContentTemplate="{DataTemplate local:OccupancyTypePage}"
+            Route="OccupancyTypePage"/>
+
+        <ShellContent 
+            Title="Recent Page"
+            ContentTemplate="{DataTemplate local:OccupancyDetailPage}"
+            Route="OccupancyDetailPage"/>
+
+   
+
+
+</Shell>

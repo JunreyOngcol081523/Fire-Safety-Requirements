@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fire_Safety_Requirements.MainPage">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25">
+                <Image
+                    Source="fsed.png"
+                    HeightRequest="170"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Fire Safety Enforcement Division's Logo" />
+
+                <Label
+                    Text="Hello, Fire Safety Inspectors!"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level3" 
+                    VerticalOptions="CenterAndExpand"/>
+
+                <Label
+                    Text="{Binding preface}"
+                    Style="{StaticResource SubHeadline}"
+                    FontSize="18"
+                    Margin="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"/>
+
+                <Label Text="© 2024" 
+                       TextColor="#ac99ea" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+
+                
+            </VerticalStackLayout>
+        </ScrollView>
+        
+            
+    </Grid>
+</ContentPage>
