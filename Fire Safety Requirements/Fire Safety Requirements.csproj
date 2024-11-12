@@ -80,6 +80,7 @@
 		<MauiAsset Include="Resources\FireCodeRequirements\inspectonflowchart.html">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</MauiAsset>
+		<MauiAsset Include="Resources\FireCodeRequirements\styles.css" />
 		<MauiAsset Include="Resources\FireCodeRequirements\unname.html" />
 		<MauiAsset Include="Resources\FireCodeRequirements\educational.html">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -103,6 +104,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiCss Remove="Resources\FireCodeRequirements\styles.css" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\FireCodeRequirements\assembly_table9.png" />
 	  <None Remove="Resources\FireCodeRequirements\business.html" />
 	  <None Remove="Resources\FireCodeRequirements\daycare.html" />
@@ -116,6 +121,7 @@
 	  <None Remove="Resources\FireCodeRequirements\mercantile.html" />
 	  <None Remove="Resources\FireCodeRequirements\resboardcare.html" />
 	  <None Remove="Resources\FireCodeRequirements\residential.html" />
+	  <None Remove="Resources\FireCodeRequirements\scripts.js" />
 	  <None Remove="Resources\FireCodeRequirements\special.html" />
 	  <None Remove="Resources\FireCodeRequirements\storage.html" />
 	  <None Remove="Resources\FireCodeRequirements\unname.html" />
@@ -151,6 +157,10 @@
 
 	<ItemGroup>
 	  <MauiSplashScreen Include="Resources\Splash\splash.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Include="Resources\FireCodeRequirements\scripts.js" />
 	</ItemGroup>
 
 </Project>

@@ -35,7 +35,8 @@ public partial class OccupancyTypeViewModel:ObservableObject
     [RelayCommand]
     async Task Tap(string s)
     {
-        await Shell.Current.GoToAsync($"///OccupancyDetailPage?text={s}");
+        //await Shell.Current.GoToAsync($"///OccupancyDetailPage?text={s}");
+        await Shell.Current.GoToAsync($"OccupancyDetailPage?text={Uri.EscapeDataString(s)}");
     }
 
     [RelayCommand]

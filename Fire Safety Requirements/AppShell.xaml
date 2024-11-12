@@ -18,12 +18,8 @@
             ContentTemplate="{DataTemplate local:OccupancyTypePage}"
             Route="OccupancyTypePage"/>
 
-        <ShellContent 
+       <!--<ShellContent 
             Title="Recent Page"
             ContentTemplate="{DataTemplate local:OccupancyDetailPage}"
-            Route="OccupancyDetailPage"/>
-
-   
-
-
+            Route="OccupancyDetailPage"/>-->
 </Shell>
