@@ -2,13 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.OccupancyTypePage"
-             Title="Occupancy Type Page"
+             Title="Fire Safety Requirements"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:OccupancyTypeViewModel">
     
-    <ScrollView>
-    <StackLayout Margin="20"
-                 >
+   <ScrollView>
+    <StackLayout Margin="20">
         <Label 
             Padding="10"
             Text="Select Types of Occupancy"
@@ -22,15 +21,15 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="{x:Type x:String}">
-                        <SwipeView>
-                            <SwipeView.RightItems>
+                        <!--<SwipeView>-->
+                            <!--<SwipeView.RightItems>
                                 <SwipeItem Text="Details" 
                                    BackgroundColor="Orange"
                                    Command="{Binding Source={RelativeSource 
                                     AncestorType={x:Type viewmodel:OccupancyTypeViewModel}}, 
                                     Path=ShowDetailCommand}"
                                    CommandParameter="{Binding .}"/>
-                            </SwipeView.RightItems>
+                            </SwipeView.RightItems>-->
                             <Grid Padding="0,5">
                                 <Frame BackgroundColor="#512BD4">
                                     <Frame.GestureRecognizers>
@@ -47,7 +46,7 @@
                                            FontSize="18"/>
                                 </Frame>
                             </Grid>
-                        </SwipeView>
+                        <!--</SwipeView>-->
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

@@ -82,4 +82,21 @@ button{
     color: white;
     padding: 0 10px;
 }
+<<<<<<< HEAD
+=======
+    button:disabled {
+        display: inline-block;
+        outline: 0;
+        border: none;
+        cursor: not-allowed;
+        font-weight: 600;
+        border-radius: 4px;
+        font-size: 13px;
+        height: 30px;
+        background-color: #0000000d;
+        color: white;
+        padding: 0 10px;
+    }
+
+>>>>>>> routing changes,
                 

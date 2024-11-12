@@ -26,13 +26,16 @@
                     Margin="10"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand"/>
-
+                
+                <Button Text="Select Occupancy Type"
+                         Clicked="OnButtonClicked"
+                        />
+                
                 <Label Text="Junrey Ongcol © 2024" 
                        TextColor="#ac99ea" 
                        HorizontalOptions="Center" 
                        VerticalOptions="Center" />
 
-                
             </VerticalStackLayout>
         </ScrollView>
         
