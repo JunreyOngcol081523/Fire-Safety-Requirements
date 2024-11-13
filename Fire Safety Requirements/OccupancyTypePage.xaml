@@ -50,7 +50,13 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
+           <Button Text="Back"
+                   TextColor="#DFD8F7"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    FontSize="18"
+                   Command="{Binding GoToMainCommand}"/> 
         </StackLayout>
     </ScrollView>
+    
 </ContentPage>

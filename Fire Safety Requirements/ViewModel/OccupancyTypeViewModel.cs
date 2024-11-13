@@ -40,8 +40,8 @@ public partial class OccupancyTypeViewModel:ObservableObject
     }
 
     [RelayCommand]
-    void ShowDetail(string s)
+    async Task GoToMain()
     {
-        //System.Diagnostics.Debug.WriteLine(s);
+        await Shell.Current.GoToAsync("//MainPage");
     }
 }
