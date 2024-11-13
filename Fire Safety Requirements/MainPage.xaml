@@ -3,7 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.MainPage">
     <Grid>
-        <ScrollView>
+        <!-- Define three rows in the grid -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Content area above the buttons -->
+            <RowDefinition Height="Auto" />
+            <!-- Buttons section -->
+            <RowDefinition Height="Auto" />
+            <!-- Footer section -->
+        </Grid.RowDefinitions>
+
+        <!-- Main content above the buttons -->
+        <ScrollView Grid.Row="0">
             <VerticalStackLayout
                 Padding="30,0"
                 Spacing="25">
@@ -26,19 +37,25 @@
                     Margin="10"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand"/>
-                
-                <Button Text="Select Occupancy Type"
-                         Clicked="OnButtonClicked"
-                        />
-                
-                <Label Text="Junrey Ongcol © 2024" 
-                       TextColor="#ac99ea" 
-                       HorizontalOptions="Center" 
-                       VerticalOptions="Center" />
-
             </VerticalStackLayout>
         </ScrollView>
-        
-            
+
+        <!-- Buttons at the bottom -->
+        <StackLayout Grid.Row="1"
+                     Orientation="Vertical"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="End"
+                     Spacing="10">
+            <!-- Add spacing between buttons -->
+            <Button Text="Fire Safety Requirements Manual" Clicked="OnButtonClicked"/>
+            <Button Text="Fire Safety Requirements Summary"/>
+        </StackLayout>
+
+        <!-- Footer label at the bottom -->
+        <Label Grid.Row="2"
+               Text="App developed by Junrey Ongcol © 2024" 
+               TextColor="#ac99ea" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Center" />
     </Grid>
 </ContentPage>
