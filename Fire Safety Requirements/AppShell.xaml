@@ -18,7 +18,9 @@
             ContentTemplate="{DataTemplate local:OccupancyTypePage}"
             Route="OccupancyTypePage"/>
 
-       <!--<ShellContent 
+        <ShellContent Route="SummaryPage" ContentTemplate="{DataTemplate local:SummaryPage}" />
+
+    <!--<ShellContent 
             Title="Recent Page"
             ContentTemplate="{DataTemplate local:OccupancyDetailPage}"
             Route="OccupancyDetailPage"/>-->

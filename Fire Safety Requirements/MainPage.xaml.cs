@@ -1,4 +1,6 @@
-﻿namespace Fire_Safety_Requirements
+﻿using System.Diagnostics;
+
+namespace Fire_Safety_Requirements
 {
     public partial class MainPage : ContentPage
     {
@@ -16,11 +18,18 @@
                 "Explore detailed recommendations and guidelines tailored to each occupancy type, and stay informed with the best practices for fire safety.";
             BindingContext = this;
         }
-        private async void OnButtonClicked(object sender, EventArgs e)
+        private async void GoToOccupancyTypePage(object sender, EventArgs e)
         {
             // Using Shell Navigation to go to the page
             await Shell.Current.GoToAsync("//OccupancyTypePage");
+            
         }
+        private async void GoToSummaryPage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("SummaryPage");
+        }
+
+
     }
 
 }

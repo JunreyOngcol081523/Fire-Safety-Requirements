@@ -9,6 +9,14 @@
                 <ResourceDictionary Source="Resources/Styles/ColorThemeLight.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="RedHatText-Regular" TargetType="Label">
+                <Setter Property="FontFamily" Value="RedHatText-Regular" />
+            </Style>
+            <!-- Add the font definition so it's available to the whole app -->
+            <OnPlatform x:Key="CustomFont" x:TypeArguments="x:String">
+                <On Platform="Android, iOS" Value="Fonts/RedHatText-Regular.ttf#RedHatText-Regular" />
+                <On Platform="UWP" Value="Resources/Fonts/RedHatText-Regular.ttf#RedHatText-Regular" />
+            </OnPlatform>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

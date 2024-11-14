@@ -81,6 +81,9 @@
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</MauiAsset>
 		<MauiAsset Include="Resources\FireCodeRequirements\styles.css" />
+		<MauiAsset Include="Resources\FireCodeRequirements\summary.html">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</MauiAsset>
 		<MauiAsset Include="Resources\FireCodeRequirements\unname.html" />
 		<MauiAsset Include="Resources\FireCodeRequirements\educational.html">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -119,12 +122,16 @@
 	  <None Remove="Resources\FireCodeRequirements\industrial.html" />
 	  <None Remove="Resources\FireCodeRequirements\inspectonflowchart.html" />
 	  <None Remove="Resources\FireCodeRequirements\mercantile.html" />
+	  <None Remove="Resources\FireCodeRequirements\RedHatText-Italic-VariableFont_wght.ttf" />
+	  <None Remove="Resources\FireCodeRequirements\RedHatTextVariableFont_wght.ttf" />
 	  <None Remove="Resources\FireCodeRequirements\resboardcare.html" />
 	  <None Remove="Resources\FireCodeRequirements\residential.html" />
 	  <None Remove="Resources\FireCodeRequirements\scripts.js" />
 	  <None Remove="Resources\FireCodeRequirements\special.html" />
 	  <None Remove="Resources\FireCodeRequirements\storage.html" />
+	  <None Remove="Resources\FireCodeRequirements\summary.html" />
 	  <None Remove="Resources\FireCodeRequirements\unname.html" />
+	  <None Remove="Resources\Fonts\RedHatText-Regular.ttf" />
 	  <None Remove="Resources\Images\fsed.png" />
 	  <None Remove="Resources\Images\fsed1.png" />
 	  <None Remove="Resources\Json\data.json" />
@@ -148,6 +155,9 @@
 	  <MauiXaml Update="Resources\Styles\ColorThemeLight.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="SummaryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -162,6 +172,11 @@
 
 	<ItemGroup>
 	  <MauiAsset Include="Resources\FireCodeRequirements\scripts.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Include="Resources\FireCodeRequirements\RedHatText-Italic-VariableFont_wght.ttf" />
+	  <MauiFont Include="Resources\FireCodeRequirements\RedHatTextVariableFont_wght.ttf" />
 	</ItemGroup>
 
 </Project>

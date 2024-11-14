@@ -47,8 +47,8 @@
                      VerticalOptions="End"
                      Spacing="10">
             <!-- Add spacing between buttons -->
-            <Button Text="Fire Safety Requirements Manual" Clicked="OnButtonClicked"/>
-            <Button Text="Fire Safety Requirements Summary"/>
+            <Button Text="Fire Safety Requirements Manual" Clicked="GoToOccupancyTypePage"/>
+            <Button Text="Fire Safety Requirements Summary" Clicked="GoToSummaryPage"/>
         </StackLayout>
 
         <!-- Footer label at the bottom -->

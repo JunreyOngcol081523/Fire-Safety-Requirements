@@ -14,6 +14,7 @@ namespace Fire_Safety_Requirements
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("RedHatText-Italic-VariableFont_wght.ttf", "RedHatText-Italic-VariableFont_wght");
                 });
 
 #if DEBUG
@@ -25,6 +26,8 @@ namespace Fire_Safety_Requirements
 
             builder.Services.AddTransient<OccupancyDetailViewModel>();
             builder.Services.AddTransient<OccupancyDetailPage>();
+            builder.Services.AddTransient<SummaryViewModel>();
+            builder.Services.AddTransient<SummaryPage>();
             builder.Logging.AddDebug();
 #endif      
 
