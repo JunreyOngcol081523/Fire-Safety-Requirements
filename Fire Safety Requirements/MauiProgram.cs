@@ -17,7 +17,7 @@ namespace Fire_Safety_Requirements
                     fonts.AddFont("RedHatText-Italic-VariableFont_wght.ttf", "RedHatText-Italic-VariableFont_wght");
                 });
 
-#if DEBUG
+
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<OccupancyTypePage>();
 
@@ -31,7 +31,7 @@ namespace Fire_Safety_Requirements
             builder.Services.AddTransient<MeansOfEgressPage>();
             builder.Services.AddTransient<MeansOfEgressViewModel>();
             builder.Logging.AddDebug();
-#endif      
+     
 
             return builder.Build();
         }

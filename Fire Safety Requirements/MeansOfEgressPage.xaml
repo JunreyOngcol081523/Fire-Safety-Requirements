@@ -2,13 +2,138 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.MeansOfEgressPage"
-             Title="MeansOfEgressPage"
+             Title="Means Of Egress Calculator"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:MeansOfEgressViewModel">
+    
     <VerticalStackLayout>
         <Label 
-            Text="{Binding Title}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        Text="{Binding Title}" 
+        FontSize="20"
+        HorizontalOptions="Center" 
+        VerticalOptions="Center" 
+        HorizontalTextAlignment="Center" 
+        VerticalTextAlignment="Center"
+        />
+
+        <!--Area-->
+        <HorizontalStackLayout Margin="10" Spacing="15" HorizontalOptions="CenterAndExpand">
+            <Label Text="Area:" VerticalTextAlignment="Center"/>
+            <Entry Placeholder="Height" 
+               Keyboard="Numeric" 
+               MinimumWidthRequest="80" 
+               Text="{Binding Height, Mode=TwoWay}" />
+            <Entry Placeholder="Width" 
+               Keyboard="Numeric" 
+               MinimumWidthRequest="80" 
+               Text="{Binding Width, Mode=TwoWay}" />
+            <Entry Text="{Binding Result}" 
+               FontSize="24" 
+               IsReadOnly="True" 
+               HorizontalTextAlignment="End" />
+
+            <!--end of area-->
+        </HorizontalStackLayout>
+        <VerticalStackLayout Margin="5" Padding="5">
+
+            <Picker Title="Select Occupancy Type"
+                    HorizontalOptions="Fill"
+                    HorizontalTextAlignment="Center"
+                    Margin="5"
+                    ItemsSource="{Binding Occupancytypes}"
+                    SelectedItem="{Binding SelectedOccupancyType, Mode=TwoWay}"/>
+            <ScrollView 
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="150"
+                        Margin="5">
+                <CollectionView ItemsSource="{Binding Items}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="viewmodel:Item">
+                            <Frame Padding="10" BorderColor="Gray" CornerRadius="5">
+                                <StackLayout Spacing="10">
+                                    <!-- Title -->
+                                    <Grid Padding="0" ColumnSpacing="20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Title Label -->
+                                        <Label Grid.Column="0" Text="Title:" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                                        <Label Grid.Column="1" Text="{Binding Title}" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
+                                    </Grid>
+
+                                    <!-- Occupant Load -->
+                                    <Grid Padding="0" ColumnSpacing="20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Text="Occupant Load:" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
+                                        <Label Grid.Column="1" Text="{Binding OccupantLoad}" FontSize="14" VerticalOptions="Center" FontAttributes="Italic"/>
+                                    </Grid>
+
+                                    <!-- Required Number of Exits -->
+                                    <Grid Padding="0" ColumnSpacing="20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Text="Req. Number of Exits:" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
+                                        <Label Grid.Column="1" Text="{Binding RequiredNumberOfExits}" FontSize="14" VerticalOptions="Center" FontAttributes="Italic"/>
+                                    </Grid>
+
+                                    <!-- Stair Size -->
+                                    <Grid Padding="0" ColumnSpacing="20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Text="Stair Size:" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
+                                        <Label Grid.Column="1" Text="{Binding StairSize}" FontSize="14" VerticalOptions="Center" FontAttributes="Italic"/>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </VerticalStackLayout>
+        <VerticalStackLayout Spacing="10" Padding="20">
+            <!-- Frame with border and corner radius -->
+            <Frame BorderColor="Black" CornerRadius="10" Padding="15">
+                <!-- Grid with 2 columns and 4 rows -->
+                <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
+                    <!-- Remoteness of Exits label -->
+                    <Label Text="Remoteness of Exits" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
+
+                    <!-- Diagonal Dimension Label -->
+                    <Label Text="Diagonal dimension:" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+
+                    <!-- Diagonal Dimension Entry (Read-only) -->
+                    <Entry Text="{Binding Diagonal}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+
+                    <!-- Non-Sprinklered Label -->
+                    <Label Text="Non-sprinklered:" Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+
+                    <!-- Non-Sprinklered Entry (Read-only) -->
+                    <Entry Text="{Binding RemotenessNonSprinklered}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+
+                    <!-- Sprinklered Label -->
+                    <Label Text="Sprinklered:" Grid.Row="3" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+
+                    <!-- Sprinklered Entry (Read-only) -->
+                    <Entry Text="{Binding RemotenessSprinklered}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+
+
+
+
+
     </VerticalStackLayout>
 </ContentPage>
