@@ -28,6 +28,8 @@ namespace Fire_Safety_Requirements
             builder.Services.AddTransient<OccupancyDetailPage>();
             builder.Services.AddTransient<SummaryViewModel>();
             builder.Services.AddTransient<SummaryPage>();
+            builder.Services.AddTransient<MeansOfEgressPage>();
+            builder.Services.AddTransient<MeansOfEgressViewModel>();
             builder.Logging.AddDebug();
 #endif      
 

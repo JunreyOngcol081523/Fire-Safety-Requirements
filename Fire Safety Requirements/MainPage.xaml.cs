@@ -28,7 +28,10 @@ namespace Fire_Safety_Requirements
         {
             await Shell.Current.GoToAsync("SummaryPage");
         }
-
+        private async void GoToMeansOfEgressPage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("MeansOfEgressPage");
+        }
 
     }
 

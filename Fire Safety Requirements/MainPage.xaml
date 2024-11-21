@@ -49,6 +49,7 @@
             <!-- Add spacing between buttons -->
             <Button Text="Fire Safety Requirements Manual" Clicked="GoToOccupancyTypePage"/>
             <Button Text="Fire Safety Requirements Summary" Clicked="GoToSummaryPage"/>
+            <Button Text="Means of Egress Calculator" Clicked="GoToMeansOfEgressPage"/>
         </StackLayout>
 
         <!-- Footer label at the bottom -->

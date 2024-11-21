@@ -40,7 +40,6 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 		<MauiAsset Include="Resources\FireCodeRequirements\daycare.html">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</MauiAsset>
@@ -111,6 +110,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\appicon.png" />
 	  <None Remove="Resources\FireCodeRequirements\assembly_table9.png" />
 	  <None Remove="Resources\FireCodeRequirements\business.html" />
 	  <None Remove="Resources\FireCodeRequirements\daycare.html" />
@@ -146,6 +146,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="MeansOfEgressPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="OccupancyDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -167,16 +170,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\splash.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiAsset Include="Resources\FireCodeRequirements\scripts.js" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiFont Include="Resources\FireCodeRequirements\RedHatText-Italic-VariableFont_wght.ttf" />
 	  <MauiFont Include="Resources\FireCodeRequirements\RedHatTextVariableFont_wght.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\appicon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\splash.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 	</ItemGroup>
 
 </Project>

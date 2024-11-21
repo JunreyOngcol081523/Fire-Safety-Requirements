@@ -8,6 +8,7 @@
             Routing.RegisterRoute(nameof(OccupancyTypePage), typeof(OccupancyTypePage));
             Routing.RegisterRoute("OccupancyDetailPage", typeof(OccupancyDetailPage));
             Routing.RegisterRoute(nameof(SummaryPage), typeof(SummaryPage));
+            Routing.RegisterRoute(nameof(MeansOfEgressPage), typeof(MeansOfEgressPage));
         }
     }
 }
