@@ -17,7 +17,7 @@
         />
 
         <!--Area-->
-        <HorizontalStackLayout Margin="10" Spacing="15" HorizontalOptions="CenterAndExpand">
+        <HorizontalStackLayout Margin="0" Spacing="5" HorizontalOptions="CenterAndExpand">
             <Label Text="Area:" VerticalTextAlignment="Center"/>
             <Entry Placeholder="Height" 
                Keyboard="Numeric" 
@@ -28,28 +28,29 @@
                MinimumWidthRequest="80" 
                Text="{Binding Width, Mode=TwoWay}" />
             <Entry Text="{Binding Result}" 
-               FontSize="24" 
                IsReadOnly="True" 
-               HorizontalTextAlignment="End" />
+               HorizontalTextAlignment="End" 
+               MinimumWidthRequest="80"/>
 
             <!--end of area-->
         </HorizontalStackLayout>
-        <VerticalStackLayout Margin="5" Padding="5">
+        <VerticalStackLayout Margin="0" Padding="10">
 
             <Picker Title="Select Occupancy Type"
                     HorizontalOptions="Fill"
                     HorizontalTextAlignment="Center"
-                    Margin="5"
+                    Margin="5,0,5,10"
                     ItemsSource="{Binding Occupancytypes}"
                     SelectedItem="{Binding SelectedOccupancyType, Mode=TwoWay}"/>
             <ScrollView 
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="150"
-                        Margin="5">
+                        Margin="0"
+                        BackgroundColor="White">
                 <CollectionView ItemsSource="{Binding Items}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewmodel:Item">
-                            <Frame Padding="10" BorderColor="Gray" CornerRadius="5">
+                            <Frame Padding="10" BorderColor="Gray" CornerRadius="5"  HorizontalOptions="FillAndExpand">
                                 <StackLayout Spacing="10">
                                     <!-- Title -->
                                     <Grid Padding="0" ColumnSpacing="20">
@@ -102,38 +103,70 @@
                 </CollectionView>
             </ScrollView>
         </VerticalStackLayout>
-        <VerticalStackLayout Spacing="10" Padding="20">
-            <!-- Frame with border and corner radius -->
-            <Frame BorderColor="Black" CornerRadius="10" Padding="15">
-                <!-- Grid with 2 columns and 4 rows -->
-                <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
-                    <!-- Remoteness of Exits label -->
-                    <Label Text="Remoteness of Exits" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
+        <ScrollView HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    Margin="5,0,5,0">
+            <VerticalStackLayout Spacing="0" Padding="5">
+                <!-- Frame with border and corner radius -->
+                <Frame BorderColor="Gray" CornerRadius="10" Padding="0" Margin="0,0,0,5">
+                    <!-- Grid with 2 columns and 4 rows -->
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
+                        <!-- Remoteness of Exits label -->
+                        <Label Text="Remoteness of Exits" FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
 
-                    <!-- Diagonal Dimension Label -->
-                    <Label Text="Diagonal dimension:" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+                        <!-- Diagonal Dimension Label -->
+                        <Label Text="Diagonal dimension:" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
 
-                    <!-- Diagonal Dimension Entry (Read-only) -->
-                    <Entry Text="{Binding Diagonal}" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        <!-- Diagonal Dimension Entry (Read-only) -->
+                        <Entry HeightRequest="35" Text="{Binding Diagonal}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
 
-                    <!-- Non-Sprinklered Label -->
-                    <Label Text="Non-sprinklered:" Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+                        <!-- Non-Sprinklered Label -->
+                        <Label Text="Non-sprinklered:" Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
 
-                    <!-- Non-Sprinklered Entry (Read-only) -->
-                    <Entry Text="{Binding RemotenessNonSprinklered}" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        <!-- Non-Sprinklered Entry (Read-only) -->
+                        <Entry HeightRequest="35" Text="{Binding RemotenessNonSprinklered}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
 
-                    <!-- Sprinklered Label -->
-                    <Label Text="Sprinklered:" Grid.Row="3" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+                        <!-- Sprinklered Label -->
+                        <Label Text="Sprinklered:" Grid.Row="3" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
 
-                    <!-- Sprinklered Entry (Read-only) -->
-                    <Entry Text="{Binding RemotenessSprinklered}" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
-                </Grid>
-            </Frame>
-        </VerticalStackLayout>
+                        <!-- Sprinklered Entry (Read-only) -->
+                        <Entry HeightRequest="35" Text="{Binding RemotenessSprinklered}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                    </Grid>
+                </Frame>
+            
+                <!-- Frame with border and corner radius -->
+                <Frame BorderColor="Gray" CornerRadius="10" Padding="0">
+                    <!-- Grid with 2 columns and 4 rows -->
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto,Auto,Auto" ColumnDefinitions="Auto, Auto">
+                        <!-- Capacity means of egress label -->
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Capacity of Means of Egress" FontSize="20"  VerticalOptions="Center" HorizontalOptions="Center" />
 
+                        <!-- wn Label -->
+                        <Label Grid.Row="1" Grid.Column="0" Text="Enter Nominal Width in mm:"  VerticalOptions="Center" HorizontalOptions="End" />
 
+                        <!-- wn Entry-->
+                        <Entry Grid.Row="1" Grid.Column="1" HeightRequest="35" Text="{Binding NominalWidth, Mode=TwoWay}" Keyboard="Numeric" FontAttributes="Italic" MinimumWidthRequest="100" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" />
 
+                        <!-- stairway Label -->
+                        <Label Grid.Row="2" Grid.Column="0" Text="Stairway:"  VerticalOptions="Center" HorizontalOptions="End" />
 
+                        <!-- stairway Entry (Read-only) -->
+                        <Entry Grid.Row="2" Grid.Column="1" HeightRequest="35" Text="{Binding CapacityinStairway, Mode=OneWay}" FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        <!-- level components Label -->
+                        <Label Grid.Row="3" Grid.Column="0" Text="Level Components:"  VerticalOptions="Center" HorizontalOptions="End" />
 
+                        <!-- level components Entry (Read-only) -->
+                        <Entry HeightRequest="35" Text="{Binding CapacityinLevelComponents}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        
+                        <CheckBox Grid.Row="4" Grid.Column="0" IsChecked="{Binding IsHighHazard, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Text="High Hazard" Grid.Row="4" Grid.Column="0" Margin="40,0,0,0" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding IsSprinklered, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" IsEnabled="{Binding IsSprinkleredEnable}"/>
+                        <Label Text="Sprinklered" Grid.Row="4" Grid.Column="1" Margin="40,0,0,0" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>
