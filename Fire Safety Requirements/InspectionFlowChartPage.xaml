@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fire_Safety_Requirements.InspectionFlowChartPage"
+             Title="Inspection Flow Chart">
+    <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image Source="inspectionflowchart.png" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+    </VerticalStackLayout>
+</ContentPage>

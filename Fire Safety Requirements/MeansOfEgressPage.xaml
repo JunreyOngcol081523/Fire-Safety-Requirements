@@ -42,7 +42,7 @@
                     Margin="5,0,5,10"
                     ItemsSource="{Binding Occupancytypes}"
                     SelectedItem="{Binding SelectedOccupancyType, Mode=TwoWay}"/>
-            <ScrollView 
+            <ScrollView
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="150"
                         Margin="0"
@@ -105,6 +105,7 @@
         </VerticalStackLayout>
         <ScrollView HorizontalOptions="FillAndExpand"
                     VerticalOptions="Start"
+                    HeightRequest="385"
                     Margin="5,0,5,0">
             <VerticalStackLayout Spacing="0" Padding="5">
                 <!-- Frame with border and corner radius -->

@@ -25,7 +25,6 @@ public partial class OccupancyTypeViewModel:ObservableObject
         items.Add("Special Structures");
         items.Add("High Rise Buildings");
         items.Add("Fire Exit Drill");
-        items.Add("Inspection Flow Chart");
     }
 
     [ObservableProperty]

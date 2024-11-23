@@ -20,8 +20,5 @@
 
         <ShellContent Route="SummaryPage" ContentTemplate="{DataTemplate local:SummaryPage}" />
         <ShellContent Route="MeansOfEgressPage" ContentTemplate="{DataTemplate local:MeansOfEgressPage}" />
-    <!--<ShellContent 
-            Title="Recent Page"
-            ContentTemplate="{DataTemplate local:OccupancyDetailPage}"
-            Route="OccupancyDetailPage"/>-->
+
 </Shell>

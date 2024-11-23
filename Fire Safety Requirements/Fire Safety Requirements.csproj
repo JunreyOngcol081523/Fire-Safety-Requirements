@@ -111,6 +111,10 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\appicon.png" />
+	  <None Remove="Resources\AppIcon\book.png" />
+	  <None Remove="Resources\AppIcon\calculator.png" />
+	  <None Remove="Resources\AppIcon\coverpage.png" />
+	  <None Remove="Resources\AppIcon\docs.png" />
 	  <None Remove="Resources\FireCodeRequirements\assembly_table9.png" />
 	  <None Remove="Resources\FireCodeRequirements\business.html" />
 	  <None Remove="Resources\FireCodeRequirements\daycare.html" />
@@ -132,13 +136,16 @@
 	  <None Remove="Resources\FireCodeRequirements\summary.html" />
 	  <None Remove="Resources\FireCodeRequirements\unname.html" />
 	  <None Remove="Resources\Fonts\RedHatText-Regular.ttf" />
+	  <None Remove="Resources\Images\coverpageformain.png" />
 	  <None Remove="Resources\Images\fsed.png" />
 	  <None Remove="Resources\Images\fsed1.png" />
+	  <None Remove="Resources\Images\inspectionflowchart.png" />
 	  <None Remove="Resources\Json\data.json" />
 	  <None Remove="Resources\Splash\splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.93" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.93" />
@@ -146,6 +153,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="InspectionFlowChartPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="MeansOfEgressPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -180,6 +190,13 @@
 
 	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\appicon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\AppIcon\book.png" />
+	  <MauiImage Include="Resources\AppIcon\calculator.png" />
+	  <MauiImage Include="Resources\AppIcon\coverpage.png" />
+	  <MauiImage Include="Resources\AppIcon\docs.png" />
 	</ItemGroup>
 
 	<ItemGroup>

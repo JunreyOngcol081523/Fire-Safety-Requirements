@@ -47,7 +47,7 @@ public partial class OccupancyDetailViewModel : ObservableObject
             case "Special Structures": selectedHtml = "special.html"; break;
             case "High Rise Buildings": selectedHtml = "highrise.html"; break;
             case "Fire Exit Drill": selectedHtml = "firedrill.html"; break;
-            case "Inspection Flow Chart": selectedHtml = "inspectonflowchart.html"; break;
+
             default: selectedHtml = "default.html"; break; // Fallback option
         }
 
