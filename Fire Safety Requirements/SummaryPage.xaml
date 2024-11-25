@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.SummaryPage"
-             Title="SummaryPage"
+             Title="Fire Safety Requirements Summary Table"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
             x:DataType="viewmodel:SummaryViewModel">
 

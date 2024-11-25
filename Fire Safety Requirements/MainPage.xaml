@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Fire_Safety_Requirements.MainPage">
+             x:Class="Fire_Safety_Requirements.MainPage"
+             Title="Main Page">
     <Grid>
         <!-- Define three rows in the grid -->
         <Grid.RowDefinitions>
@@ -16,27 +17,39 @@
         <!-- Main content above the buttons -->
         <ScrollView Grid.Row="0">
             <VerticalStackLayout
-                Padding="30,0"
-                Spacing="25">
+                Padding="10,0"
+                Spacing="5">
+                <HorizontalStackLayout HorizontalOptions="Center">
                 <Image
                     Source="fsed.png"
-                    HeightRequest="170"
+                    HeightRequest="150"
                     Aspect="AspectFit"
                     SemanticProperties.Description="Fire Safety Enforcement Division's Logo" />
-
+                    <Image
+                    Source="coverpageformain.png"
+                    HeightRequest="150"
+                    Aspect="AspectFit"
+                    SemanticProperties.Description="Fire Safety Enforcement Division's Logo" /> 
+                </HorizontalStackLayout>
                 <Label
                     Text="Hello, Fire Safety Inspectors!"
-                    Style="{StaticResource Headline}"
-                    SemanticProperties.HeadingLevel="Level3" 
+                    Style="{StaticResource SubHeadline}"
+                    SemanticProperties.HeadingLevel="Level5" 
                     VerticalOptions="CenterAndExpand"/>
 
-                <Label
+                <Label 
                     Text="{Binding preface}"
-                    Style="{StaticResource SubHeadline}"
-                    FontSize="18"
-                    Margin="10"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="CenterAndExpand"/>
+                    FontSize="10"
+                    Margin="5"
+                    HorizontalTextAlignment="Center"  
+                    VerticalTextAlignment="Center"
+                    />
+                <Label Text="All rights reserved by the author of this book."
+                    FontSize="15"
+                    Margin="5"
+                    HorizontalTextAlignment="Center"  
+                    VerticalTextAlignment="Center"/>
+
             </VerticalStackLayout>
         </ScrollView>
 
@@ -45,16 +58,34 @@
                      Orientation="Vertical"
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="End"
-                     Spacing="10">
+                     Spacing="5">
             <!-- Add spacing between buttons -->
-            <Button Text="Fire Safety Requirements Manual" Clicked="GoToOccupancyTypePage"/>
-            <Button Text="Fire Safety Requirements Summary" Clicked="GoToSummaryPage"/>
+            <Button Text="Fire Safety Requirements Manual" Clicked="GoToOccupancyTypePage" HeightRequest="50">
+                <Button.ImageSource>
+                    <FileImageSource File="book.png" />
+                </Button.ImageSource>
+            </Button>
+            <Button Text="Fire Safety Requirements Summary" Clicked="GoToSummaryPage" HeightRequest="50">
+                <Button.ImageSource>
+                    <FileImageSource File="docs.png" />
+                </Button.ImageSource>
+            </Button>
+            <Button Text="Inspection Flow Chart" Clicked="GoToInspectionFlowChartPage" HeightRequest="50">
+                <Button.ImageSource>
+                    <FileImageSource File="inspectionflowchart.png" />
+                </Button.ImageSource>
+            </Button>
+            <Button Text="Means of Egress Calculator" Clicked="GoToMeansOfEgressPage" HeightRequest="50">
+                <Button.ImageSource>
+                    <FileImageSource File="calculator.png" />
+                </Button.ImageSource>
+            </Button>
         </StackLayout>
 
         <!-- Footer label at the bottom -->
         <Label Grid.Row="2"
                Text="App developed by Junrey Ongcol © 2024" 
-               TextColor="#ac99ea" 
+               FontAttributes="Italic"
                HorizontalOptions="Center" 
                VerticalOptions="Center" />
     </Grid>

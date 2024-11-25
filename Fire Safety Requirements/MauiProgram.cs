@@ -1,5 +1,6 @@
 ﻿using Fire_Safety_Requirements.ViewModel;
 using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;  // Import the namespace for the Community Toolkit
 
 namespace Fire_Safety_Requirements
 {
@@ -10,6 +11,7 @@ namespace Fire_Safety_Requirements
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()  // Initialize the CommunityToolkit
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -17,7 +19,6 @@ namespace Fire_Safety_Requirements
                     fonts.AddFont("RedHatText-Italic-VariableFont_wght.ttf", "RedHatText-Italic-VariableFont_wght");
                 });
 
-#if DEBUG
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<OccupancyTypePage>();
 
@@ -28,10 +29,14 @@ namespace Fire_Safety_Requirements
             builder.Services.AddTransient<OccupancyDetailPage>();
             builder.Services.AddTransient<SummaryViewModel>();
             builder.Services.AddTransient<SummaryPage>();
+            builder.Services.AddTransient<MeansOfEgressPage>();
+            builder.Services.AddTransient<MeansOfEgressViewModel>();
+            builder.Services.AddTransient<InspectionFlowChartPage>();
+            
             builder.Logging.AddDebug();
-#endif      
 
             return builder.Build();
         }
     }
 }
+

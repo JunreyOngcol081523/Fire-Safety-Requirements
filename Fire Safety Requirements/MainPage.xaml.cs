@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using CommunityToolkit.Maui.Views;
+using System.Diagnostics;
 
 namespace Fire_Safety_Requirements
 {
@@ -6,6 +7,7 @@ namespace Fire_Safety_Requirements
     {
         public string programmer_message { get; set; }
         public string preface { get; set; }
+        public string HtmlContent { get; set; }
         public MainPage()
         {
             InitializeComponent();
@@ -16,6 +18,7 @@ namespace Fire_Safety_Requirements
                 "across various occupancy types. Whether you're a building manager, safety officer, " +
                 "or just interested in fire safety, this app provides essential guidelines to ensure the safety and security of occupants in diverse environments.\r\n\r\n" +
                 "Explore detailed recommendations and guidelines tailored to each occupancy type, and stay informed with the best practices for fire safety.";
+
             BindingContext = this;
         }
         private async void GoToOccupancyTypePage(object sender, EventArgs e)
@@ -28,8 +31,14 @@ namespace Fire_Safety_Requirements
         {
             await Shell.Current.GoToAsync("SummaryPage");
         }
-
-
+        private async void GoToMeansOfEgressPage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("MeansOfEgressPage");
+        }
+        private async void GoToInspectionFlowChartPage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("InspectionFlowChartPage");
+        }
     }
 
 }
