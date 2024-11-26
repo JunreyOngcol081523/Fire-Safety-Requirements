@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 
 namespace Fire_Safety_Requirements
@@ -21,10 +22,11 @@ namespace Fire_Safety_Requirements
 
             BindingContext = this;
         }
+        
         private async void GoToOccupancyTypePage(object sender, EventArgs e)
         {
             // Using Shell Navigation to go to the page
-            await Shell.Current.GoToAsync("//OccupancyTypePage");
+             await Shell.Current.GoToAsync("//OccupancyTypePage");
             
         }
         private async void GoToSummaryPage(object sender, EventArgs e)

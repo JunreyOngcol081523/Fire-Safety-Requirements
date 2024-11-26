@@ -17,23 +17,20 @@
         />
 
         <!--Area-->
-        <HorizontalStackLayout Margin="0" Spacing="5" HorizontalOptions="CenterAndExpand">
-            <Label Text="Area:" VerticalTextAlignment="Center"/>
-            <Entry Placeholder="Height" 
-               Keyboard="Numeric" 
-               MinimumWidthRequest="80" 
-               Text="{Binding Height, Mode=TwoWay}" />
-            <Entry Placeholder="Width" 
-               Keyboard="Numeric" 
-               MinimumWidthRequest="80" 
-               Text="{Binding Width, Mode=TwoWay}" />
-            <Entry Text="{Binding Result}" 
-               IsReadOnly="True" 
-               HorizontalTextAlignment="End" 
-               MinimumWidthRequest="80"/>
+        <Grid Margin="0" HorizontalOptions="FillAndExpand" ColumnDefinitions="Auto,*">
+            <Label Grid.Column="0" Text="Enter Floor Area (m²):" 
+               Margin="10,10,0,10"
+               VerticalTextAlignment="Center" 
+               HorizontalTextAlignment="Start" />
 
-            <!--end of area-->
-        </HorizontalStackLayout>
+            <Entry Grid.Column="1" Text="{Binding Result, Mode=TwoWay}"    
+               HorizontalTextAlignment="Center"
+               HorizontalOptions="FillAndExpand"
+               Margin="15,0"
+               Keyboard="Numeric"/>
+        </Grid>
+
+
         <VerticalStackLayout Margin="0" Padding="10">
 
             <Picker Title="Select Occupancy Type"
@@ -110,28 +107,48 @@
             <VerticalStackLayout Spacing="0" Padding="5">
                 <!-- Frame with border and corner radius -->
                 <Frame BorderColor="Gray" CornerRadius="10" Padding="0" Margin="0,0,0,5">
-                    <!-- Grid with 2 columns and 4 rows -->
-                    <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
+                    
+                    <!-- Grid with 2 columns and 5 rows -->
+                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto,*">
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="20,20,20,0" ColumnDefinitions="*,*">
+                            <Entry Grid.Column="0" Placeholder="Height" 
+                               Keyboard="Numeric" 
+                               Text="{Binding Height, Mode=TwoWay}" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="Center"
+                               Margin="0,0,5,0"
+                               HorizontalTextAlignment="Center"/>
+                                            <!-- Add spacing between entries -->
+
+                                        <Entry Grid.Column="1" Placeholder="Width" 
+                               Keyboard="Numeric" 
+                               Text="{Binding Width, Mode=TwoWay}" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="Center"
+                               Margin="5,0,0,0"
+                               HorizontalTextAlignment="Center"/>      
+                            <!-- Add spacing between entries -->
+                        </Grid>
                         <!-- Remoteness of Exits label -->
-                        <Label Text="Remoteness of Exits" FontSize="20" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="0" Grid.Column="0" Text="Remoteness of Exits (meters)" FontSize="20" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
 
                         <!-- Diagonal Dimension Label -->
-                        <Label Text="Diagonal dimension:" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+                        <Label Grid.Row="2" Grid.Column="0" Text="Diagonal dimension:" VerticalOptions="Center" HorizontalOptions="End" Margin="10,10,0,10"/>
 
                         <!-- Diagonal Dimension Entry (Read-only) -->
-                        <Entry HeightRequest="35" Text="{Binding Diagonal}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        <Entry Grid.Row="2" Grid.Column="1" HeightRequest="35" Text="{Binding Diagonal}" FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
 
                         <!-- Non-Sprinklered Label -->
-                        <Label Text="Non-sprinklered:" Grid.Row="2" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+                        <Label Grid.Row="3" Grid.Column="0" Text="Non-sprinklered:"  VerticalOptions="Center" HorizontalOptions="End" />
 
                         <!-- Non-Sprinklered Entry (Read-only) -->
-                        <Entry HeightRequest="35" Text="{Binding RemotenessNonSprinklered}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        <Entry Grid.Row="3" Grid.Column="1" HeightRequest="35" Text="{Binding RemotenessNonSprinklered}"  FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
 
                         <!-- Sprinklered Label -->
-                        <Label Text="Sprinklered:" Grid.Row="3" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" />
+                        <Label Grid.Row="4" Grid.Column="0" Text="Sprinklered:"  VerticalOptions="Center" HorizontalOptions="End" />
 
                         <!-- Sprinklered Entry (Read-only) -->
-                        <Entry HeightRequest="35" Text="{Binding RemotenessSprinklered}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        <Entry Grid.Row="4" Grid.Column="1" HeightRequest="35" Text="{Binding RemotenessSprinklered}" FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
                     </Grid>
                 </Frame>
             
@@ -140,10 +157,10 @@
                     <!-- Grid with 2 columns and 4 rows -->
                     <Grid RowDefinitions="Auto, Auto, Auto, Auto,Auto,Auto" ColumnDefinitions="Auto, Auto">
                         <!-- Capacity means of egress label -->
-                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Capacity of Means of Egress" FontSize="20"  VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Capacity of Egress (milimeters)" FontSize="20"  VerticalOptions="Center" HorizontalOptions="Center" />
 
                         <!-- wn Label -->
-                        <Label Grid.Row="1" Grid.Column="0" Text="Enter Nominal Width in mm:"  VerticalOptions="Center" HorizontalOptions="End" />
+                        <Label Grid.Row="1" Grid.Column="0" Text="Enter Nominal Width in mm:"  VerticalOptions="Center" HorizontalOptions="End" Margin="10,10,0,10" />
 
                         <!-- wn Entry-->
                         <Entry Grid.Row="1" Grid.Column="1" HeightRequest="35" Text="{Binding NominalWidth, Mode=TwoWay}" Keyboard="Numeric" FontAttributes="Italic" MinimumWidthRequest="100" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" />

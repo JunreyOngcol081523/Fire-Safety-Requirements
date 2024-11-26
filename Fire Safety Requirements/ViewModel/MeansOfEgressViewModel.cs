@@ -62,16 +62,23 @@ public partial class MeansOfEgressViewModel:ObservableObject
     [ObservableProperty]
     string areaType = "AO";
 
-    // These partial methods must exist in the same partial class
-    partial void OnHeightChanged(string value)
+    [ObservableProperty]
+    bool resultIsReadOnlyValue = true;
+
+    partial void OnResultChanged(string value)
     {
-        UpdateResult();
+        OnSelectedOccupancyTypeChanged(this.SelectedOccupancyType);
+        //UpdateResult();
         CalculateDiagonal();
     }
-
+    partial void OnHeightChanged(string value)
+    {
+        //UpdateResult();
+        CalculateDiagonal();
+    }
     partial void OnWidthChanged(string value)
     {
-        UpdateResult();
+        //UpdateResult();
         CalculateDiagonal();
     }
     partial void OnNominalWidthChanged(string value)
@@ -94,25 +101,12 @@ public partial class MeansOfEgressViewModel:ObservableObject
         IsHighHazard = false;
         UpdateItemsBasedOnOccupancyType(value);
     }
-    private void UpdateResult()
-    {
-        // Logic to calculate or set the Result
-        if (double.TryParse(Height, out double h) && double.TryParse(Width, out double w))
-        {
-            Result = (h * w).ToString();  // Example calculation
-        }
-        else
-        {
-            Result = "0";  // Handle invalid input
-        }
-        OnSelectedOccupancyTypeChanged(this.selectedOccupancyType);
-    }
     private void CalculateDiagonal()
     {
         // Logic to calculate or set the Result
         if (double.TryParse(Height, out double h) && double.TryParse(Width, out double w))
         {
-            double diagonaldbl = Math.Sqrt(Math.Pow(w, 2) + Math.Pow(h, 2));
+            double diagonaldbl = System.Math.Sqrt(Math.Pow(w, 2) + Math.Pow(h, 2));
 
             // Round the results to 2 decimal places
             Diagonal = Math.Round(diagonaldbl, 2).ToString();
@@ -160,7 +154,8 @@ public partial class MeansOfEgressViewModel:ObservableObject
     {
         IsSprinklered = false;
         IsSprinkleredEnable = false;
-        double resValue = Double.Parse(this.Result);
+        double.TryParse(Result, out double resValue);
+        
         // Logic to update the Items collection dynamically based on the selected occupancy type
         if (occupancyType == "Places of Assembly")
         {
