@@ -4,9 +4,11 @@
              x:Class="Fire_Safety_Requirements.MeansOfEgressPage"
              Title="Means Of Egress Calculator"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              x:DataType="viewmodel:MeansOfEgressViewModel">
     
     <VerticalStackLayout>
+        <StackLayout >
         <Label 
         Text="{Binding Title}" 
         FontSize="20"
@@ -17,13 +19,8 @@
         />
 
         <!--Area-->
-        <Grid Margin="0" HorizontalOptions="FillAndExpand" ColumnDefinitions="Auto,*">
-            <Label Grid.Column="0" Text="Enter Floor Area (m²):" 
-               Margin="10,10,0,10"
-               VerticalTextAlignment="Center" 
-               HorizontalTextAlignment="Start" />
-
-            <Entry Grid.Column="1" Text="{Binding Result, Mode=TwoWay}"    
+        <Grid Margin="0" HorizontalOptions="FillAndExpand">
+            <material:TextField Title="Enter Floor Area in m²" Text="{Binding Result, Mode=TwoWay}"    
                HorizontalTextAlignment="Center"
                HorizontalOptions="FillAndExpand"
                Margin="15,0"
@@ -32,22 +29,23 @@
 
 
         <VerticalStackLayout Margin="0" Padding="10">
-
-            <Picker Title="Select Occupancy Type"
+            <material:PickerField 
+                    Title="Select Occupancy Type"
                     HorizontalOptions="Fill"
-                    HorizontalTextAlignment="Center"
                     Margin="5,0,5,10"
                     ItemsSource="{Binding Occupancytypes}"
                     SelectedItem="{Binding SelectedOccupancyType, Mode=TwoWay}"/>
             <ScrollView
                         HorizontalOptions="FillAndExpand"
                         HeightRequest="150"
-                        Margin="0"
-                        BackgroundColor="White">
+                        Margin="0">
                 <CollectionView ItemsSource="{Binding Items}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewmodel:Item">
-                            <Frame Padding="10" BorderColor="Gray" CornerRadius="5"  HorizontalOptions="FillAndExpand">
+                            <Frame Padding="10" 
+                                   BorderColor="Gray" 
+                                   CornerRadius="5"  
+                                   HorizontalOptions="FillAndExpand">
                                 <StackLayout Spacing="10">
                                     <!-- Title -->
                                     <Grid Padding="0" ColumnSpacing="20">
@@ -57,7 +55,7 @@
                                         </Grid.ColumnDefinitions>
 
                                         <!-- Title Label -->
-                                        <Label Grid.Column="0" Text="Title:" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
+                                        <Label Grid.Column="0" Text="Title:" TextColor="Black" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
                                         <Label Grid.Column="1" Text="{Binding Title}" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
                                     </Grid>
 
@@ -100,18 +98,23 @@
                 </CollectionView>
             </ScrollView>
         </VerticalStackLayout>
+        </StackLayout>
+        
         <ScrollView HorizontalOptions="FillAndExpand"
                     VerticalOptions="Start"
-                    HeightRequest="385"
-                    Margin="5,0,5,0">
-            <VerticalStackLayout Spacing="0" Padding="5">
-                <!-- Frame with border and corner radius -->
-                <Frame BorderColor="Gray" CornerRadius="10" Padding="0" Margin="0,0,0,5">
                     
+                    Margin="5,0,5,0">
+            
+            
+            <VerticalStackLayout Margin="0" Padding="10">
+                <!-- Frame with border and corner radius -->
+                <StackLayout Padding="0" Margin="0,0,0,5" StyleClass="SecondaryContainer">
+                    <Label Text="Remoteness of exits" HorizontalOptions="Start"/>
                     <!-- Grid with 2 columns and 5 rows -->
-                    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto,*">
-                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="20,20,20,0" ColumnDefinitions="*,*">
-                            <Entry Grid.Column="0" Placeholder="Height" 
+                    <Grid RowDefinitions="Auto, Auto,Auto" ColumnDefinitions="Auto,*">
+                       <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*,*" >
+                            
+                            <material:TextField Title="Enter Height in meters" Grid.Column="0"  
                                Keyboard="Numeric" 
                                Text="{Binding Height, Mode=TwoWay}" 
                                HorizontalOptions="FillAndExpand" 
@@ -120,7 +123,7 @@
                                HorizontalTextAlignment="Center"/>
                                             <!-- Add spacing between entries -->
 
-                                        <Entry Grid.Column="1" Placeholder="Width" 
+                            <material:TextField Grid.Column="1" Title="Enter Width in meters" 
                                Keyboard="Numeric" 
                                Text="{Binding Width, Mode=TwoWay}" 
                                HorizontalOptions="FillAndExpand" 
@@ -129,61 +132,170 @@
                                HorizontalTextAlignment="Center"/>      
                             <!-- Add spacing between entries -->
                         </Grid>
-                        <!-- Remoteness of Exits label -->
-                        <Label Grid.Row="0" Grid.Column="0" Text="Remoteness of Exits (meters)" FontSize="20" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*,*" >
+                           
+                            <!-- Diagonal Dimension Entry (Read-only) -->
+                            <material:TextField Title="Diagonal Dimension" 
+                                                Grid.Column="0" 
+                                                Margin="0,0,5,0"
+                                                Text="{Binding Diagonal}" 
+                                                FontAttributes="Italic" 
+                                                VerticalOptions="Center" 
+                                                HorizontalOptions="FillAndExpand" 
+                                                IsReadOnly="True"
+                                                HorizontalTextAlignment="Center"/>
+    
+                            <!-- Non-Sprinklered Entry (Read-only) -->
+                            <material:TextField Title="Non-Sprinklered" 
+                                                Grid.Column="1" 
+                                                Margin="5,0,0,0"
+                                                Text="{Binding RemotenessNonSprinklered}"  
+                                                FontAttributes="Italic" 
+                                                VerticalOptions="Center" 
+                                                HorizontalOptions="FillAndExpand" 
+                                                IsReadOnly="True" 
+                                                HorizontalTextAlignment="Center"/>
 
-                        <!-- Diagonal Dimension Label -->
-                        <Label Grid.Row="2" Grid.Column="0" Text="Diagonal dimension:" VerticalOptions="Center" HorizontalOptions="End" Margin="10,10,0,10"/>
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*" >
+                            <!-- Sprinklered Entry (Read-only) -->
+                            <material:TextField Title="Sprinklered" 
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding RemotenessSprinklered}" 
+                                                FontAttributes="Italic" 
+                                                VerticalOptions="Center" 
+                                                HorizontalOptions="FillAndExpand"
+                                                IsReadOnly="True"
+                                                Margin="0,0,0,5"/>
 
-                        <!-- Diagonal Dimension Entry (Read-only) -->
-                        <Entry Grid.Row="2" Grid.Column="1" HeightRequest="35" Text="{Binding Diagonal}" FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
-
-                        <!-- Non-Sprinklered Label -->
-                        <Label Grid.Row="3" Grid.Column="0" Text="Non-sprinklered:"  VerticalOptions="Center" HorizontalOptions="End" />
-
-                        <!-- Non-Sprinklered Entry (Read-only) -->
-                        <Entry Grid.Row="3" Grid.Column="1" HeightRequest="35" Text="{Binding RemotenessNonSprinklered}"  FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
-
-                        <!-- Sprinklered Label -->
-                        <Label Grid.Row="4" Grid.Column="0" Text="Sprinklered:"  VerticalOptions="Center" HorizontalOptions="End" />
-
-                        <!-- Sprinklered Entry (Read-only) -->
-                        <Entry Grid.Row="4" Grid.Column="1" HeightRequest="35" Text="{Binding RemotenessSprinklered}" FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
+                        </Grid>
                     </Grid>
-                </Frame>
+                </StackLayout>
             
-                <!-- Frame with border and corner radius -->
-                <Frame BorderColor="Gray" CornerRadius="10" Padding="0">
-                    <!-- Grid with 2 columns and 4 rows -->
-                    <Grid RowDefinitions="Auto, Auto, Auto, Auto,Auto,Auto" ColumnDefinitions="Auto, Auto">
-                        <!-- Capacity means of egress label -->
-                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Capacity of Egress (milimeters)" FontSize="20"  VerticalOptions="Center" HorizontalOptions="Center" />
+                <!-- CAPACITY MEANS EGRESS -->
+                <StackLayout Padding="0" Margin="0,0,0,5" StyleClass="SecondaryContainer">
+                    <Label Text="Capacity of Egress" HorizontalOptions="Start"/>
+                    <!-- Grid with 2 columns and 5 rows -->
+                    <Grid RowDefinitions="Auto, Auto,Auto" ColumnDefinitions="Auto,*">
+                        <Grid Grid.Row="0" Grid.Column="0" 
+                              Grid.ColumnSpan="2" 
+                              HorizontalOptions="FillAndExpand" 
+                              Margin="10,10,10,0" ColumnDefinitions="*" >
 
-                        <!-- wn Label -->
-                        <Label Grid.Row="1" Grid.Column="0" Text="Enter Nominal Width in mm:"  VerticalOptions="Center" HorizontalOptions="End" Margin="10,10,0,10" />
+                            <material:TextField Title="Enter Nominal Width in mm" Grid.Column="0"  
+                               Keyboard="Numeric" 
+                               Text="{Binding NominalWidth, Mode=TwoWay}" 
+                               HorizontalOptions="FillAndExpand" 
+                               VerticalOptions="Center"
+                               Margin="0,0,5,0"
+                               HorizontalTextAlignment="Center"/>   
+                            <!-- Add spacing between entries -->
 
-                        <!-- wn Entry-->
-                        <Entry Grid.Row="1" Grid.Column="1" HeightRequest="35" Text="{Binding NominalWidth, Mode=TwoWay}" Keyboard="Numeric" FontAttributes="Italic" MinimumWidthRequest="100" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" />
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*,*" >
 
-                        <!-- stairway Label -->
-                        <Label Grid.Row="2" Grid.Column="0" Text="Stairway:"  VerticalOptions="Center" HorizontalOptions="End" />
+                            
+                            <material:TextField Title="Stairways" 
+                                Grid.Column="0" 
+                                Margin="0,0,5,0"
+                                Text="{Binding CapacityinStairway}" 
+                                FontAttributes="Italic" 
+                                VerticalOptions="Center" 
+                                HorizontalOptions="FillAndExpand" 
+                                IsReadOnly="True"
+                                HorizontalTextAlignment="Center"/>
 
-                        <!-- stairway Entry (Read-only) -->
-                        <Entry Grid.Row="2" Grid.Column="1" HeightRequest="35" Text="{Binding CapacityinStairway, Mode=OneWay}" FontAttributes="Italic" MinimumWidthRequest="100"  VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
-                        <!-- level components Label -->
-                        <Label Grid.Row="3" Grid.Column="0" Text="Level Components:"  VerticalOptions="Center" HorizontalOptions="End" />
+                            
+                            <material:TextField Title="Level Components" 
+                                Grid.Column="1" 
+                                Margin="5,0,0,0"
+                                Text="{Binding CapacityinLevelComponents}"  
+                                FontAttributes="Italic" 
+                                VerticalOptions="Center" 
+                                HorizontalOptions="FillAndExpand" 
+                                IsReadOnly="True" 
+                                HorizontalTextAlignment="Center"/>
 
-                        <!-- level components Entry (Read-only) -->
-                        <Entry HeightRequest="35" Text="{Binding CapacityinLevelComponents}" FontAttributes="Italic" MinimumWidthRequest="100" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Margin="20,0,0,0" IsReadOnly="True" />
-                        
-                        <CheckBox Grid.Row="4" Grid.Column="0" IsChecked="{Binding IsHighHazard, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" />
-                        <Label Text="High Hazard" Grid.Row="4" Grid.Column="0" Margin="40,0,0,0" VerticalOptions="Center" HorizontalOptions="Start"/>
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*,*" >
+                            <material:CheckBox Text ="High Hazard" 
+                                           Grid.Row="2" Grid.Column="0" 
+                                           IsChecked="{Binding IsHighHazard, Mode=TwoWay}" 
+                                           IsEnabled="{Binding HaveSelectedOccupancyType}"/>
 
-                        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding IsSprinklered, Mode=TwoWay}" VerticalOptions="Center" HorizontalOptions="Start" IsEnabled="{Binding IsSprinkleredEnable}"/>
-                        <Label Text="Sprinklered" Grid.Row="4" Grid.Column="1" Margin="40,0,0,0" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <material:CheckBox Text="Sprinklered"  
+                                           Grid.Row="2" Grid.Column="1" 
+                                           IsChecked="{Binding IsSprinklered, Mode=TwoWay}" 
+                                           IsEnabled="{Binding IsSprinkleredEnable}"/>
 
+                        </Grid>
                     </Grid>
-                </Frame>
+                </StackLayout>
+                <!--<StackLayout Margin="0,0,0,5" StyleClass="TertiaryContainer" Padding="0">
+                    <Label Text="Capacity of Egress"/>
+                    --><!-- Grid with 2 columns and 3 rows --><!--
+                    <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, Auto" ColumnSpacing="5" RowSpacing="5">
+
+                        <Grid Grid.Row="0"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="1"
+                              RowDefinitions="Auto" 
+                              ColumnDefinitions="*"
+                              HorizontalOptions="FillAndExpand">
+                            --><!-- Nominal Width Entry--><!--
+                            <material:TextField 
+                                   Title="Enter Nominal Width in mm" 
+                                   Grid.Row="0" 
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="1" 
+                                   Text="{Binding NominalWidth, Mode=TwoWay}" 
+                                   Keyboard="Numeric" 
+                                   FontAttributes="Italic"  
+                                   HorizontalTextAlignment="Center"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   />
+                        </Grid>
+
+                        <Grid Grid.Row="1"
+                              Grid.Column="0"
+                              Grid.ColumnSpan="1"
+                              RowDefinitions="Auto" 
+                              ColumnDefinitions="*,*">
+                            --><!-- stairway Entry (Read-only) --><!--
+                            <material:TextField Title="Stairwaiy"
+                                   Grid.Row="0" 
+                                   Grid.Column="0" 
+                                   Text="{Binding CapacityinStairway, Mode=OneWay}" 
+                                   FontAttributes="Italic" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   IsReadOnly="True" />
+                        
+                        
+                            --><!-- level components Entry (Read-only) --><!--
+                            <material:TextField Title="Level Components" 
+                                   Text="{Binding CapacityinLevelComponents}" 
+                                   FontAttributes="Italic" 
+                                   Grid.Row="1" 
+                                   Grid.Column="1" 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="FillAndExpand" 
+                                   IsReadOnly="True" />
+                        </Grid>
+                        
+                        <material:CheckBox Text ="High Hazard" 
+                                           Grid.Row="2" Grid.Column="0" 
+                                           IsChecked="{Binding IsHighHazard, Mode=TwoWay}" 
+                                           IsEnabled="{Binding HaveSelectedOccupancyType}"/>
+                        
+                        <material:CheckBox Text="Sprinklered"  
+                                           Grid.Row="2" Grid.Column="1" 
+                                           IsChecked="{Binding IsSprinklered, Mode=TwoWay}" 
+                                           IsEnabled="{Binding IsSprinkleredEnable}"/>
+                        
+                    </Grid>
+                </StackLayout>-->
             </VerticalStackLayout>
         </ScrollView>
     </VerticalStackLayout>

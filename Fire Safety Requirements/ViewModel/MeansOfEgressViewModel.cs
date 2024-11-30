@@ -18,7 +18,7 @@ public partial class MeansOfEgressViewModel:ObservableObject
     ObservableCollection<string> occupancytypes;
 
     [ObservableProperty]
-    private string selectedOccupancyType;
+    private string selectedOccupancyType="";
 
     [ObservableProperty]
     public ObservableCollection<Item> items;
@@ -30,7 +30,7 @@ public partial class MeansOfEgressViewModel:ObservableObject
     private string width;
 
     [ObservableProperty]
-    private string result = "0";
+    private string result = "";
 
     [ObservableProperty]
     private string diagonal = "0";
@@ -65,6 +65,8 @@ public partial class MeansOfEgressViewModel:ObservableObject
     [ObservableProperty]
     bool resultIsReadOnlyValue = true;
 
+    [ObservableProperty]
+    bool haveSelectedOccupancyType = false;
     partial void OnResultChanged(string value)
     {
         OnSelectedOccupancyTypeChanged(this.SelectedOccupancyType);
@@ -97,9 +99,18 @@ public partial class MeansOfEgressViewModel:ObservableObject
     // Partial method triggered when selected occupancy type changes
     partial void OnSelectedOccupancyTypeChanged(string value)
     {
-        NominalWidth = "0";
-        IsHighHazard = false;
-        UpdateItemsBasedOnOccupancyType(value);
+        if (value == null)
+        {
+            this.HaveSelectedOccupancyType = false;
+        }
+        else
+        {
+            this.HaveSelectedOccupancyType = true;
+            NominalWidth = "0";
+            IsHighHazard = false;
+            UpdateItemsBasedOnOccupancyType(value);
+        }
+        
     }
     private void CalculateDiagonal()
     {
@@ -147,6 +158,11 @@ public partial class MeansOfEgressViewModel:ObservableObject
                 StairSize = ""
             }
         };
+
+        if (SelectedOccupancyType.Equals(""))
+        {
+            this.HaveSelectedOccupancyType = false;
+        }
     }
 
 
