@@ -67,11 +67,20 @@ public partial class MeansOfEgressViewModel:ObservableObject
 
     [ObservableProperty]
     bool haveSelectedOccupancyType = false;
+
+    [ObservableProperty]
+    string lowhazard;
+    [ObservableProperty]
+    string moderatedhazard;
+    [ObservableProperty]
+    string highhazard;
+
     partial void OnResultChanged(string value)
     {
         OnSelectedOccupancyTypeChanged(this.SelectedOccupancyType);
         //UpdateResult();
         CalculateDiagonal();
+        CalculateNumberofFireEx();
     }
     partial void OnHeightChanged(string value)
     {
@@ -127,6 +136,15 @@ public partial class MeansOfEgressViewModel:ObservableObject
         else
         {
             Diagonal = "0";  // Handle invalid input
+        }
+    }
+    private void CalculateNumberofFireEx()
+    {
+        if(double.TryParse(Result, out double res))
+        {
+            this.Lowhazard = Math.Ceiling((res / 200)).ToString();
+            this.Moderatedhazard = Math.Ceiling((res / 100)).ToString();
+            this.Highhazard = Math.Ceiling((res / 75)).ToString();
         }
     }
 
