@@ -18,7 +18,7 @@ public partial class MeansOfEgressViewModel:ObservableObject
     ObservableCollection<string> occupancytypes;
 
     [ObservableProperty]
-    private string selectedOccupancyType;
+    private string selectedOccupancyType="";
 
     [ObservableProperty]
     public ObservableCollection<Item> items;
@@ -30,7 +30,7 @@ public partial class MeansOfEgressViewModel:ObservableObject
     private string width;
 
     [ObservableProperty]
-    private string result = "0";
+    private string result = "";
 
     [ObservableProperty]
     private string diagonal = "0";
@@ -65,11 +65,22 @@ public partial class MeansOfEgressViewModel:ObservableObject
     [ObservableProperty]
     bool resultIsReadOnlyValue = true;
 
+    [ObservableProperty]
+    bool haveSelectedOccupancyType = false;
+
+    [ObservableProperty]
+    string lowhazard;
+    [ObservableProperty]
+    string moderatedhazard;
+    [ObservableProperty]
+    string highhazard;
+
     partial void OnResultChanged(string value)
     {
         OnSelectedOccupancyTypeChanged(this.SelectedOccupancyType);
         //UpdateResult();
         CalculateDiagonal();
+        CalculateNumberofFireEx();
     }
     partial void OnHeightChanged(string value)
     {
@@ -97,9 +108,18 @@ public partial class MeansOfEgressViewModel:ObservableObject
     // Partial method triggered when selected occupancy type changes
     partial void OnSelectedOccupancyTypeChanged(string value)
     {
-        NominalWidth = "0";
-        IsHighHazard = false;
-        UpdateItemsBasedOnOccupancyType(value);
+        if (value == null)
+        {
+            this.HaveSelectedOccupancyType = false;
+        }
+        else
+        {
+            this.HaveSelectedOccupancyType = true;
+            NominalWidth = "0";
+            IsHighHazard = false;
+            UpdateItemsBasedOnOccupancyType(value);
+        }
+        
     }
     private void CalculateDiagonal()
     {
@@ -116,6 +136,15 @@ public partial class MeansOfEgressViewModel:ObservableObject
         else
         {
             Diagonal = "0";  // Handle invalid input
+        }
+    }
+    private void CalculateNumberofFireEx()
+    {
+        if(double.TryParse(Result, out double res))
+        {
+            this.Lowhazard = Math.Ceiling((res / 200)).ToString();
+            this.Moderatedhazard = Math.Ceiling((res / 100)).ToString();
+            this.Highhazard = Math.Ceiling((res / 75)).ToString();
         }
     }
 
@@ -147,6 +176,11 @@ public partial class MeansOfEgressViewModel:ObservableObject
                 StairSize = ""
             }
         };
+
+        if (SelectedOccupancyType.Equals(""))
+        {
+            this.HaveSelectedOccupancyType = false;
+        }
     }
 
 
@@ -398,16 +432,16 @@ public partial class MeansOfEgressViewModel:ObservableObject
         try
         {
 
-            CapacityinStairway = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(nominalWidth), true));
-            Debug.WriteLine($"Final capacity of Stairway: {capacityinStairway}");
-            CapacityinLevelComponents = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(nominalWidth), false));
-            Debug.WriteLine($"Final capacity of level comp: {capacityinLevelComponents}");
+            CapacityinStairway = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(NominalWidth), true));
+            Debug.WriteLine($"Final capacity of Stairway: {CapacityinStairway}");
+            CapacityinLevelComponents = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(NominalWidth), false));
+            Debug.WriteLine($"Final capacity of level comp: {CapacityinLevelComponents}");
         }
         catch(Exception e)
         {
             Debug.WriteLine(e.Message);
         }
-        Debug.WriteLine($"Area Type:{areaType}");
+        Debug.WriteLine($"Area Type:{AreaType}");
     }
 
 }

@@ -1,7 +1,7 @@
 ﻿using Fire_Safety_Requirements.ViewModel;
 using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;  // Import the namespace for the Community Toolkit
-
+using CommunityToolkit.Maui;
+using UraniumUI;
 namespace Fire_Safety_Requirements
 {
     public static class MauiProgram
@@ -11,7 +11,9 @@ namespace Fire_Safety_Requirements
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseMauiCommunityToolkit()  // Initialize the CommunityToolkit
+                .UseUraniumUI()
+                .UseUraniumUIMaterial()
+                .UseMauiCommunityToolkit()  
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

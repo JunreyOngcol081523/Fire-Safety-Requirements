@@ -150,6 +150,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.93" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.93" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+		<PackageReference Include="UraniumUI.Material" Version="2.10.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -163,6 +164,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="OccupancyTypePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Colors - Copy.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\ColorThemeLight.xaml">
