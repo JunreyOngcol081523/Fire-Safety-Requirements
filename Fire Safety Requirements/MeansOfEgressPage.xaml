@@ -127,39 +127,39 @@
                                 <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*" >
 
                                 <material:TextField Title="Diagonal Dimension" 
-                                    Margin="0,0,5,0"
-                                    Text="{Binding Diagonal}" 
-                                    FontAttributes="Italic" 
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="FillAndExpand" 
-                                    IsReadOnly="True"
-                                    HorizontalTextAlignment="Center"/>
+                                                    Margin="0,0,5,0"
+                                                    Text="{Binding Diagonal}" 
+                                                    FontAttributes="Italic" 
+                                                    VerticalOptions="Center" 
+                                                    HorizontalOptions="FillAndExpand" 
+                                                    IsReadOnly="True"
+                                                    HorizontalTextAlignment="Center"/>
 
 
                             </Grid>
                             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,10" ColumnDefinitions="*,*" >
-                                <material:TextField Title="Sprinklered" 
-                                    Grid.Column="0" 
-                                    HorizontalTextAlignment="Center"
-                                    Text="{Binding RemotenessSprinklered}" 
-                                    FontAttributes="Italic" 
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="FillAndExpand"
-                                    IsReadOnly="True"
-                                    Margin="0,0,0,5"/>
+                                    <material:TextField Title="Sprinklered" 
+                                                    Grid.Column="0" 
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding RemotenessSprinklered}" 
+                                                    FontAttributes="Italic" 
+                                                    VerticalOptions="Center" 
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsReadOnly="True"
+                                                    Margin="0,0,0,5"/>
 
 
-                                <material:TextField Title="Non-Sprinklered" 
-                                    Grid.Column="1" 
-                                    Margin="5,0,0,0"
-                                    Text="{Binding RemotenessNonSprinklered}"  
-                                    FontAttributes="Italic" 
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="FillAndExpand" 
-                                    IsReadOnly="True" 
-                                    HorizontalTextAlignment="Center"/>
+                                    <material:TextField Title="Non-Sprinklered" 
+                                                    Grid.Column="1" 
+                                                    Margin="5,0,0,0"
+                                                    Text="{Binding RemotenessNonSprinklered}"  
+                                                    FontAttributes="Italic" 
+                                                    VerticalOptions="Center" 
+                                                    HorizontalOptions="FillAndExpand" 
+                                                    IsReadOnly="True" 
+                                                    HorizontalTextAlignment="Center"/>
 
-                            </Grid>
+                                </Grid>
                         </Grid>
                     </StackLayout>
                     </DataTemplate>
@@ -186,7 +186,9 @@
 
                         </Grid>
                         <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*,*" >
-                             <material:TextField Title="Stairways" 
+
+                            
+                            <material:TextField Title="Stairways" 
                                 Grid.Column="0" 
                                 Margin="0,0,5,0"
                                 Text="{Binding CapacityinStairway}" 
@@ -195,6 +197,8 @@
                                 HorizontalOptions="FillAndExpand" 
                                 IsReadOnly="True"
                                 HorizontalTextAlignment="Center"/>
+
+                            
                             <material:TextField Title="Level Components" 
                                 Grid.Column="1" 
                                 Margin="5,0,0,0"
@@ -234,6 +238,7 @@
                             <Grid RowDefinitions="*" 
                                   ColumnDefinitions="*,*" 
                                   HorizontalOptions="FillAndExpand"
+                                  
                                   ColumnSpacing="10"
                                   >
                                 <material:TextField Text="{Binding Lowhazard}" Title="Low Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
@@ -242,6 +247,7 @@
                             <Grid RowDefinitions="*" 
                                   ColumnDefinitions="*,*" 
                                   HorizontalOptions="FillAndExpand"
+                                  
                                   ColumnSpacing="10">
                                 <material:TextField Text="{Binding Moderatedhazard}" Title="Moderate Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
                                 <material:TextField Text="12m" Title="Travel Distance" Grid.Column="1" IsReadOnly="True" HorizontalTextAlignment="Center"/>
@@ -249,6 +255,7 @@
                             <Grid RowDefinitions="*" 
                                   ColumnDefinitions="*,*" 
                                   HorizontalOptions="FillAndExpand"
+                                  
                                   ColumnSpacing="10">
                                 <material:TextField Text="{Binding Highhazard}" Title="High Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
                                 <material:TextField Text="10m" Title="Travel Distance" Grid.Column="1" IsReadOnly="True" HorizontalTextAlignment="Center"/>

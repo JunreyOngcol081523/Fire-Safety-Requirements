@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.MainPage"
-             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              Title="Main Page">
     <Grid>
         <!-- Define three rows in the grid -->
@@ -68,12 +67,12 @@
             </Button>
             <Button Text="Fire Safety Requirements Summary" Clicked="GoToSummaryPage" HeightRequest="50" StyleClass="ElevatedButton">
                 <Button.ImageSource>
-                    <FileImageSource File="extinguisher.png" />
+                    <FileImageSource File="docs.png" />
                 </Button.ImageSource>
             </Button>
             <Button Text="Inspection Flow Chart" Clicked="GoToInspectionFlowChartPage" HeightRequest="50" StyleClass="ElevatedButton">
                 <Button.ImageSource>
-                    <FileImageSource File="flowchart.png" />
+                    <FileImageSource File="inspectionflowchart.png" />
                 </Button.ImageSource>
             </Button>
             <Button Text="Means of Egress Calculator" Clicked="GoToMeansOfEgressPage" HeightRequest="50" StyleClass="ElevatedButton"
@@ -85,16 +84,12 @@
         </StackLayout>
 
 
+
         <!-- Footer label at the bottom -->
-        <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
-            <material:ButtonView Tapped="GoToLink">
-                <Label 
-                  Text="App developed by Junrey Ongcol © 2024" 
-                   FontAttributes="Italic"
-                   HorizontalOptions="Center" 
-                   VerticalOptions="Center" />
-            </material:ButtonView>
-        </Grid>
-        
+        <Label Grid.Row="2"
+               Text="App developed by Junrey Ongcol © 2024" 
+               FontAttributes="Italic"
+               HorizontalOptions="Center" 
+               VerticalOptions="Center" />
     </Grid>
 </ContentPage>

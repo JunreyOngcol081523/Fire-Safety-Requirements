@@ -41,14 +41,6 @@ namespace Fire_Safety_Requirements
         {
             await Shell.Current.GoToAsync("InspectionFlowChartPage");
         }
-        private async void GoToLink(object sender, EventArgs e)
-        {
-            // Specify the URL you want to open
-            string url = "https://github.com/JunreyOngcol081523";
-
-            // Open the URL in the default browser
-            await Launcher.OpenAsync(new Uri(url));
-        }
     }
 
 }
