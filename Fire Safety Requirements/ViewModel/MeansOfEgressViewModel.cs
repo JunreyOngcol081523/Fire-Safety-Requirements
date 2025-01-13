@@ -432,16 +432,16 @@ public partial class MeansOfEgressViewModel:ObservableObject
         try
         {
 
-            CapacityinStairway = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(nominalWidth), true));
-            Debug.WriteLine($"Final capacity of Stairway: {capacityinStairway}");
-            CapacityinLevelComponents = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(nominalWidth), false));
-            Debug.WriteLine($"Final capacity of level comp: {capacityinLevelComponents}");
+            CapacityinStairway = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(NominalWidth), true));
+            Debug.WriteLine($"Final capacity of Stairway: {CapacityinStairway}");
+            CapacityinLevelComponents = (int)Math.Ceiling(CalculateCapacityOfMeansEgress(Double.Parse(NominalWidth), false));
+            Debug.WriteLine($"Final capacity of level comp: {CapacityinLevelComponents}");
         }
         catch(Exception e)
         {
             Debug.WriteLine(e.Message);
         }
-        Debug.WriteLine($"Area Type:{areaType}");
+        Debug.WriteLine($"Area Type:{AreaType}");
     }
 
 }
