@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             
              x:Class="Fire_Safety_Requirements.MainPage"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              Title="Main Page">
@@ -13,6 +14,7 @@
             <!-- Buttons section -->
             <RowDefinition Height="Auto" />
             <!-- Footer section -->
+
         </Grid.RowDefinitions>
 
         <!-- Main content above the buttons -->
@@ -95,6 +97,6 @@
                    VerticalOptions="Center" />
             </material:ButtonView>
         </Grid>
-        
+
     </Grid>
 </ContentPage>

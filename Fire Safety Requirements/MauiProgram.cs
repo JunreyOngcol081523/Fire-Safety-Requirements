@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
 using UraniumUI;
+
 namespace Fire_Safety_Requirements
 {
     public static class MauiProgram
@@ -36,7 +37,7 @@ namespace Fire_Safety_Requirements
             builder.Services.AddTransient<InspectionFlowChartPage>();
             
             builder.Logging.AddDebug();
-
+            
             return builder.Build();
         }
     }
