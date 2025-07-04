@@ -151,7 +151,7 @@ public partial class MeansOfEgressViewModel:ObservableObject
     public MeansOfEgressViewModel()
     {
 
-        title = "Means of Egress Calculator";
+        title = "Egress Calculator";
         occupancytypes = new ObservableCollection<string>();
         occupancytypes.Add("Places of Assembly");
         occupancytypes.Add("Educational Occupancy");

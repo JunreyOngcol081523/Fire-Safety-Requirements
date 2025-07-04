@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fire_Safety_Requirements.OtherFeesCalc"
+             xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             x:DataType="viewmodel:OtherFeesCalcViewModel"
+             Title="Other Fees Calculator">
+    <material:TabView>
+        <material:TabItem Title="Storage Clearance Fee">
+            <VerticalStackLayout Padding="20" Spacing="15">
+                
+                <!-- Storage Category -->
+                <Picker Title="Select Storage Category"
+                ItemsSource="{Binding StorageCategories}"
+                SelectedItem="{Binding SelectedStorageCategory}"
+                FontSize="16" />
+
+                <!-- Material Type -->
+                <Picker Title="Select Material Type"
+                ItemsSource="{Binding MaterialTypes}"
+                SelectedItem="{Binding SelectedMaterialType}"
+                FontSize="16" />
+
+                <!-- Basis of Computation Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="Basis of Computation (kg or liter)"   
+                        Keyboard="Numeric" 
+                        Text="{Binding BasisOfComputation, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <!-- Annual Fees Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="Annual Fees in PhP"   
+                        Keyboard="Numeric" 
+                        Text="{Binding AnnualFees, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"
+                        IsReadOnly="True"/>
+                </Frame>
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <Button Text="Calculate" Command="{Binding CalculateStorageFeesCommand}"/>
+                </Frame>
+
+            </VerticalStackLayout>
+        </material:TabItem>
+
+        <material:TabItem Title="Conveyance Clearance Fee">
+            <Label Text="Content for Conveyance Clearance Fee"
+                   Padding="20" />
+        </material:TabItem>
+
+        <material:TabItem Title="Installation Clearance Fee">
+            <Label Text="Content for Installation Clearance Fee"
+                   Padding="20" />
+        </material:TabItem>
+
+        <material:TabItem Title="Other Fees">
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <!-- Other Fees -->
+                <Picker Title="Select Other Fees Category"
+                ItemsSource="{Binding OtherFees}"
+                SelectedItem="{Binding SelectedOtherFee}"
+                FontSize="16" />
+
+                <!-- Other fees Basis of Computation Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="{Binding OtherFeesBasisText}"   
+                        Keyboard="Numeric" 
+                        IsReadOnly="{Binding IsReadOnly}"
+                        Text="{Binding OtherFeesBasisOfComputation, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <!-- Annual Fees Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="Annual Fees in PhP"   
+                        Keyboard="Numeric" 
+                        Text="{Binding OtherFeesAmount, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"
+                        IsReadOnly="True"/>
+                </Frame>
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <Button Text="{Binding OtherFeesButtonText}" Command="{Binding CalculateOtherFeesCommand}"/>
+                </Frame>
+
+            </VerticalStackLayout>
+        </material:TabItem>
+
+        <material:TabItem Title="Admin Fines">
+            <Label Text="Content for Admin Fines"
+                   Padding="20" />
+        </material:TabItem>
+    </material:TabView>
+</ContentPage>

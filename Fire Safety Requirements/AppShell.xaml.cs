@@ -10,6 +10,7 @@
             Routing.RegisterRoute(nameof(SummaryPage), typeof(SummaryPage));
             Routing.RegisterRoute(nameof(MeansOfEgressPage), typeof(MeansOfEgressPage));
             Routing.RegisterRoute(nameof(InspectionFlowChartPage), typeof(InspectionFlowChartPage));
+            Routing.RegisterRoute(nameof(OtherFeesCalc), typeof(OtherFeesCalc));
         }
     }
 }

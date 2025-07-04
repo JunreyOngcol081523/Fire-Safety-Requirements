@@ -5,8 +5,6 @@
              Title="Fire Safety Requirements Summary Table"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
             x:DataType="viewmodel:SummaryViewModel">
-
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

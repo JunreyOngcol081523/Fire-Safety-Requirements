@@ -41,6 +41,10 @@ namespace Fire_Safety_Requirements
         {
             await Shell.Current.GoToAsync("InspectionFlowChartPage");
         }
+        private async void GoToOtherFeesCalcPage(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("OtherFeesCalc");
+        }
         private async void GoToLink(object sender, EventArgs e)
         {
             // Specify the URL you want to open

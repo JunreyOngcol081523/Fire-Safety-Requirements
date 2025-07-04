@@ -35,7 +35,9 @@ namespace Fire_Safety_Requirements
             builder.Services.AddTransient<MeansOfEgressPage>();
             builder.Services.AddTransient<MeansOfEgressViewModel>();
             builder.Services.AddTransient<InspectionFlowChartPage>();
-            
+            builder.Services.AddTransient<OtherFeesCalc>();
+            builder.Services.AddTransient<OtherFeesCalcViewModel>();
+
             builder.Logging.AddDebug();
             
             return builder.Build();
