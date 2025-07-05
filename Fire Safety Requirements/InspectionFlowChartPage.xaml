@@ -3,7 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.InspectionFlowChartPage"
              Title="Inspection Flow Chart">
-    <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Image Source="inspectionflowchart.png" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+    <VerticalStackLayout>
+        <ScrollView Orientation="Both" HeightRequest="600">
+            <Image x:Name="FlowchartImage"
+               Source="inspectionflowchart.png"
+               Aspect="AspectFit" />
+        </ScrollView>
+
+        <Button Text="Rotate 90°"
+            Clicked="OnRotateButtonClicked"
+            HorizontalOptions="Center"
+            Margin="10"/>
     </VerticalStackLayout>
+
 </ContentPage>

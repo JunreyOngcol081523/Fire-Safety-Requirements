@@ -204,6 +204,8 @@ namespace Fire_Safety_Requirements
             storageitems.Add(new StorageItems() { from_value = 800, to_value = 1200, amount = 42.0 });
             storageitems.Add(new StorageItems() { from_value = 1200, to_value = 2000, amount = 56.0 });
             storageitems.Add(new StorageItems() { from_value = 2000.1, to_value = 400, amount = 4.0 });
+            // storageitems[Count - 2] = fixed fee for 1200.01 to 2000L
+            // storageitems[Count - 1] = variable fee per 400L beyond 2000L (to_value = 400, amount = 4.00)
 
         }
         //Other flammable gases in liter water capacity

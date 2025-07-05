@@ -7,6 +7,7 @@
              x:DataType="viewmodel:OtherFeesCalcViewModel"
              Title="Other Fees Calculator">
     <material:TabView>
+        <!--Storage Clearance Fee Tab-->
         <material:TabItem Title="Storage Clearance Fee">
             <VerticalStackLayout Padding="20" Spacing="15">
                 
@@ -48,20 +49,10 @@
 
             </VerticalStackLayout>
         </material:TabItem>
-
-        <material:TabItem Title="Conveyance Clearance Fee">
-            <Label Text="Content for Conveyance Clearance Fee"
-                   Padding="20" />
-        </material:TabItem>
-
-        <material:TabItem Title="Installation Clearance Fee">
-            <Label Text="Content for Installation Clearance Fee"
-                   Padding="20" />
-        </material:TabItem>
-
+        
+        <!--Other Fees Tab-->
         <material:TabItem Title="Other Fees">
             <VerticalStackLayout Padding="20" Spacing="15">
-
                 <!-- Other Fees -->
                 <Picker Title="Select Other Fees Category"
                 ItemsSource="{Binding OtherFees}"
@@ -92,13 +83,124 @@
                 <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
                     <Button Text="{Binding OtherFeesButtonText}" Command="{Binding CalculateOtherFeesCommand}"/>
                 </Frame>
-
             </VerticalStackLayout>
         </material:TabItem>
+        
+        <!--Conveyance Clearance Fee Tab-->
+        <material:TabItem Title="Conveyance Clearance Fee">
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <!-- Conveyance Clearance Fees -->
+                <Picker Title="Select Conveyance Type"
+                ItemsSource="{Binding ConveyanceType}"
+                SelectedItem="{Binding SelectedConveyanceType}"
+                FontSize="16" />
 
+                <!--Conveyance Clearance fees Basis of Computation Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="Basis of Computation(kg or liters)"   
+                        Keyboard="Numeric" 
+                        Text="{Binding ConveyanceFeesBasisOfComputation, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <!-- Annual Fees Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="Annual Fees in PhP"   
+                        Keyboard="Numeric" 
+                        Text="{Binding ConveyanceFeesAmount, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"
+                        IsReadOnly="True"/>
+                </Frame>
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <Button Text="Compute Conveyance Fee" Command="{Binding CalculateConveyanceFeesCommand}"/>
+                </Frame>
+            </VerticalStackLayout>
+        </material:TabItem>
+        
+        <!--Installation Clearance Fee Tab-->
+        <material:TabItem Title="Installation Clearance Fee">
+            <VerticalStackLayout Padding="20" Spacing="15">
+                <!-- Installation Clearance Fees -->
+                <Picker Title="Select Installation Type"
+                ItemsSource="{Binding InstallationType}"
+                SelectedItem="{Binding SelectedInstallationType}"
+                FontSize="16" />
+
+                <!--Installation Clearance fees Basis of Computation Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField 
+                        IsEnabled="{Binding TextFieldInstallationBasis}"
+                        Title="Basis of Computation(kg or liters)"   
+                        Keyboard="Numeric" 
+                        Text="{Binding InstallationFeesBasisOfComputation, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"/>
+                </Frame>
+
+                <!-- Installation Fees Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="Annual Fees in PhP"   
+                        Keyboard="Numeric" 
+                        Text="{Binding InstallationFeesAmount, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"
+                        IsReadOnly="True"/>
+                </Frame>
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <Button Text="Compute Conveyance Fee" Command="{Binding CalculateInstallationFeesCommand}"/>
+                </Frame>
+            </VerticalStackLayout>
+        </material:TabItem>
+       
+        <!--Admin Fines Tab-->
         <material:TabItem Title="Admin Fines">
-            <Label Text="Content for Admin Fines"
-                   Padding="20" />
+            <VerticalStackLayout Padding="20" Spacing="15">
+            <!-- Admin Fines -->
+            <Picker Title="Select Admin Fine Description"
+            ItemsSource="{Binding AdminFineType}"
+            SelectedItem="{Binding SelectedAdminFineType}"
+            FontSize="16" />
+
+            <!--Admin Fine Basis of Computation Input -->
+                <Frame CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="{Binding UnitMeasurement}"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        />
+
+                        <material:TextField 
+                        IsEnabled="true"
+                        Title="{Binding UnitMeasurement}"  
+                        Keyboard="Numeric" 
+                        Text="{Binding AdminFineBasisOfComputation, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+
+                <!--Admin Fine Input -->
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <material:TextField Title="Annual Fees in PhP"   
+                        Keyboard="Numeric" 
+                        Text="{Binding AdminFineAmount, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"
+                        IsReadOnly="True"/>
+                </Frame>
+                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                    <Button Text="Compute Admin Fine" Command="{Binding CalculateAdminFineCommand}"/>
+                </Frame>
+            </VerticalStackLayout>
         </material:TabItem>
     </material:TabView>
 </ContentPage>

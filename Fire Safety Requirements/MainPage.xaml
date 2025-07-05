@@ -87,7 +87,7 @@
             <Button Text="Other Fees Calculator" Clicked="GoToOtherFeesCalcPage" HeightRequest="50" StyleClass="ElevatedButton"
                     Margin="0,0,0,5">
                 <Button.ImageSource>
-                    <FileImageSource File="calculator.png" />
+                    <FileImageSource File="warehouse.png" />
                 </Button.ImageSource>
             </Button>
         </StackLayout>

@@ -122,7 +122,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="ViewModel\ConveyanceFeeViewModel.cs" />
+	  <Compile Remove="ViewModel\OtherFeesCalcViewModel_1.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiCss Remove="Resources\FireCodeRequirements\styles.css" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\warehouse.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -131,6 +140,7 @@
 	  <None Remove="Resources\AppIcon\calculator.png" />
 	  <None Remove="Resources\AppIcon\coverpage.png" />
 	  <None Remove="Resources\AppIcon\docs.png" />
+	  <None Remove="Resources\AppIcon\warehouse.png" />
 	  <None Remove="Resources\FireCodeRequirements\assembly_table9.png" />
 	  <None Remove="Resources\FireCodeRequirements\business.html" />
 	  <None Remove="Resources\FireCodeRequirements\daycare.html" />
@@ -156,6 +166,7 @@
 	  <None Remove="Resources\Images\fsed.png" />
 	  <None Remove="Resources\Images\fsed1.png" />
 	  <None Remove="Resources\Images\inspectionflowchart.png" />
+	  <None Remove="Resources\Images\warehouse.png" />
 	  <None Remove="Resources\Json\data.json" />
 	  <None Remove="Resources\Splash\splash.png" />
 	</ItemGroup>
@@ -220,6 +231,7 @@
 	  <MauiImage Include="Resources\AppIcon\calculator.png" />
 	  <MauiImage Include="Resources\AppIcon\coverpage.png" />
 	  <MauiImage Include="Resources\AppIcon\docs.png" />
+	  <MauiImage Include="Resources\AppIcon\warehouse.png" />
 	</ItemGroup>
 
 	<ItemGroup>
