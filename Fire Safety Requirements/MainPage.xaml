@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              x:Class="Fire_Safety_Requirements.MainPage"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              Title="Main Page">
@@ -14,7 +14,7 @@
             <!-- Buttons section -->
             <RowDefinition Height="Auto" />
             <!-- Footer section -->
-
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Main content above the buttons -->
@@ -23,7 +23,7 @@
                 Padding="10,0"
                 Spacing="5">
                 <HorizontalStackLayout HorizontalOptions="Center">
-                <Image
+                    <Image
                     Source="fsed.png"
                     HeightRequest="150"
                     Aspect="AspectFit"
@@ -32,13 +32,13 @@
                     Source="coverpageformain.png"
                     HeightRequest="150"
                     Aspect="AspectFit"
-                    SemanticProperties.Description="Fire Safety Enforcement Division's Logo" /> 
+                    SemanticProperties.Description="Fire Safety Enforcement Division's Logo" />
                 </HorizontalStackLayout>
                 <Label
                     Text="Hello, Fire Safety Inspectors!"
                     Style="{StaticResource SubHeadline}"
                     SemanticProperties.HeadingLevel="Level5" 
-                    VerticalOptions="CenterAndExpand"/>
+                    VerticalOptions="Center"/>
 
                 <Label 
                     Text="{Binding preface}"
@@ -58,7 +58,7 @@
 
         <StackLayout Grid.Row="1"
                      Orientation="Vertical"
-                     HorizontalOptions="FillAndExpand"
+                     HorizontalOptions="Fill"
                      VerticalOptions="End"
                      Spacing="10"
                      Margin="0,0,0,5">
@@ -78,14 +78,12 @@
                     <FileImageSource File="flowchart.png" />
                 </Button.ImageSource>
             </Button>
-            <Button Text="Egress Calculator" Clicked="GoToMeansOfEgressPage" HeightRequest="50" StyleClass="ElevatedButton"
-                    Margin="0,0,0,5">
+            <Button Text="Egress Calculator" Clicked="GoToMeansOfEgressPage" HeightRequest="50" StyleClass="ElevatedButton">
                 <Button.ImageSource>
                     <FileImageSource File="calculator.png" />
                 </Button.ImageSource>
             </Button>
-            <Button Text="Other Fees Calculator" Clicked="GoToOtherFeesCalcPage" HeightRequest="50" StyleClass="ElevatedButton"
-                    Margin="0,0,0,5">
+            <Button Text="Other Fees Calculator" Clicked="GoToOtherFeesCalcPage" HeightRequest="50" StyleClass="ElevatedButton">
                 <Button.ImageSource>
                     <FileImageSource File="warehouse.png" />
                 </Button.ImageSource>
@@ -94,7 +92,7 @@
 
 
         <!-- Footer label at the bottom -->
-        <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
+        <Grid Grid.Row="2" HorizontalOptions="Fill">
             <material:ButtonView Tapped="GoToLink">
                 <Label 
                   Text="App developed by Junrey Ongcol © 2024" 
@@ -102,6 +100,15 @@
                    HorizontalOptions="Center" 
                    VerticalOptions="Center" />
             </material:ButtonView>
+        </Grid>
+        <!-- Footer label at the bottom -->
+        <Grid Grid.Row="3" HorizontalOptions="Fill">
+            <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                           />
         </Grid>
 
     </Grid>

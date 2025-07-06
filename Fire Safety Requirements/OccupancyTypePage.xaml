@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.OccupancyTypePage"
              Title="Fire Safety Requirements"
+              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:OccupancyTypeViewModel">
 
@@ -13,6 +14,7 @@
             <!-- Content row, takes available space -->
             <RowDefinition Height="Auto" />
             <!-- Button row, takes only necessary space -->
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Scrollable content in the first row -->
@@ -21,7 +23,7 @@
                 <Label 
                     Padding="10"
                     Text="Select Types of Occupancy"
-                    FontSize="25"
+                    FontSize="20"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
 
@@ -29,9 +31,10 @@
                                 SelectionMode="None">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type x:String}">
-                            <Grid Padding="0,5"
-                                  StyleClass="Elevation5">
-                                <Frame>
+                            <Grid Padding="0,0"
+                                  StyleClass="Elevation3"
+                                  >
+                                <Frame BackgroundColor="#5758BB" HeightRequest="65">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OccupancyTypeViewModel}}, 
@@ -41,7 +44,8 @@
                                     <Label Text="{Binding .}"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Center"
-                                           FontSize="18"/>
+                                           FontSize="18"
+                                           />
                                 </Frame>
                             </Grid>
                         </DataTemplate>
@@ -59,6 +63,12 @@
                 Margin="0,10,0,10"
                 StyleClass="ElevatedButton"/>
         <!-- Add top and bottom margin for spacing -->
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                            Grid.Row="2"/>
     </Grid>
 
 </ContentPage>

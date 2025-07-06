@@ -1,7 +1,8 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
-
+using Plugin.MauiMTAdmob;
+using Microsoft.Maui.Devices;
 namespace Fire_Safety_Requirements
 {
     public partial class MainPage : ContentPage
@@ -19,10 +20,33 @@ namespace Fire_Safety_Requirements
                 "across various occupancy types. Whether you're a building manager, safety officer, " +
                 "or just interested in fire safety, this app provides essential guidelines to ensure the safety and security of occupants in diverse environments.\r\n\r\n" +
                 "Explore detailed recommendations and guidelines tailored to each occupancy type, and stay informed with the best practices for fire safety.";
-
+            ShowInterstitial();
+            SendToFirestore();
             BindingContext = this;
         }
-        
+        //--------------------ads after spash screen-------------------//
+        private async void ShowInterstitial()
+        {
+            await Task.Delay(2000); // Optional delay to let splash screen settle
+            CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-8158194714551266/3862552878");
+            CrossMauiMTAdmob.Current.ShowInterstitial();
+        }
+
+        //-----------------fire store save device data-----------------//
+        private async void SendToFirestore()
+        {
+            string deviceName = DeviceInfo.Model; 
+            string currentDate = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm t"); 
+            string period = DateTime.UtcNow.ToString("yyyy-MM"); 
+            string timestamp = DateTime.UtcNow.ToString("o"); 
+            var service = new FirestoreService();
+            bool success = await service.PostDeviceDataAsync(deviceName, period);
+            if (success)
+                await DisplayAlert("Success", "Session saved to firestore", "OK");
+            else
+                await DisplayAlert("Error", "Failed to send data", "OK");
+        }
+
         private async void GoToOccupancyTypePage(object sender, EventArgs e)
         {
             // Using Shell Navigation to go to the page

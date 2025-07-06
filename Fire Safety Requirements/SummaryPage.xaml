@@ -4,11 +4,13 @@
              x:Class="Fire_Safety_Requirements.SummaryPage"
              Title="Fire Safety Requirements Summary Table"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
+              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
             x:DataType="viewmodel:SummaryViewModel">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <!-- This will take up remaining space for WebView -->
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <!-- This will automatically size for the Button -->
         </Grid.RowDefinitions>
@@ -26,5 +28,11 @@
             Padding="10,5"
             MinimumHeightRequest="40"
                 BackgroundColor="#c0392b"/>
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                            Grid.Row="2"/>
     </Grid>
 </ContentPage>

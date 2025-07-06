@@ -4,6 +4,7 @@
              x:Class="Fire_Safety_Requirements.OccupancyDetailPage"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:OccupancyDetailViewModel"
+              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              Title="{Binding Text}">
 
     <Grid>
@@ -12,6 +13,7 @@
             <!-- This will take up remaining space for WebView -->
             <RowDefinition Height="Auto" />
             <!-- This will automatically size for the Button -->
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <!-- Scrollable content with WebView -->
         <ScrollView Grid.Row="0">
@@ -22,10 +24,17 @@
         <Button Text="Close"
             Command="{Binding GoBackCommand}"
             Grid.Row="1"
-            VerticalOptions="End"
+            VerticalOptions="Start"
             HorizontalOptions="Center"
             Padding="10,5"
             MinimumHeightRequest="40"
                 BackgroundColor="#c0392b"/>
+        
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                            Grid.Row="2"/>
     </Grid>
 </ContentPage>

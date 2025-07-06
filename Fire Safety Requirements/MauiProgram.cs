@@ -1,6 +1,7 @@
-﻿using Fire_Safety_Requirements.ViewModel;
+﻿using CommunityToolkit.Maui;
+using Fire_Safety_Requirements.ViewModel;
 using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;
+using Plugin.MauiMTAdmob;
 using UraniumUI;
 
 namespace Fire_Safety_Requirements
@@ -14,7 +15,8 @@ namespace Fire_Safety_Requirements
                 .UseMauiApp<App>()
                 .UseUraniumUI()
                 .UseUraniumUIMaterial()
-                .UseMauiCommunityToolkit()  
+                .UseMauiCommunityToolkit()
+                .UseMauiMTAdmob()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

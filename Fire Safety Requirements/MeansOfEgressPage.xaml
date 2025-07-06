@@ -5,22 +5,26 @@
              Title="Means Of Egress Calculator"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              x:DataType="viewmodel:MeansOfEgressViewModel">
 
     <VerticalStackLayout>
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                           />
         <Label 
         Text="{Binding Title}" 
         FontSize="20"
         HorizontalOptions="Center" 
         VerticalOptions="Center" 
         HorizontalTextAlignment="Center" 
-        VerticalTextAlignment="Center"
-        />
+        VerticalTextAlignment="Center"/>
 
-
-
-
-        <VerticalStackLayout Margin="0" Padding="10">
+        <VerticalStackLayout Margin="0" Padding="0">
+           
             <material:PickerField 
                     Title="Select Occupancy Type"
                     HorizontalOptions="Fill"
@@ -31,20 +35,23 @@
 
             <material:TextField Title="Enter Floor Area in m²" Text="{Binding Result, Mode=TwoWay}"    
                     HorizontalTextAlignment="Center"
-                    HorizontalOptions="FillAndExpand"
+                    HorizontalOptions="Fill"
                     Keyboard="Numeric"
                     Margin="0,5,0,5"/>
             <!--first scrollview-->
+            
+            <Label Text="Scroll down ▼" FontSize="12" HorizontalOptions="Center"/>
+            <BoxView HeightRequest="1" HorizontalOptions="Fill" Margin="0,0,0,5"/>
             <ScrollView
-                        HorizontalOptions="FillAndExpand"
-                        HeightRequest="150"
+                        HorizontalOptions="Fill"
+                        HeightRequest="130"
                         Margin="0">
                 <CollectionView ItemsSource="{Binding Items}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewmodel:Item">
-                            <Frame Padding="10" 
+                            <Frame Padding="5" 
                                    BorderColor="DarkGreen" 
-                                   HorizontalOptions="FillAndExpand"
+                                   HorizontalOptions="Fill"
                                    StyleClass="PrimaryContainer">
                                 <StackLayout Spacing="10">
                                     <!-- Title -->
@@ -93,23 +100,25 @@
                                     </Grid>
                                 </StackLayout>
                             </Frame>
+
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </ScrollView>
         </VerticalStackLayout>
+        <Label Text="Swipe to side" FontSize="12" HorizontalOptions="Center"/>
         <material:TabView>
             <material:TabItem Title="Remoteness of Exits">
                 <material:TabItem.ContentTemplate>
                     <DataTemplate>
                         <StackLayout Padding="0" Margin="0,0,0,0">
                             <Grid RowDefinitions="Auto, Auto,Auto" ColumnDefinitions="Auto,*">
-                                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*,*" >
+                                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,0" ColumnDefinitions="*,*" >
 
                                     <material:TextField Title="Height in meters" Grid.Column="0"  
                                        Keyboard="Numeric" 
                                        Text="{Binding Height, Mode=TwoWay}" 
-                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalOptions="Fill" 
                                        VerticalOptions="Center"
                                        Margin="0,0,5,0"
                                        HorizontalTextAlignment="Center"
@@ -118,33 +127,33 @@
                                     <material:TextField Grid.Column="1" Title="Width in meters" 
                                        Keyboard="Numeric" 
                                        Text="{Binding Width, Mode=TwoWay}" 
-                                       HorizontalOptions="FillAndExpand" 
+                                       HorizontalOptions="Fill" 
                                        VerticalOptions="Center"
                                        Margin="5,0,0,0"
                                        HorizontalTextAlignment="Center"/>      
                             
                             </Grid>
-                                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*" >
+                                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,0" ColumnDefinitions="*" >
 
                                 <material:TextField Title="Diagonal Dimension" 
                                     Margin="0,0,5,0"
                                     Text="{Binding Diagonal}" 
                                     FontAttributes="Italic" 
                                     VerticalOptions="Center" 
-                                    HorizontalOptions="FillAndExpand" 
+                                    HorizontalOptions="Fill" 
                                     IsReadOnly="True"
                                     HorizontalTextAlignment="Center"/>
 
 
                             </Grid>
-                            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,10" ColumnDefinitions="*,*" >
+                            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,10" ColumnDefinitions="*,*" >
                                 <material:TextField Title="Sprinklered" 
                                     Grid.Column="0" 
                                     HorizontalTextAlignment="Center"
                                     Text="{Binding RemotenessSprinklered}" 
                                     FontAttributes="Italic" 
                                     VerticalOptions="Center" 
-                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalOptions="Fill"
                                     IsReadOnly="True"
                                     Margin="0,0,0,5"/>
 
@@ -155,7 +164,7 @@
                                     Text="{Binding RemotenessNonSprinklered}"  
                                     FontAttributes="Italic" 
                                     VerticalOptions="Center" 
-                                    HorizontalOptions="FillAndExpand" 
+                                    HorizontalOptions="Fill" 
                                     IsReadOnly="True" 
                                     HorizontalTextAlignment="Center"/>
 
@@ -172,27 +181,27 @@
                     <Grid RowDefinitions="Auto, Auto,Auto" ColumnDefinitions="Auto,*">
                         <Grid Grid.Row="0" Grid.Column="0" 
                               Grid.ColumnSpan="2" 
-                              HorizontalOptions="FillAndExpand" 
+                              HorizontalOptions="Fill" 
                               Margin="10,10,10,0" ColumnDefinitions="*" >
 
                             <material:TextField Title="Nominal Width in mm" Grid.Column="0"  
                                Keyboard="Numeric" 
                                Text="{Binding NominalWidth, Mode=TwoWay}" 
-                               HorizontalOptions="FillAndExpand" 
+                               HorizontalOptions="Fill" 
                                VerticalOptions="Center"
                                Margin="0,0,5,0"
                                HorizontalTextAlignment="Center"/>   
                             
 
                         </Grid>
-                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,0" ColumnDefinitions="*,*" >
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,0" ColumnDefinitions="*,*" >
                              <material:TextField Title="Stairways" 
                                 Grid.Column="0" 
                                 Margin="0,0,5,0"
                                 Text="{Binding CapacityinStairway}" 
                                 FontAttributes="Italic" 
                                 VerticalOptions="Center" 
-                                HorizontalOptions="FillAndExpand" 
+                                HorizontalOptions="Fill" 
                                 IsReadOnly="True"
                                 HorizontalTextAlignment="Center"/>
                             <material:TextField Title="Level Components" 
@@ -201,12 +210,12 @@
                                 Text="{Binding CapacityinLevelComponents}"  
                                 FontAttributes="Italic" 
                                 VerticalOptions="Center" 
-                                HorizontalOptions="FillAndExpand" 
+                                HorizontalOptions="Fill" 
                                 IsReadOnly="True" 
                                 HorizontalTextAlignment="Center"/>
 
                         </Grid>
-                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="10,10,10,10" ColumnDefinitions="*,*" >
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,10" ColumnDefinitions="*,*" >
                             <material:CheckBox Text ="High Hazard" 
                                            Grid.Row="2" Grid.Column="0" 
                                            IsChecked="{Binding IsHighHazard, Mode=TwoWay}" 
@@ -233,7 +242,7 @@
                             <Label Text="Required number of Fire Extinguishers"/>
                             <Grid RowDefinitions="*" 
                                   ColumnDefinitions="*,*" 
-                                  HorizontalOptions="FillAndExpand"
+                                  HorizontalOptions="Fill"
                                   ColumnSpacing="10"
                                   >
                                 <material:TextField Text="{Binding Lowhazard}" Title="Low Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
@@ -241,14 +250,14 @@
                             </Grid>
                             <Grid RowDefinitions="*" 
                                   ColumnDefinitions="*,*" 
-                                  HorizontalOptions="FillAndExpand"
+                                  HorizontalOptions="Fill"
                                   ColumnSpacing="10">
                                 <material:TextField Text="{Binding Moderatedhazard}" Title="Moderate Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
                                 <material:TextField Text="12m" Title="Travel Distance" Grid.Column="1" IsReadOnly="True" HorizontalTextAlignment="Center"/>
                             </Grid>
                             <Grid RowDefinitions="*" 
                                   ColumnDefinitions="*,*" 
-                                  HorizontalOptions="FillAndExpand"
+                                  HorizontalOptions="Fill"
                                   ColumnSpacing="10">
                                 <material:TextField Text="{Binding Highhazard}" Title="High Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
                                 <material:TextField Text="10m" Title="Travel Distance" Grid.Column="1" IsReadOnly="True" HorizontalTextAlignment="Center"/>
@@ -259,6 +268,11 @@
             </material:TabItem>
             
         </material:TabView>
- 
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds1"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                           />
     </VerticalStackLayout>
 </ContentPage>

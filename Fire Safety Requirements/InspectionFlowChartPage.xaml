@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.InspectionFlowChartPage"
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              Title="Inspection Flow Chart">
     <VerticalStackLayout>
         <ScrollView Orientation="Both" HeightRequest="600">
@@ -14,6 +15,12 @@
             Clicked="OnRotateButtonClicked"
             HorizontalOptions="Center"
             Margin="10"/>
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                            Grid.Row="2"/>
     </VerticalStackLayout>
 
 </ContentPage>

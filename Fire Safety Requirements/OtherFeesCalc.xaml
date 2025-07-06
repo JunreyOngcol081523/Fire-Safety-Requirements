@@ -5,11 +5,21 @@
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              x:DataType="viewmodel:OtherFeesCalcViewModel"
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              Title="Other Fees Calculator">
-    <material:TabView>
+    <StackLayout>
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                           />
+        <Label Text="Swipe to Side" FontSize="15" HorizontalOptions="Center"/>
+        <BoxView HeightRequest="1" HorizontalOptions="Fill" />
+        <material:TabView>
         <!--Storage Clearance Fee Tab-->
         <material:TabItem Title="Storage Clearance Fee">
-            <VerticalStackLayout Padding="20" Spacing="15">
+            <VerticalStackLayout Padding="5" Spacing="0">
                 
                 <!-- Storage Category -->
                 <Picker Title="Select Storage Category"
@@ -52,7 +62,7 @@
         
         <!--Other Fees Tab-->
         <material:TabItem Title="Other Fees">
-            <VerticalStackLayout Padding="20" Spacing="15">
+            <VerticalStackLayout Padding="5" Spacing="0">
                 <!-- Other Fees -->
                 <Picker Title="Select Other Fees Category"
                 ItemsSource="{Binding OtherFees}"
@@ -88,7 +98,7 @@
         
         <!--Conveyance Clearance Fee Tab-->
         <material:TabItem Title="Conveyance Clearance Fee">
-            <VerticalStackLayout Padding="20" Spacing="15">
+            <VerticalStackLayout Padding="5" Spacing="0">
                 <!-- Conveyance Clearance Fees -->
                 <Picker Title="Select Conveyance Type"
                 ItemsSource="{Binding ConveyanceType}"
@@ -123,7 +133,7 @@
         
         <!--Installation Clearance Fee Tab-->
         <material:TabItem Title="Installation Clearance Fee">
-            <VerticalStackLayout Padding="20" Spacing="15">
+            <VerticalStackLayout Padding="5" Spacing="0">
                 <!-- Installation Clearance Fees -->
                 <Picker Title="Select Installation Type"
                 ItemsSource="{Binding InstallationType}"
@@ -160,7 +170,7 @@
        
         <!--Admin Fines Tab-->
         <material:TabItem Title="Admin Fines">
-            <VerticalStackLayout Padding="20" Spacing="15">
+            <VerticalStackLayout Padding="5" Spacing="0">
             <!-- Admin Fines -->
             <Picker Title="Select Admin Fine Description"
             ItemsSource="{Binding AdminFineType}"
@@ -203,4 +213,11 @@
             </VerticalStackLayout>
         </material:TabItem>
     </material:TabView>
+        <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds1"
+                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                           />
+    </StackLayout>
 </ContentPage>
