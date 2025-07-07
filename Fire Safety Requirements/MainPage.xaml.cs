@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics;
-using Plugin.MauiMTAdmob;
 using Microsoft.Maui.Devices;
+using Plugin.MauiMTAdmob;
+using System.Diagnostics;
 namespace Fire_Safety_Requirements
 {
     public partial class MainPage : ContentPage
@@ -20,18 +20,32 @@ namespace Fire_Safety_Requirements
                 "across various occupancy types. Whether you're a building manager, safety officer, " +
                 "or just interested in fire safety, this app provides essential guidelines to ensure the safety and security of occupants in diverse environments.\r\n\r\n" +
                 "Explore detailed recommendations and guidelines tailored to each occupancy type, and stay informed with the best practices for fire safety.";
-            ShowInterstitial();
             SendToFirestore();
             BindingContext = this;
+            ShowInterstitialAd();
         }
-        //--------------------ads after spash screen-------------------//
-        private async void ShowInterstitial()
+        private void ShowInterstitialAd()
         {
-            await Task.Delay(2000); // Optional delay to let splash screen settle
+            // Load your interstitial
             CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-8158194714551266/3862552878");
-            CrossMauiMTAdmob.Current.ShowInterstitial();
-        }
 
+            // Optional: handle events
+            CrossMauiMTAdmob.Current.OnInterstitialLoaded += (s, e) =>
+            {
+                Console.WriteLine("Interstitial loaded; showing now...");
+                CrossMauiMTAdmob.Current.ShowInterstitial();
+            };
+
+            CrossMauiMTAdmob.Current.OnInterstitialFailedToLoad += (s, e) =>
+                Console.WriteLine($"Failed to load interstitial: {e.ErrorMessage}");
+
+            // Or later in your logic:
+            if (CrossMauiMTAdmob.Current.IsInterstitialLoaded())
+                CrossMauiMTAdmob.Current.ShowInterstitial();
+            else
+                Console.WriteLine("Interstitial not ready yet.");
+
+        }
         //-----------------fire store save device data-----------------//
         private async void SendToFirestore()
         {
@@ -41,10 +55,7 @@ namespace Fire_Safety_Requirements
             string timestamp = DateTime.UtcNow.ToString("o"); 
             var service = new FirestoreService();
             bool success = await service.PostDeviceDataAsync(deviceName, period);
-            if (success)
-                await DisplayAlert("Success", "Session saved to firestore", "OK");
-            else
-                await DisplayAlert("Error", "Failed to send data", "OK");
+
         }
 
         private async void GoToOccupancyTypePage(object sender, EventArgs e)

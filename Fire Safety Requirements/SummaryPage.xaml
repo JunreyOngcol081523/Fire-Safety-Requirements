@@ -30,7 +30,7 @@
                 BackgroundColor="#c0392b"/>
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdsId="ca-app-pub-8158194714551266/8306013154"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                             Grid.Row="2"/>

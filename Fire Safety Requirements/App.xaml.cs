@@ -1,4 +1,6 @@
-﻿namespace Fire_Safety_Requirements
+﻿
+
+namespace Fire_Safety_Requirements
 {
     public partial class App : Application
     {
@@ -8,5 +10,7 @@
 
             MainPage = new AppShell();
         }
+
+
     }
 }

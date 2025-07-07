@@ -4,7 +4,8 @@
              x:Class="Fire_Safety_Requirements.OccupancyDetailPage"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:OccupancyDetailViewModel"
-              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              Title="{Binding Text}">
 
     <Grid>
@@ -17,7 +18,10 @@
         </Grid.RowDefinitions>
         <!-- Scrollable content with WebView -->
         <ScrollView Grid.Row="0">
-            <WebView Source="{Binding HtmlSource}" VerticalOptions="FillAndExpand" />
+            <WebView Source="{Binding HtmlSource}" 
+                     VerticalOptions="Fill"
+                     android:WebView.EnableZoomControls="true"
+                     android:WebView.DisplayZoomControls="true"/>
         </ScrollView>
 
         <!-- Back Button with correct positioning -->
@@ -32,7 +36,7 @@
         
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/6014003688"
+                                           AdsId="ca-app-pub-8158194714551266/4558339836"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                             Grid.Row="2"/>
