@@ -8,7 +8,7 @@
              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              x:DataType="viewmodel:MeansOfEgressViewModel">
 
-    <VerticalStackLayout>
+    <VerticalStackLayout Padding="10">
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
                                            AdsId="ca-app-pub-8158194714551266/4262826360"
@@ -23,7 +23,7 @@
         HorizontalTextAlignment="Center" 
         VerticalTextAlignment="Center"/>
 
-        <VerticalStackLayout Margin="0" Padding="0">
+        <VerticalStackLayout Margin="0" Padding="10">
            
             <material:PickerField 
                     Title="Select Occupancy Type"

@@ -7,7 +7,7 @@
              x:DataType="viewmodel:OtherFeesCalcViewModel"
              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              Title="Other Fees Calculator">
-    <StackLayout>
+    <StackLayout Padding="10">
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
                                            AdsId="ca-app-pub-8158194714551266/6476575094"
@@ -19,7 +19,7 @@
         <material:TabView>
         <!--Storage Clearance Fee Tab-->
         <material:TabItem Title="Storage Clearance Fee">
-            <VerticalStackLayout Padding="5" Spacing="0">
+            <VerticalStackLayout Padding="5" Spacing="10">
                 
                 <!-- Storage Category -->
                 <Picker Title="Select Storage Category"
