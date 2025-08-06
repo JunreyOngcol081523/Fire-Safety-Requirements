@@ -16,4 +16,8 @@ public partial class InspectionFlowChartPage : ContentPage
 
         FlowchartImage.Rotation = currentRotation;
     }
+    private void OnBackButtonClicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
 }

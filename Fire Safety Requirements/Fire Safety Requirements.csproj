@@ -52,19 +52,18 @@
 
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
+	<!--<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
 
 		<AndroidPackageFormat>apk</AndroidPackageFormat>
 		<AndroidKeyStore>True</AndroidKeyStore>
-		<AndroidSigningKeyStore>C:/Users/Administrator/Documents/GitHub/Fire-Safety-Requirements/my-release-key.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyStore>C:/JunreyOngcol081523/Fire-Safety-Requirements/FireSafetyRequirementsApp.keystore</AndroidSigningKeyStore>
 		<AndroidSigningStorePass>Jbo699187</AndroidSigningStorePass>
 		<AndroidSigningKeyAlias>myalias</AndroidSigningKeyAlias>
 		<AndroidSigningKeyPass>Jbo699187</AndroidSigningKeyPass>
 
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
-	  <ApplicationId></ApplicationId>
+	  <ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
 	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 
 

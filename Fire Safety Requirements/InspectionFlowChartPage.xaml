@@ -11,13 +11,18 @@
                Aspect="AspectFit" />
         </ScrollView>
 
-        <Button Text="Rotate 90°"
+        <HorizontalStackLayout  HorizontalOptions="Center">
+            <Button Text="Rotate 90°"
             Clicked="OnRotateButtonClicked"
-            HorizontalOptions="Center"
             Margin="10"/>
+            <Button Text="Back"
+                Clicked="OnBackButtonClicked"
+                Margin="10"
+                BackgroundColor="#c0392b"/>
+        </HorizontalStackLayout>
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/9427523133"
+                                           AdsId="ca-app-pub-8158194714551266/9145353467"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                             Grid.Row="2"/>

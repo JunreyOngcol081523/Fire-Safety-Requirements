@@ -32,9 +32,8 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type x:String}">
                             <Grid Padding="0,0"
-                                  StyleClass="Elevation3"
-                                  >
-                                <Frame BackgroundColor="#5758BB" HeightRequest="65">
+                                  StyleClass="Elevation3" >
+                                <Frame HeightRequest="65">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OccupancyTypeViewModel}}, 
@@ -44,8 +43,7 @@
                                     <Label Text="{Binding .}"
                                            VerticalOptions="Center"
                                            HorizontalOptions="Center"
-                                           FontSize="18"
-                                           />
+                                           FontSize="18"/>
                                 </Frame>
                             </Grid>
                         </DataTemplate>
@@ -65,7 +63,7 @@
         <!-- Add top and bottom margin for spacing -->
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/3269407924"
+                                           AdsId="ca-app-pub-8158194714551266/7424275353"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                             Grid.Row="2"/>

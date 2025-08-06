@@ -95,6 +95,7 @@
         <Grid Grid.Row="2" HorizontalOptions="Fill">
             <material:ButtonView Tapped="GoToLink">
                 <Label 
+                    TextColor="{StaticResource Gray100}"
                   Text="App developed by Junrey Ongcol © 2024" 
                    FontAttributes="Italic"
                    HorizontalOptions="Center" 
@@ -105,7 +106,7 @@
         <Grid Grid.Row="3" HorizontalOptions="Fill">
             <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/3269407924"
+                                           AdsId="ca-app-pub-8158194714551266/4351389454"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                            />
