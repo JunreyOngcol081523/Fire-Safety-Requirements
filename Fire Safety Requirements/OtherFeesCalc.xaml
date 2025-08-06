@@ -10,7 +10,7 @@
     <StackLayout Padding="10">
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/6476575094"
+                                           AdsId="ca-app-pub-8158194714551266/3269407924"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                            />
@@ -215,7 +215,7 @@
     </material:TabView>
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds1"
-                                           AdsId="ca-app-pub-8158194714551266/4305421911"
+                                           AdsId="ca-app-pub-8158194714551266/3269407924"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                            />

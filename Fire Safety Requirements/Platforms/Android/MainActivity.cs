@@ -16,7 +16,7 @@ namespace Fire_Safety_Requirements
 
             string license = "ZIrXQSue3vFYNfMSzKXkStXSLUgy6vEfkwHfvSnC1lBKifhqgmAOL6QzX3YZdz6q/9yWdo1LWRxQy3pBHuapiubn7tcVNE8Z8A=="; //<-- Your license key here
             string deviceId = "9cdc0cea-dfce-49cd-ab2a-beec9ad74057"; //<--- Your test device id here
-            string OPENADS_AD_UNIT_ID = "ca-app-pub-3940256099942544/9257395921";
+            string OPENADS_AD_UNIT_ID = "ca-app-pub-8158194714551266~5887832408";
             string NATIVEADS_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110";
             bool enableOpenAds = false;
             bool initialiseConsentAtStartup = true;

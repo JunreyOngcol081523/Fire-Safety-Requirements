@@ -65,7 +65,7 @@
         <!-- Add top and bottom margin for spacing -->
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/4868496873"
+                                           AdsId="ca-app-pub-8158194714551266/3269407924"
                                            AdSize="AnchoredAdaptive"
                                            IsVisible="true"
                                             Grid.Row="2"/>

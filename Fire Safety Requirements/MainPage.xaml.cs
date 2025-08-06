@@ -27,7 +27,7 @@ namespace Fire_Safety_Requirements
         private void ShowInterstitialAd()
         {
             // Load your interstitial
-            CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-8158194714551266/3862552878");
+            CrossMauiMTAdmob.Current.LoadInterstitial("ca-app-pub-8158194714551266/6246925054");
 
             // Optional: handle events
             CrossMauiMTAdmob.Current.OnInterstitialLoaded += (s, e) =>
