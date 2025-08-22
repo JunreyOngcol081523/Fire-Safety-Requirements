@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.OccupancyTypePage"
              Title="Fire Safety Requirements"
-              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
-             x:DataType="viewmodel:OccupancyTypeViewModel">
+             x:DataType="viewmodel:OccupancyTypeViewModel"
+             >
 
     <Grid>
         <!-- Define two rows: one for the content and one for the static Back button -->
@@ -24,31 +25,45 @@
                     Padding="10"
                     Text="Select Types of Occupancy"
                     FontSize="20"
+                    FontAttributes="Bold"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" />
 
                 <CollectionView ItemsSource="{Binding Items}"
-                                SelectionMode="None">
+                SelectionMode="None"
+                Margin="10">
+                    <CollectionView.ItemsLayout>
+                        <!-- 2 columns -->
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="{x:Type x:String}">
-                            <Grid Padding="0,0"
-                                  StyleClass="Elevation3" >
-                                <Frame HeightRequest="65">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OccupancyTypeViewModel}}, 
-                                                      Path=TapCommand}"
-                                            CommandParameter="{Binding .}"/>
-                                    </Frame.GestureRecognizers>
+                            <Frame Margin="8"
+                                   Padding="10"
+                                   HeightRequest="120"
+>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:OccupancyTypeViewModel}}, Path=TapCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+
+                                <Grid>
                                     <Label Text="{Binding .}"
-                                           VerticalOptions="Center"
+                                           FontSize="16"
                                            HorizontalOptions="Center"
-                                           FontSize="18"/>
-                                </Frame>
-                            </Grid>
+                                           VerticalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           LineBreakMode="WordWrap"
+                                           TextColor="Black" />
+                                </Grid>
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+
             </StackLayout>
         </ScrollView>
 

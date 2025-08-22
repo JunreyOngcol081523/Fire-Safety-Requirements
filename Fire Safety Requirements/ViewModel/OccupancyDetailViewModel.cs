@@ -1,36 +1,48 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-
+using Microsoft.Maui.Networking; // for Connectivity
+using System.Threading.Tasks;
 
 namespace Fire_Safety_Requirements.ViewModel;
 
-[QueryProperty("Text","text")]
+[QueryProperty("Text", "text")]
 public partial class OccupancyDetailViewModel : ObservableObject
 {
+    [ObservableProperty]
+    bool isBusy;
 
-    private string _htmlSource;
-     public OccupancyDetailViewModel()
-    {
-   
-    }
+    [ObservableProperty]
+    bool isPremium; // 🔑 Premium users can load offline files
+
     [ObservableProperty]
     string text;
 
     // Observable Property for HtmlSource
-    public string HtmlSource
+    private WebViewSource _htmlSource;
+    public WebViewSource HtmlSource
     {
         get => _htmlSource;
-        set => SetProperty(ref _htmlSource, value); // This ensures binding updates the UI
+        set => SetProperty(ref _htmlSource, value);
     }
-    // Update HtmlSource when Text changes
+
+    //constructor
+    public OccupancyDetailViewModel()
+    {
+        IsPremium = false;
+    }
+
+    // Called whenever "Text" query parameter changes
     partial void OnTextChanged(string value)
     {
-        UpdateHtmlSource(value); // Call UpdateHtmlSource whenever Text changes
+        UpdateHtmlSource(value);
     }
-    // Method to update HtmlSource based on the Text value
+
     private void UpdateHtmlSource(string occtype)
     {
         string selectedHtml = "";
+        string localBase = "Resources/FireCodeRequirements/";
+        string onlineBase = "https://codewithjunrey.web.app/FireCodeRequirements/";
+
         switch (occtype)
         {
             case "Places of Assembly": selectedHtml = "assembly.html"; break;
@@ -47,29 +59,40 @@ public partial class OccupancyDetailViewModel : ObservableObject
             case "Special Structures": selectedHtml = "special.html"; break;
             case "High Rise Buildings": selectedHtml = "highrise.html"; break;
             case "Fire Exit Drill": selectedHtml = "firedrill.html"; break;
-
-            default: selectedHtml = "default.html"; break; // Fallback option
+            default: selectedHtml = "default.html"; break;
         }
 
-        HtmlSource = $"Resources/FireCodeRequirements/{selectedHtml}"; // Set the HtmlSource
-    }
-
-  
-    [RelayCommand]
-    async Task GoBack()
-    {
-        if (Shell.Current.Navigation.NavigationStack.Count > 1)
+        if (IsPremium)
         {
-            // If there's more than one page in the navigation stack, pop the current page
-            await Shell.Current.Navigation.PopAsync();
+            // Premium users → always load local
+            HtmlSource = new UrlWebViewSource { Url = $"{localBase}{selectedHtml}" };
         }
         else
         {
-            // If this is the root page, use GoToAsync to navigate to a specific page or exit
-            await Shell.Current.GoToAsync("//OccupancyTypePage"); // Adjust based on your app's navigation flow
+            bool hasInternet = Connectivity.Current.NetworkAccess == NetworkAccess.Internet;
+
+            if (hasInternet)
+            {
+                HtmlSource = new UrlWebViewSource { Url = $"{onlineBase}{selectedHtml}" };
+            }
+            else
+            {
+                HtmlSource = new HtmlWebViewSource
+                {
+                    Html = "<html><body style='font-family:sans-serif;text-align:center;padding:20px;'>" +
+                           "<h2 style='color:#c0392b;'>You are offline</h2>" +
+                           "<p>You need to connect to the internet,</p>" +
+                           "<p>or switch to <b>offline mode (premium account)</b>.</p>" +
+                           "</body></html>"
+                };
+            }
         }
+
     }
 
-
+    [RelayCommand]
+    async Task GoBack()
+    {
+        await Shell.Current.GoToAsync("..");
+    }
 }
-

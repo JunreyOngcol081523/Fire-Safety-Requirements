@@ -65,7 +65,7 @@
             <!-- Add spacing between buttons -->
             <Button Text="Fire Safety Requirements Manual" Clicked="GoToOccupancyTypePage" HeightRequest="50" StyleClass="ElevatedButton">
                 <Button.ImageSource>
-                    <FileImageSource File="book.png" />
+                    <FileImageSource File="coverpageformain.png" />
                 </Button.ImageSource>
             </Button>
             <Button Text="Fire Safety Requirements Summary" Clicked="GoToSummaryPage" HeightRequest="50" StyleClass="ElevatedButton">

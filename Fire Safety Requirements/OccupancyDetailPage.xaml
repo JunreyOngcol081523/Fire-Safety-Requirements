@@ -11,34 +11,46 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- This will take up remaining space for WebView -->
             <RowDefinition Height="Auto" />
-            <!-- This will automatically size for the Button -->
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <!-- Scrollable content with WebView -->
-        <ScrollView Grid.Row="0">
-            <WebView Source="{Binding HtmlSource}" 
-                     VerticalOptions="Fill"
-                     android:WebView.EnableZoomControls="true"
-                     android:WebView.DisplayZoomControls="true"/>
-        </ScrollView>
 
-        <!-- Back Button with correct positioning -->
+        <Grid Grid.Row="0">
+            <WebView x:Name="webView"
+             Source="{Binding HtmlSource}"
+             Navigating="WebView_Navigating"
+             Navigated="WebView_Navigated"
+             VerticalOptions="Fill"
+             android:WebView.EnableZoomControls="true"
+             android:WebView.DisplayZoomControls="true"/>
+
+            <!-- Spinner -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                       IsVisible="{Binding IsBusy}"
+                       Color="Red"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       WidthRequest="50"
+                       HeightRequest="50"/>
+        </Grid>
+
+
+        <!-- Back Button -->
         <Button Text="Close"
-            Command="{Binding GoBackCommand}"
-            Grid.Row="1"
-            VerticalOptions="Start"
-            HorizontalOptions="Center"
-            Padding="10,5"
-            MinimumHeightRequest="40"
+                Command="{Binding GoBackCommand}"
+                Grid.Row="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Padding="10,5"
+                MinimumHeightRequest="40"
                 BackgroundColor="#c0392b"/>
-        
+
+        <!-- Ads -->
         <controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/7832271796"
-                                           AdSize="AnchoredAdaptive"
-                                           IsVisible="true"
-                                            Grid.Row="2"/>
+                           x:Name="myAds"
+                           AdsId="ca-app-pub-8158194714551266/7832271796"
+                           AdSize="AnchoredAdaptive"
+                           IsVisible="true"
+                           Grid.Row="2"/>
     </Grid>
 </ContentPage>
