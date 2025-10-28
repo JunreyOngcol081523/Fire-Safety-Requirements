@@ -1,23 +1,28 @@
+
+
 namespace Fire_Safety_Requirements;
 
 public partial class InspectionFlowChartPage : ContentPage
 {
-	public InspectionFlowChartPage()
-	{
-		InitializeComponent();
-	}
-    private double currentRotation = 0;
-
-    private void OnRotateButtonClicked(object sender, EventArgs e)
+    public InspectionFlowChartPage()
     {
-        currentRotation += 90;
-        if (currentRotation >= 360)
-            currentRotation = 0;
-
-        FlowchartImage.Rotation = currentRotation;
+        InitializeComponent();
     }
-    private void OnBackButtonClicked(object sender, EventArgs e)
+
+    private void OnPortraitClicked(object sender, EventArgs e)
     {
-        Navigation.PopAsync();
+        // Set to portrait (vertical) - 0 degrees
+        FlowchartImage.Rotation = 0;
+    }
+
+    private void OnLandscapeClicked(object sender, EventArgs e)
+    {
+        // Set to landscape (horizontal) - 90 degrees clockwise
+        FlowchartImage.Rotation = 90;
+    }
+
+    private async void OnBackButtonClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("..");
     }
 }

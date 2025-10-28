@@ -4,28 +4,35 @@
              x:Class="Fire_Safety_Requirements.InspectionFlowChartPage"
              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              Title="Inspection Flow Chart">
-    <VerticalStackLayout>
-        <ScrollView Orientation="Both" HeightRequest="600">
-            <Image x:Name="FlowchartImage"
-               Source="inspectionflowchart.png"
-               Aspect="AspectFit" />
-        </ScrollView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <HorizontalStackLayout  HorizontalOptions="Center">
-            <Button Text="Rotate 90°"
-            Clicked="OnRotateButtonClicked"
-            Margin="10"/>
-            <Button Text="Back"
+        <!-- Fit to Screen Image -->
+        <Grid Grid.Row="0">
+            <Image x:Name="FlowchartImage"
+                   Source="inspectionflowchart.png"
+                   Aspect="AspectFit"
+                   Margin="10"/>
+        </Grid>
+
+        <!-- Back Button -->
+        <Button Grid.Row="1"
+                Text="Back"
                 Clicked="OnBackButtonClicked"
+                HorizontalOptions="Center"
                 Margin="10"
                 BackgroundColor="#c0392b"/>
-        </HorizontalStackLayout>
-        <controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/9145353467"
-                                           AdSize="AnchoredAdaptive"
-                                           IsVisible="true"
-                                            Grid.Row="2"/>
-    </VerticalStackLayout>
 
+        <!-- Ad -->
+        <controls:MTAdView Grid.Row="2"
+                           BackgroundColor="Transparent"
+                           x:Name="myAds"
+                           AdsId="ca-app-pub-8158194714551266/9145353467"
+                           AdSize="AnchoredAdaptive"
+                           IsVisible="true"/>
+    </Grid>
 </ContentPage>

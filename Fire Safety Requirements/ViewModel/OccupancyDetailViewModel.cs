@@ -12,7 +12,7 @@ public partial class OccupancyDetailViewModel : ObservableObject
     bool isBusy;
 
     [ObservableProperty]
-    bool isPremium; // 🔑 Premium users can load offline files
+    bool isOffline; 
 
     [ObservableProperty]
     string text;
@@ -28,7 +28,7 @@ public partial class OccupancyDetailViewModel : ObservableObject
     //constructor
     public OccupancyDetailViewModel()
     {
-        IsPremium = false;
+        IsOffline = Preferences.Default.Get("IsOffline", false);
     }
 
     // Called whenever "Text" query parameter changes
@@ -62,7 +62,7 @@ public partial class OccupancyDetailViewModel : ObservableObject
             default: selectedHtml = "default.html"; break;
         }
 
-        if (IsPremium)
+        if (IsOffline)
         {
             // Premium users → always load local
             HtmlSource = new UrlWebViewSource { Url = $"{localBase}{selectedHtml}" };

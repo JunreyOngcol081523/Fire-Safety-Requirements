@@ -1,12 +1,11 @@
-﻿
-
+﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
 namespace Fire_Safety_Requirements.ViewModel;
 
-public partial class OccupancyTypeViewModel:ObservableObject
+public partial class OccupancyTypeViewModel : ObservableObject
 {
     public OccupancyTypeViewModel()
     {
@@ -25,16 +24,38 @@ public partial class OccupancyTypeViewModel:ObservableObject
         items.Add("Special Structures");
         items.Add("High Rise Buildings");
         items.Add("Fire Exit Drill");
+
+        // Load saved preference
+        isOffline = Preferences.Default.Get("IsOffline", false);
     }
 
     [ObservableProperty]
     ObservableCollection<string> items;
 
-    
+    private bool isOffline;
+    public bool IsOffline
+    {
+        get => isOffline;
+        set
+        {
+            if (SetProperty(ref isOffline, value))
+            {
+                // Save to preferences whenever it changes
+                Preferences.Default.Set("IsOffline", value);
+                // Display dialog box
+                string message = value ? "Offline Mode is now ON" : "Offline Mode is now OFF";
+                Application.Current?.MainPage?.DisplayAlert(
+                    "Offline Mode",
+                    message,
+                    "OK"
+                );
+            }
+        }
+    }
+
     [RelayCommand]
     async Task Tap(string s)
     {
-        //await Shell.Current.GoToAsync($"///OccupancyDetailPage?text={s}");
         await Shell.Current.GoToAsync($"OccupancyDetailPage?text={Uri.EscapeDataString(s)}");
     }
 
