@@ -83,9 +83,9 @@
                     <FileImageSource File="calculator.png" />
                 </Button.ImageSource>
             </Button>
-            <Button Text="Other Fees Calculator" Clicked="GoToOtherFeesCalcPage" HeightRequest="50" StyleClass="ElevatedButton">
+            <Button Text="Fire Code Revenue Calculator" Clicked="GoToOtherFeesCalcPage" HeightRequest="50" StyleClass="ElevatedButton">
                 <Button.ImageSource>
-                    <FileImageSource File="warehouse.png" />
+                    <FileImageSource File="fire_code_revenue.png" />
                 </Button.ImageSource>
             </Button>
         </StackLayout>

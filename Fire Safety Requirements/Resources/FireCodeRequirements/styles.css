@@ -74,8 +74,10 @@ content: counter(list-counter, lower-alpha) ") "; /* Display lowercase letter wi
 
 .navigation-btns {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10px; /* optional spacing between buttons */
 }
+
 button{
     display: inline-block;
     outline: 0;

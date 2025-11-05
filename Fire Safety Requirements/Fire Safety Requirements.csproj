@@ -200,6 +200,7 @@
 	  <None Remove="Resources\AppIcon\calculator.png" />
 	  <None Remove="Resources\AppIcon\coverpage.png" />
 	  <None Remove="Resources\AppIcon\docs.png" />
+	  <None Remove="Resources\AppIcon\fire_code_revenue.png" />
 	  <None Remove="Resources\AppIcon\warehouse.png" />
 	  <None Remove="Resources\FireCodeRequirements\assembly_table9.png" />
 	  <None Remove="Resources\FireCodeRequirements\business.html" />
@@ -293,6 +294,7 @@
 	  <MauiImage Include="Resources\AppIcon\calculator.png" />
 	  <MauiImage Include="Resources\AppIcon\coverpage.png" />
 	  <MauiImage Include="Resources\AppIcon\docs.png" />
+	  <MauiImage Include="Resources\AppIcon\fire_code_revenue.png" />
 	  <MauiImage Include="Resources\AppIcon\warehouse.png" />
 	</ItemGroup>
 

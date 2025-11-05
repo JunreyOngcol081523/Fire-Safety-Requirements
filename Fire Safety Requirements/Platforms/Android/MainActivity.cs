@@ -12,7 +12,7 @@ namespace Fire_Safety_Requirements
         {
             base.OnCreate(savedInstanceState);
 
-            string appId = "ca-app-pub-8158194714551266~1214454213";
+            string appId = "ca-app-pub-8158194714551266~5887832408";
 
             string license = "ZIrXQSue3vFYNfMSzKXkStXSLUgy6vEfkwHfvSnC1lBKifhqgmAOL6QzX3YZdz6q/9yWdo1LWRxQy3pBHuapiubn7tcVNE8Z8A=="; //<-- Your license key here
             string deviceId = "9cdc0cea-dfce-49cd-ab2a-beec9ad74057"; //<--- Your test device id here

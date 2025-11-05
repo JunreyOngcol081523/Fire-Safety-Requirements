@@ -6,7 +6,7 @@
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              x:DataType="viewmodel:OtherFeesCalcViewModel"
              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
-             Title="Other Fees Calculator">
+             Title="Fire Code Revenue Calculator">
     <StackLayout Padding="10">
         <controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
@@ -17,7 +17,44 @@
         <Label Text="Swipe to Side" FontSize="15" HorizontalOptions="Center"/>
         <BoxView HeightRequest="1" HorizontalOptions="Fill" />
         <material:TabView>
-        <!--Storage Clearance Fee Tab-->
+            <!--FSIF construction tax, sales,realty, premium, proceeds Fee Tab-->
+            <material:TabItem Title="Fire Code Revenue code 01-06">
+                <VerticalStackLayout Padding="5" Spacing="10">
+
+                    <!-- 01-06 -->
+                    <Picker Title="Select 01-06 Category"
+                ItemsSource="{Binding RevenueCategories}"
+                SelectedItem="{Binding SelectedRevenueCategory}"
+                FontSize="16" />
+
+
+                    <!-- Basis of Computation Input -->
+                    <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                        <material:TextField Title="Basis of Computation"   
+                        Keyboard="Numeric" 
+                        Text="{Binding RevenueBasisOfComputation, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"/>
+                    </Frame>
+
+                    <!-- Revenue Fees Input -->
+                    <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                        <material:TextField Title="Annual Fees"   
+                        Keyboard="Numeric" 
+                        Text="{Binding RevenueFees, Mode=TwoWay}" 
+                        VerticalOptions="Center"
+                        Margin="0,0,5,0"
+                        HorizontalTextAlignment="Center"
+                        IsReadOnly="True"/>
+                    </Frame>
+                    <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
+                        <Button Text="Calculate" Command="{Binding CalculateRevenueCommand}"/>
+                    </Frame>
+
+                </VerticalStackLayout>
+            </material:TabItem>
+            <!--Storage Clearance Fee Tab-->
         <material:TabItem Title="Storage Clearance Fee">
             <VerticalStackLayout Padding="5" Spacing="10">
                 
@@ -45,7 +82,7 @@
 
                 <!-- Annual Fees Input -->
                 <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Annual Fees in PhP"   
+                    <material:TextField Title="Storage Fees"   
                         Keyboard="Numeric" 
                         Text="{Binding AnnualFees, Mode=TwoWay}" 
                         VerticalOptions="Center"
@@ -82,7 +119,7 @@
 
                 <!-- Annual Fees Input -->
                 <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Annual Fees in PhP"   
+                    <material:TextField Title="Annual Fees "   
                         Keyboard="Numeric" 
                         Text="{Binding OtherFeesAmount, Mode=TwoWay}" 
                         VerticalOptions="Center"
@@ -117,7 +154,7 @@
 
                 <!-- Annual Fees Input -->
                 <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Annual Fees in PhP"   
+                    <material:TextField Title="Conveyance Clearance Fees"   
                         Keyboard="Numeric" 
                         Text="{Binding ConveyanceFeesAmount, Mode=TwoWay}" 
                         VerticalOptions="Center"
@@ -154,7 +191,7 @@
 
                 <!-- Installation Fees Input -->
                 <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Annual Fees in PhP"   
+                    <material:TextField Title="Installation Clearance Fees "   
                         Keyboard="Numeric" 
                         Text="{Binding InstallationFeesAmount, Mode=TwoWay}" 
                         VerticalOptions="Center"
@@ -199,7 +236,7 @@
 
                 <!--Admin Fine Input -->
                 <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Annual Fees in PhP"   
+                    <material:TextField Title="Admin Fines "   
                         Keyboard="Numeric" 
                         Text="{Binding AdminFineAmount, Mode=TwoWay}" 
                         VerticalOptions="Center"

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Fire_Safety_Requirements.ViewModel
 {
@@ -14,7 +15,62 @@ namespace Fire_Safety_Requirements.ViewModel
             //selectedInstallationType = InstallationType.FirstOrDefault();
             //selectedOtherFee = OtherFees.FirstOrDefault();
         }
-
+        //-----------------fire code revenue 01-06-------------------//
+        [ObservableProperty]
+        string selectedRevenueCategory;
+        [ObservableProperty]
+        double revenueBasisOfComputation;
+        [ObservableProperty]
+        string revenueFees;
+        public ObservableCollection<string> RevenueCategories { get; } = new()
+        {
+            "01 - Fire Code Construction Tax",
+            "02 - Fire Code Realty Tax",
+            "03 - Fire Code Premium Tax",
+            "04 - Fire Code Sales Tax",
+            "05 - Fire Code Proceeds Tax",
+            "06 - Fire Safety Inspection Fee"
+        };
+        //calculate revenue fees
+        [RelayCommand]
+        private void CalculateRevenue()
+        {
+            double percentage = 0;
+            switch (SelectedRevenueCategory)
+            {
+                case "01 - Fire Code Construction Tax":
+                    percentage = 0.001; // 0.10% (one-tenth of one per centum)
+                    break;
+                case "02 - Fire Code Realty Tax":
+                    percentage = 0.0001; // 0.01% (one-hundredth of one per centum)
+                    break;
+                case "03 - Fire Code Premium Tax":
+                    percentage = 0.02; // 2% (two per centum)
+                    break;
+                case "04 - Fire Code Sales Tax":
+                    percentage = 0.02; // 2% (two per centum)
+                    break;
+                case "05 - Fire Code Proceeds Tax":
+                    percentage = 0.02; // 2% (two per centum)
+                    break;
+                case "06 - Fire Safety Inspection Fee":
+                    percentage = 0.15; // 15% (fifteen percent)
+                    break;
+                default:
+                    percentage = 0;
+                    break;
+            }
+            double calculatedFee = RevenueBasisOfComputation * percentage;
+            if (SelectedRevenueCategory == "06 - Fire Safety Inspection Fee")
+            {
+                if (calculatedFee < 500.00)
+                {
+                    calculatedFee = 500.00; // Minimum fee of PhP500.00
+                }
+            }
+            // Format as Philippine Peso with thousand separators and 2 decimal places
+            RevenueFees = calculatedFee.ToString("C2", new CultureInfo("en-PH"));
+        }
         //------------------Storage Fees-------------------//
         public ObservableCollection<string> StorageCategories { get; } = new()
         {
@@ -98,32 +154,32 @@ namespace Fire_Safety_Requirements.ViewModel
                     case 'a':
                         _storageItems.StorageFlammableCombustibleSolids_1(); // Example value for Calcium carbide
                         var fee1 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = fee1.ToString("N2");
+                        AnnualFees = fee1.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'b':
                         _storageItems.StorageFlammableCombustibleSolids_2();// Example value for Pyroxylin
                         var fee2 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = fee2.ToString("N2");
+                        AnnualFees = fee2.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'c':
                         _storageItems.StorageFlammableCombustibleSolids_3();// Example value for Matches
                         var fee3 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = fee3.ToString("N2");
+                        AnnualFees = fee3.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'd':
                         _storageItems.StorageFlammableCombustibleSolids_4();// Example value for hazardous chemicals
                         var fee4 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = fee4.ToString("N2");
+                        AnnualFees = fee4.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'e':
                         _storageItems.StorageFlammableCombustibleSolids_5();// Example value for shredded combustible materials
                         var fee5 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = fee5.ToString("N2");
+                        AnnualFees = fee5.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'f':
                         _storageItems.StorageFlammableCombustibleSolids_6();// Example value for tar, resin, waxes, etc.
                         var fee6 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = fee6.ToString("N2");
+                        AnnualFees = fee6.ToString("C2", new CultureInfo("en-PH"));
                         break;
                 }
 
@@ -140,22 +196,22 @@ namespace Fire_Safety_Requirements.ViewModel
                     case 'a':
                         _storageItems.StorageFlammableCombustibleLiquids_1();
                         var feeLiq1 = _storageItems.getAmountwithExcess(BasisOfComputation);
-                        AnnualFees = feeLiq1.ToString("N2");
+                        AnnualFees = feeLiq1.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'b':
                         _storageItems.StorageFlammableCombustibleLiquids_2();
                         var feeLiq2 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = feeLiq2.ToString("N2");
+                        AnnualFees = feeLiq2.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'c':
                         _storageItems.StorageFlammableCombustibleLiquids_3();
                         var feeLiq3 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = feeLiq3.ToString("N2");
+                        AnnualFees = feeLiq3.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'd':
                         _storageItems.StorageFlammableCombustibleLiquids_4();
                         var feeLiq4 = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = feeLiq4.ToString("N2");
+                        AnnualFees = feeLiq4.ToString("C2", new CultureInfo("en-PH"));
                         break;
 
                 }
@@ -172,17 +228,17 @@ namespace Fire_Safety_Requirements.ViewModel
                     case 'a':
                         _storageItems.StorageFlammableGases_1a();
                         var fee1a = _storageItems.getAmountwithExcess(BasisOfComputation);
-                        AnnualFees = fee1a.ToString("N2");
+                        AnnualFees = fee1a.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'b':
                         _storageItems.StorageFlammableGases_1b();
                         var fee1b = _storageItems.getAmountwithExcess(BasisOfComputation);
-                        AnnualFees = fee1b.ToString("N2");
+                        AnnualFees = fee1b.ToString("C2", new CultureInfo("en-PH"));
                         break;
                     case 'c':
                         _storageItems.StorageFlammableGases_2();
                         var fee2b = _storageItems.getAmount(BasisOfComputation);
-                        AnnualFees = fee2b.ToString("N2");
+                        AnnualFees = fee2b.ToString("C2", new CultureInfo("en-PH"));
                         break;
                 }
             }
@@ -299,7 +355,7 @@ namespace Fire_Safety_Requirements.ViewModel
                     break;
                 case 'c':
 
-                    OtherFeesAmount = electricalItems.GetElectricalAmount(OtherFeesBasisOfComputation).ToString("N2");
+                    OtherFeesAmount = electricalItems.GetElectricalAmount(OtherFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH"));
                     break;
                 case 'd':
 
@@ -339,7 +395,7 @@ namespace Fire_Safety_Requirements.ViewModel
                     break;
                 case 'm':
 
-                    OtherFeesAmount = GetHotworksAmount((int)OtherFeesBasisOfComputation).ToString("N2");
+                    OtherFeesAmount = GetHotworksAmount((int)OtherFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH"));
                     break;
 
             }
@@ -380,11 +436,11 @@ namespace Fire_Safety_Requirements.ViewModel
             ConveyanceFeeCalculator con = new ConveyanceFeeCalculator();
             ConveyanceFeesAmount = SelectedConveyanceType switch
             {
-                "A. Flammable Liquids in Vehicles (Liters)" => con.ComputeFee_CaseA(ConveyanceFeesBasisOfComputation).ToString("N2"),
-                "B. Explosives or Hazardous Chemicals (Kilograms)" => con.ComputeFee_CaseB(ConveyanceFeesBasisOfComputation).ToString("N2"),
-                "C. Loading/Unloading at Terminals or Piers" => con.ComputeFee_CaseC(ConveyanceFeesBasisOfComputation).ToString("N2"),
-                "D. Transfer to Shore Tanks (Liters)" => con.ComputeFee_CaseD(ConveyanceFeesBasisOfComputation).ToString("N2"),
-                "E. Bulk Transfer via Lighters or Pipelines" => con.ComputeFee_CaseE(ConveyanceFeesBasisOfComputation).ToString("N2"),
+                "A. Flammable Liquids in Vehicles (Liters)" => con.ComputeFee_CaseA(ConveyanceFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH")),
+                "B. Explosives or Hazardous Chemicals (Kilograms)" => con.ComputeFee_CaseB(ConveyanceFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH")),
+                "C. Loading/Unloading at Terminals or Piers" => con.ComputeFee_CaseC(ConveyanceFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH")),
+                "D. Transfer to Shore Tanks (Liters)" => con.ComputeFee_CaseD(ConveyanceFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH")),
+                "E. Bulk Transfer via Lighters or Pipelines" => con.ComputeFee_CaseE(ConveyanceFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH")),
                 _ => "0.00"
             };
         }
@@ -447,13 +503,13 @@ namespace Fire_Safety_Requirements.ViewModel
             switch (SelectedInstallationType)
             {
                 case "a. Compressed Gases (LPG, CNG) – Over 454L":
-                    InstallationFeesAmount = installationFeeCalculator.ComputeFee_CaseA_Gases(InstallationFeesBasisOfComputation).ToString("N2");
+                    InstallationFeesAmount = installationFeeCalculator.ComputeFee_CaseA_Gases(InstallationFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH"));
                     break;
                 case "b. Flammable/Combustible Liquids in Tanks":
-                    InstallationFeesAmount = installationFeeCalculator.ComputeFee_CaseB_Tanks().ToString("N2");
+                    InstallationFeesAmount = installationFeeCalculator.ComputeFee_CaseB_Tanks().ToString("C2", new CultureInfo("en-PH"));
                     break;
                 case "c. Equipment & Fire Protection Systems (per RIRR)":
-                    InstallationFeesAmount = installationFeeCalculator.ComputeFee_CaseC_Equipment(InstallationFeesBasisOfComputation).ToString("N2");
+                    InstallationFeesAmount = installationFeeCalculator.ComputeFee_CaseC_Equipment(InstallationFeesBasisOfComputation).ToString("C2", new CultureInfo("en-PH"));
                     break;
                 default:
                     InstallationFeesAmount = "0.00";
@@ -581,7 +637,7 @@ namespace Fire_Safety_Requirements.ViewModel
                     break;
             }
 
-            AdminFineAmount = fine.ToString("N2");
+            AdminFineAmount = fine.ToString("C2", new CultureInfo("en-PH"));
         }
 
         partial void OnSelectedAdminFineTypeChanged(string value)
