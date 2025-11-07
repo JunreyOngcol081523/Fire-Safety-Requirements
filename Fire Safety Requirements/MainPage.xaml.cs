@@ -20,9 +20,11 @@ namespace Fire_Safety_Requirements
                 "across various occupancy types. Whether you're a building manager, safety officer, " +
                 "or just interested in fire safety, this app provides essential guidelines to ensure the safety and security of occupants in diverse environments.\r\n\r\n" +
                 "Explore detailed recommendations and guidelines tailored to each occupancy type, and stay informed with the best practices for fire safety.";
-            SendToFirestore();
+            //SendToFirestore();
             BindingContext = this;
             ShowInterstitialAd();
+
+
         }
         private void ShowInterstitialAd()
         {

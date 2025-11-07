@@ -104,10 +104,16 @@
         </Grid>
         <!-- Footer label at the bottom -->
         <Grid Grid.Row="3" HorizontalOptions="Fill">
-            <controls:MTAdView BackgroundColor="Transparent"
+            <!--<controls:MTAdView BackgroundColor="Transparent"
                                            x:Name="myAds"
                                            AdsId="ca-app-pub-8158194714551266/4351389454"
                                            AdSize="AnchoredAdaptive"
+                                           IsVisible="true"
+                                           />-->
+            <controls:MTAdView BackgroundColor="Transparent"
+                                           x:Name="myAds"
+                                           AdsId="ca-app-pub-8158194714551266/4351389454"
+                                           AdSize="Banner"
                                            IsVisible="true"
                                            />
         </Grid>

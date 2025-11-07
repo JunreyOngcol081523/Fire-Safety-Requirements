@@ -24,14 +24,14 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 
 		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
-		<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
 		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+		<AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
-		<AppInstallerUri>D:\Publish</AppInstallerUri>
+		<AppInstallerUri>E:\Publish</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<PackageCertificateThumbprint>3B702396C433C03E5E6825EE711E6371A1DB74E6</PackageCertificateThumbprint>
+		<PackageCertificateThumbprint>09B737B09D6DAEF7B79BA8D380309F8FEEFFACBD</PackageCertificateThumbprint>
 
 		<AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
 		<MinimumAndroidSdkVersion>23</MinimumAndroidSdkVersion>
@@ -43,6 +43,8 @@
 		<ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
 		<MinimumAndroidSdkVersion>23</MinimumAndroidSdkVersion>
 		<TargetAndroidSdkVersion>34</TargetAndroidSdkVersion>
+		<WindowsPackageType>MSIX</WindowsPackageType>
+		<PackageIcon>fsed.png</PackageIcon>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
@@ -61,11 +63,20 @@
 		<ApplicationTitle>RA9514 Guide</ApplicationTitle>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<MauiAsset Include="Resources\FireCodeRequirements\**" />
 		<MauiImage Include="Resources\Images\*" />
 		<MauiFont Include="Resources\Fonts\*" />
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\AppIcon\calculator.png" />
+	  <None Remove="Resources\AppIcon\fire_code_revenue.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -81,7 +92,16 @@
 
 	<ItemGroup>
 		<MauiIcon Include="Resources\AppIcon\appicon.png" />
+		<MauiImage Include="Resources\AppIcon\calculator.png" />
+		<MauiImage Include="Resources\AppIcon\fire_code_revenue.png" />
 		<MauiSplashScreen Include="Resources\Splash\splash.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\Images\fsed.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	</ItemGroup>
 
 </Project>
