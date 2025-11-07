@@ -1,17 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-ios;net8.0-maccatalyst;net8.0-android34.0</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
-		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
-
-		<!-- Note for MacCatalyst:
-		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
-		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
-		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
-		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
-		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+		<TargetFrameworks>net8.0-android34.0</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">
+			$(TargetFrameworks);net8.0-windows10.0.19041.0
+		</TargetFrameworks>
 
 		<OutputType>Exe</OutputType>
 		<RootNamespace>Fire_Safety_Requirements</RootNamespace>
@@ -20,22 +13,16 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<!-- Display name -->
 		<ApplicationTitle>Fire Safety Requirements</ApplicationTitle>
-
-		<!-- App Identifier -->
 		<ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
 
-		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+
 		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
 		<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
 		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -45,191 +32,40 @@
 		<AppInstallerUri>D:\Publish</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 		<PackageCertificateThumbprint>3B702396C433C03E5E6825EE711E6371A1DB74E6</PackageCertificateThumbprint>
-	    
+
 		<AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
 		<MinimumAndroidSdkVersion>23</MinimumAndroidSdkVersion>
 		<TargetAndroidSdkVersion>34</TargetAndroidSdkVersion>
-
 	</PropertyGroup>
-
-	<!--<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
-
-		<AndroidPackageFormat>apk</AndroidPackageFormat>
-		<AndroidKeyStore>True</AndroidKeyStore>
-		<AndroidSigningKeyStore>C:/JunreyOngcol081523/Fire-Safety-Requirements/FireSafetyRequirementsApp.keystore</AndroidSigningKeyStore>
-		<AndroidSigningStorePass>Jbo699187</AndroidSigningStorePass>
-		<AndroidSigningKeyAlias>myalias</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass>Jbo699187</AndroidSigningKeyPass>
-
-	  <ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
-	</PropertyGroup>-->
-
-
 
 	<PropertyGroup>
-	  <TargetFramework>net8.0-android</TargetFramework>
-	  <ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
-	  <MinimumAndroidSdkVersion>23</MinimumAndroidSdkVersion>
-	  <TargetAndroidSdkVersion>34</TargetAndroidSdkVersion>
+		<TargetFramework>net8.0-android</TargetFramework>
+		<ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
+		<MinimumAndroidSdkVersion>23</MinimumAndroidSdkVersion>
+		<TargetAndroidSdkVersion>34</TargetAndroidSdkVersion>
 	</PropertyGroup>
-
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
 		<AndroidKeyStore>True</AndroidKeyStore>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
-	  <ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
-	  <ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
-	  <ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
+		<ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
+		<ApplicationTitle>RA9514 Guide</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-	  <ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
-	  <ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
+		<ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
+		<ApplicationTitle>RA9514 Guide</ApplicationTitle>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
-	  <ApplicationTitle>RA9514 Guide</ApplicationTitle>
-
+		<ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
+		<ApplicationTitle>RA9514 Guide</ApplicationTitle>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- App Icon -->
-		<MauiAsset Include="Resources\FireCodeRequirements\daycare.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\healthcare.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\resboardcare.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\detention.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\residential.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\mercantile.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\business.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\industrial.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\storage.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\special.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\highrise.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\firedrill.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\inspectonflowchart.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\styles.css" />
-		<MauiAsset Include="Resources\FireCodeRequirements\summary.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\unname.html" />
-		<MauiAsset Include="Resources\FireCodeRequirements\educational.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\FireCodeRequirements\assembly.html">
-		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</MauiAsset>
-		<MauiAsset Include="Resources\Json\data.json" />
-		
-
-		<!-- Splash Screen -->
-		<!-- Images -->
+		<MauiAsset Include="Resources\FireCodeRequirements\**" />
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-
-		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
-
-		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Remove="ViewModel\ConveyanceFeeViewModel.cs" />
-	  <Compile Remove="ViewModel\OtherFeesCalcViewModel_1.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiCss Remove="Resources\FireCodeRequirements\styles.css" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\warehouse.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Resources\AppIcon\appicon.png" />
-	  <None Remove="Resources\AppIcon\book.png" />
-	  <None Remove="Resources\AppIcon\calculator.png" />
-	  <None Remove="Resources\AppIcon\coverpage.png" />
-	  <None Remove="Resources\AppIcon\docs.png" />
-	  <None Remove="Resources\AppIcon\fire_code_revenue.png" />
-	  <None Remove="Resources\AppIcon\warehouse.png" />
-	  <None Remove="Resources\FireCodeRequirements\assembly_table9.png" />
-	  <None Remove="Resources\FireCodeRequirements\business.html" />
-	  <None Remove="Resources\FireCodeRequirements\daycare.html" />
-	  <None Remove="Resources\FireCodeRequirements\detention.html" />
-	  <None Remove="Resources\FireCodeRequirements\educational.html" />
-	  <None Remove="Resources\FireCodeRequirements\firedrill.html" />
-	  <None Remove="Resources\FireCodeRequirements\healthcare.html" />
-	  <None Remove="Resources\FireCodeRequirements\highrise.html" />
-	  <None Remove="Resources\FireCodeRequirements\industrial.html" />
-	  <None Remove="Resources\FireCodeRequirements\inspectonflowchart.html" />
-	  <None Remove="Resources\FireCodeRequirements\mercantile.html" />
-	  <None Remove="Resources\FireCodeRequirements\RedHatText-Italic-VariableFont_wght.ttf" />
-	  <None Remove="Resources\FireCodeRequirements\RedHatTextVariableFont_wght.ttf" />
-	  <None Remove="Resources\FireCodeRequirements\resboardcare.html" />
-	  <None Remove="Resources\FireCodeRequirements\residential.html" />
-	  <None Remove="Resources\FireCodeRequirements\scripts.js" />
-	  <None Remove="Resources\FireCodeRequirements\special.html" />
-	  <None Remove="Resources\FireCodeRequirements\storage.html" />
-	  <None Remove="Resources\FireCodeRequirements\summary.html" />
-	  <None Remove="Resources\FireCodeRequirements\unname.html" />
-	  <None Remove="Resources\Fonts\RedHatText-Regular.ttf" />
-	  <None Remove="Resources\Images\coverpageformain.png" />
-	  <None Remove="Resources\Images\fsed.png" />
-	  <None Remove="Resources\Images\fsed1.png" />
-	  <None Remove="Resources\Images\inspectionflowchart.png" />
-	  <None Remove="Resources\Images\warehouse.png" />
-	  <None Remove="Resources\Json\data.json" />
-	  <None Remove="Resources\Splash\splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -244,85 +80,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="InspectionFlowChartPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="MeansOfEgressPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="OccupancyDetailPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="OccupancyTypePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="OtherFeesCalc.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\Colors - Copy.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\ColorThemeLight.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="SummaryPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiIcon Include="Resources\AppIcon\appicon.png" />
+		<MauiSplashScreen Include="Resources\Splash\splash.png" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <MauiAsset Include="Resources\FireCodeRequirements\assembly_table9.png">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </MauiAsset>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiAsset Include="Resources\FireCodeRequirements\scripts.js" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiFont Include="Resources\FireCodeRequirements\RedHatText-Italic-VariableFont_wght.ttf" />
-	  <MauiFont Include="Resources\FireCodeRequirements\RedHatTextVariableFont_wght.ttf" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiIcon Include="Resources\AppIcon\appicon.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Include="Resources\AppIcon\book.png" />
-	  <MauiImage Include="Resources\AppIcon\calculator.png" />
-	  <MauiImage Include="Resources\AppIcon\coverpage.png" />
-	  <MauiImage Include="Resources\AppIcon\docs.png" />
-	  <MauiImage Include="Resources\AppIcon\fire_code_revenue.png" />
-	  <MauiImage Include="Resources\AppIcon\warehouse.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\splash.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="OtherFeesCalc.xaml.cs">
-	    <DependentUpon>OtherFeesCalc.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-	</ItemGroup>
-	<Target Name="LinkWithSwift" DependsOnTargets="_ParseBundlerArguments;_DetectSdkLocations" BeforeTargets="_LinkNativeExecutable">
-		<PropertyGroup>
-			<_SwiftPlatform Condition="$(RuntimeIdentifier.StartsWith('iossimulator-'))">iphonesimulator</_SwiftPlatform>
-			<_SwiftPlatform Condition="$(RuntimeIdentifier.StartsWith('ios-'))">iphoneos</_SwiftPlatform>
-		</PropertyGroup>
-		<ItemGroup>
-			<_CustomLinkFlags Include="-L" />
-			<_CustomLinkFlags Include="/usr/lib/swift" />
-			<_CustomLinkFlags Include="-L" />
-			<_CustomLinkFlags Include="$(_SdkDevPath)/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/$(_SwiftPlatform)" />
-			<_CustomLinkFlags Include="-Wl,-rpath" />
-			<_CustomLinkFlags Include="-Wl,/usr/lib/swift" />
-		</ItemGroup>
-	</Target>
 </Project>
