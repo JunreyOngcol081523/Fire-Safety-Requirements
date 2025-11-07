@@ -4,64 +4,66 @@
 }
 
 body {
-    font-family: 'RedHatTextVariableFont_wght';
-    font-size:10px;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 10px;
+    padding-top: 70px;
+    margin: 0;
 }
+
 .table_component {
-overflow: auto;
-width: 100%;
-}
-
-.table_component table {
-    border: 1px solid #dededf;
+    overflow: auto;
     width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    border-spacing: 1px;
-    text-align: left;
 }
 
-.table_component caption {
-    caption-side: top;
-    text-align: center;
-}
+    .table_component table {
+        border: 1px solid #dededf;
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        border-spacing: 1px;
+        text-align: left;
+    }
 
-.table_component th {
-    border: 1px solid #dededf;
-    background-color: #eceff1;
-    color: #000000;
-    padding: 5px;
-    text-align: center;
-}
+    .table_component caption {
+        caption-side: top;
+        text-align: center;
+    }
 
-.table_component td {
-    border: 1px solid #dededf;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 5px;
-}
+    .table_component th {
+        border: 1px solid #dededf;
+        background-color: #eceff1;
+        color: #000000;
+        padding: 5px;
+        text-align: center;
+    }
 
-.table_component i {
-    font-size: 10px; /* Adjust the size as needed */
-    color: #666666; /* Optional: change the color for italics */
-}
+    .table_component td {
+        border: 1px solid #dededf;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 5px;
+    }
+
+    .table_component i {
+        font-size: 10px;
+        color: #666666;
+    }
 
 .alpha-list {
-    list-style-type: none; /* Remove the default list styling */
-    counter-reset: list-counter; /* Initialize the counter */
-    padding-left: 1.5em; /* Add padding to indent the list */
+    list-style-type: none;
+    counter-reset: list-counter;
+    padding-left: 1.5em;
 }
 
-.alpha-list li {
-    counter-increment: list-counter; /* Increment counter for each item */
-    margin-bottom: 0.5em; /* Add some space between list items */
-    /*text-indent: -1.5em;  Pull back the bullet to align with the list text */
-    /*padding-left: 1.5em;  Indent text to line up with the custom marker */
-}
+    .alpha-list li {
+        counter-increment: list-counter;
+        margin-bottom: 0.5em;
+    }
 
-.alpha-list li::before {
-content: counter(list-counter, lower-alpha) ") "; /* Display lowercase letter with closing parenthesis */
-}
+        .alpha-list li::before {
+            content: counter(list-counter, lower-alpha) ") ";
+        }
+
 /* Initially hide all pages */
 .page {
     display: none;
@@ -75,10 +77,10 @@ content: counter(list-counter, lower-alpha) ") "; /* Display lowercase letter wi
 .navigation-btns {
     display: flex;
     justify-content: flex-start;
-    gap: 10px; /* optional spacing between buttons */
+    gap: 10px;
 }
 
-button{
+button {
     display: inline-block;
     outline: 0;
     border: none;
@@ -92,24 +94,19 @@ button{
     padding: 0 10px;
 }
 
-button:disabled {
-    display: inline-block;
-    outline: 0;
-    border: none;
-    cursor: not-allowed;
-    font-weight: 600;
-    border-radius: 4px;
-    font-size: 13px;
-    height: 30px;
-    background-color: #0000000d;
-    color: white;
-    padding: 0 10px;
-}
-
-body {
-    padding-top: 70px;
-    margin: 0;
-}
+    button:disabled {
+        display: inline-block;
+        outline: 0;
+        border: none;
+        cursor: not-allowed;
+        font-weight: 600;
+        border-radius: 4px;
+        font-size: 13px;
+        height: 30px;
+        background-color: #0000000d;
+        color: white;
+        padding: 0 10px;
+    }
 
 .search-container {
     position: fixed;
@@ -118,7 +115,7 @@ body {
     right: 0;
     background: #2c3e50;
     padding: 15px 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 1000;
 }
 
@@ -157,4 +154,4 @@ mark {
     mark.first {
         background-color: #ff9800;
         font-weight: bold;
-    }                
+    }

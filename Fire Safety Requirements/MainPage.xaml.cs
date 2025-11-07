@@ -83,7 +83,7 @@ namespace Fire_Safety_Requirements
         private async void GoToLink(object sender, EventArgs e)
         {
             // Specify the URL you want to open
-            string url = "https://www.linkedin.com/in/junreyongcol/";
+            string url = "https://codewithjunrey.web.app/";
 
             // Open the URL in the default browser
             await Launcher.OpenAsync(new Uri(url));

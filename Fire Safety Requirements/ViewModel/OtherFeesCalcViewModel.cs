@@ -68,6 +68,11 @@ namespace Fire_Safety_Requirements.ViewModel
                     calculatedFee = 500.00; // Minimum fee of PhP500.00
                 }
             }
+            //construction tax cannot be more than 50,000
+            if (SelectedRevenueCategory == "01 - Fire Code Construction Tax" && calculatedFee > 50000.00)
+            {
+                calculatedFee = 50000.00; // Maximum fee of PhP50,000.00
+            }
             // Format as Philippine Peso with thousand separators and 2 decimal places
             RevenueFees = calculatedFee.ToString("C2", new CultureInfo("en-PH"));
         }

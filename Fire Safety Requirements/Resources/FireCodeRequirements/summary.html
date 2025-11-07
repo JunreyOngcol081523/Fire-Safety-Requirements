@@ -3,363 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIRE SAFETY REQUIREMENTS SUMMARY</title>
-    <!--<link rel="stylesheet" href="../FireCodeRequirements/styles.css">-->
-</head>
+    <title>Fire Safety Requirements Summary</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<body>
-<style>
-    /* Define the custom font */
-    @font-face {
-        font-family: 'RedHatTextVariableFont_wght';
-        src: url('RedHatTextVariableFont_wght.ttf') format('truetype');
-    }
-    body {
-        font-family: 'RedHatTextVariableFont_wght';
-        font-size:10px;
-    }
-    .Occupancy {
-        background-color: #341f97;
-        color: black;
-    }
-    .table_component {
-        overflow: auto;
-        width: 650px;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            min-height: 100vh;
+        }
 
-        .table_component table {
-            border: 1px solid #dededf;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ee5253 0%, #c0392b 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+            .header h1 {
+                font-size: 2rem;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                margin-bottom: 0.5rem;
+            }
+
+            .header p {
+                font-size: 0.95rem;
+                opacity: 0.95;
+            }
+
+        .table-wrapper {
+            overflow-x: auto;
+            padding: 2rem;
+        }
+
+        table {
             width: 100%;
-            table-layout: fixed;
-            border-collapse: collapse;
-            border-spacing: 1px;
-            text-align: left;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.9rem;
         }
 
-        .table_component caption {
-            caption-side: top;
+        thead th {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem;
             text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid #1a252f;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
-        .table_component th {
-            border: 1px solid #dededf;
-            background-color: #ee5253;
-            color: whitesmoke;
-            padding: 5px;
-            text-align: center;
+            thead th:first-child {
+                border-top-left-radius: 8px;
+            }
+
+            thead th:last-child {
+                border-top-right-radius: 8px;
+            }
+
+        tbody tr {
+            transition: all 0.3s ease;
         }
 
+            tbody tr:hover {
+                background: #f8f9fa;
+                transform: scale(1.01);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
 
-.table_component td {
-    border: 1px solid #dededf;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 5px;
-}
+        td {
+            padding: 1.25rem;
+            border: 1px solid #e1e8ed;
+            background: white;
+            vertical-align: top;
+            line-height: 1.6;
+        }
 
-.table_component i {
-    font-size: 10px; /* Adjust the size as needed */
-    color: #666666; /* Optional: change the color for italics */
-}
+        .occupancy-cell {
+            background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
 
-</style>
-<div class="table_component page">
+            .occupancy-cell strong {
+                display: block;
+                font-size: 1.05rem;
+                margin-bottom: 0.25rem;
+                color: #ffd93d;
+            }
 
-    <table border="1">
-        <colgroup>
-            <col style="width: 10%;">
-            <col style="width: 25%;">
-            <col style="width: 20%;">
-            <col style="width: 20%;">
-            <col style="width: 25%;">
-            <col style="width: 15%;">
-            
-        </colgroup>
-        <thead>
-            <th> Occupancy</th>
-            <th>Automatic Fire Suppression System</th>
-            <th>Standpipe System</th>
-            <th>FDAS Manual</th>
-            <th>FDAS Automatic</th>
-            <th>Portable Fire Extinguisher</th>
-        </thead>
-        <tr>
-            <td class="Occupancy">
-                <b>Residential</b><br>
-                Hotel
-            </td>
-            <td rowspan="3">
-                <ul>
-                    <li>
-                        Four (4) or less
-                        storey in height, use
-                        NFPA 13R.
-                    </li>
-                    <li>
-                        Five (5) or more
-                        storey in height, use
-                        NFPA 13.
-                    </li>
-                    <li>
-                        Three (3) or less
-                        storey in height are
-                        not required to be
-                        protected with
-                        AFSS, however,
-                        should owners opt
-                        to install, they may
-                        use NFPA 13R as
-                        the standard.
-                    </li>
-                    <li>
-                        Supplemental
-                        Memorandum dated
-                        03 February 2020:
-                        Clarification and
-                        Proper
-                        Interpretation on the
-                        Provision of RIRR of
-                        RA 9514
-                        Concerning
-                        Extinguishing
-                        Requirements for
-                        Apartment Buildings
-                        and a like.
-                    </li>
-                </ul>
-            </td>
-            <td rowspan="3">
-                4 or more storeys in height
-            </td>
-            <td rowspan="2">
-                Less than 15 occupants or guests
-            </td>
-            <td rowspan="2">
-                15 or more occupants or guests
-            </td>
-            <td rowspan="4">
-                Required
-            </td>
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <b>Residential</b><br>
-                Dormitories
-            </td>
-            <!--<td></td>
-        <td></td>
-        <td></td>-->
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <strong>Residential</strong><br>
-                Apartment Buildings
-            </td>
-            <td>
-                Not more than 3 storeys in height
-            </td>
-            <td>
-                4 storeys or more in height, or more than 12 apartment units
-            </td>
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <strong>Residential</strong><br>
-                Lodging/ Rooming Houses
-            </td>
-            <td>Not Required</td>
-            <td>Not Required</td>
-            <td>Single-Station smoke or heat detector (i.e battery operated detectors, aka smoke alarm)</td>
-            <td>
-                Not required
-            </td>
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <strong>Residential</strong><br>
-                Single and Two Family Dwellings
-            </td>
-            <td>
-                Not required
-            </td>
-            <td>
-                Not required
-            </td>
-            <td>
-                Single-Station smoke or heat detector (i.e battery operated detectors, aka smoke alarm)
-            </td>
-            <td>
-                Not required
-            </td>
-            <td>
-                Required
-            </td>
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <strong>Health Care Facilities</strong>
-            </td>
-            <td>
-                All hospitals except one storey building with bed capacity not exceeding 5
-            </td>
-            <td>
-                4 or more storey in height
-            </td>
-            <td>
-                Manual fire alarm alone is not permitted. The minimum requirement is automatic fire alarm
-            </td>
-            <td>
-                Every Building
-            </td>
-            <td>Required</td>
-        </tr>
+        ul, ol {
+            margin-left: 1.25rem;
+            margin-top: 0.5rem;
+        }
 
-        <tr>
-            <td class="Occupancy">
-                <b>Business</b><br>
-            </td>
-            <td>Buildings with 15 meters or more in height</td>
-            <td>
-                <ul>
-                    <li>4 or more storey in height</li>
-                    <li>Exceeds 1,860sqm per floor</li>
-                </ul>
-            </td>
-            <td>
-                <ol type="a">
-                    <li>one storey in height</li>
-                    <li>less than 50 occupants (for new buildings) and less than 100 occupants (for existing buildings) above and below the level of exit discharge</li>
-                    <li>less than 300 occupants (for new buildings) and less than 1000 occupants (for existing buildings)</li>
-                </ol>
-            </td>
-            <td>
-                When any of the following exists:
-                <ul>
-                    <li>2 or more storeys in height above the level of exit discharge</li>
-                    <li>
-                        New buildings having 50 or more occupants above or below the level of exit discharge (100 if existing building)
-                    </li>
-                    <li>
-                        New buildings with a total of 300 or more (1000 if existing building)
-                    </li>
-                </ul>
-            </td>
-            <td>Required</td>
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <strong>Storage</strong>
-            </td>
-            <td>
-                Every high hazard occupancy
-            </td>
-            <td>
-                Exceeding 1,860 sqm per floor
-            </td>
-            <td>
-                Ordinary or low hazard building not exceeding 2,000sqm
-            </td>
-            <td>
-                All Storage occupancies except ordinary or low hazard building not exceeding 2,000sqm
-            </td>
-            <td>Required</td>
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <strong>Educational</strong>
-            </td>
-            <td>
-                <ul>
-                    <li>
-                        buildings is 15m or more in height
-                    </li>
-                    <li>basement used as a classroom or laboratory</li>
-                </ul>
-            </td>
-            <td>4 or more storeys in height</td>
-            <td>Every educational building</td>
-            <td>If the building has an automatic fire suppression system, tis operation shall automatically actuate the actuate the fire alarm system</td>
-            <td>Required</td>
-        </tr>
-        <tr>
-            <td class="Occupancy"><strong>Industrial</strong></td>
-            <td>Every high hazard occupancy</td>
-            <td>4 or more storeys in height</td>
-            <td>Less than 25 occupants</td>
-            <td>25 or more occupants</td>
-            <td>Required</td>
-        </tr>
-        <tr>
-            <td class="Occupancy"><strong>Assembly</strong></td>
-            <td>
-                ➤Assembly occupancies with an occupant load of 150 or more:
-                <ol type="a">
-                    <li>Bars with live entertainment</li>
-                    <li>Dance halls</li>
-                    <li>Discotheques</li>
-                    <li>Assembly occupancy with festival seating</li>
-                </ol>
-                ➤Buildings containing assembly occupancies with an occupant load of more than 300 persons
-            </td>
-            <td>
-                Occupant load exceeding 1,000 persons
-            </td>
-            <td>
-                All assembly occupancy
-            </td>
-            <td>
-                Occupant load exceeding 300 persons
-            </td>
-            <td>Required</td>
-        </tr>
-        <tr>
-            <td class="Occupancy">
-                <strong>Mercantile</strong>
-                <p>
-                    <b>➤Class A</b>
-                    2,788 sqm or more than 3 floors
-                </p>
-                <p>
-                    <b> ➤Class B</b><br>
-                    less than 2,787 sqm but more than 279 sqm
-                </p>
-                <p>
-                    <b>➤Class C</b><br>
-                    278 sqm below the street floor
-                </p>
-            </td>
-            <td>
-                <p>
-                    ➤Three (3) or more storeys in height with at least one of the floor having an area of 232 sqm
-                </p>
-                <p>
-                    ➤Exceeding 1,115 sqm in gross area
-                </p>
-                <p>
-                    ➤Below street floors exceeding 232 sqm used for sale, storage or handling of combustible goods and merchandise
-                </p>
-            </td>
-            <td>
-                <p>
-                    ➤4 or more storeys in height
-                </p>
-                <p>
-                    ➤Exceeding 1,860 sqm. per floor
-                </p>
-            </td>
-            <td>
-                Class Mercantile
-            </td>
-            <td>
-                Class A and B Mercantile
-            </td>
-            <td>Required</td>
-        </tr>
+        li {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
 
-    </table>
-</div>
+            li:last-child {
+                margin-bottom: 0;
+            }
 
-<!--<script src="../FireCodeRequirements/scripts.js"></script>-->
+        .highlight {
+            background: #fff3cd;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 0.75rem;
+        }
+
+            p:last-child {
+                margin-bottom: 0;
+            }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        .arrow {
+            color: #ee5253;
+            font-weight: bold;
+            margin-right: 0.25rem;
+        }
+
+        @media (max-width: 1200px) {
+            .table-wrapper {
+                padding: 1rem;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            td, thead th {
+                padding: 0.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header p {
+                font-size: 0.85rem;
+            }
+
+            table {
+                font-size: 0.75rem;
+            }
+
+            td, thead th {
+                padding: 0.5rem;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ee5253;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔥 Fire Safety Requirements Summary</h1>
+            <p>Comprehensive guide to fire protection systems by occupancy type</p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Occupancy Type</th>
+                        <th>Automatic Fire Suppression System</th>
+                        <th>Standpipe System</th>
+                        <th>FDAS Manual</th>
+                        <th>FDAS Automatic</th>
+                        <th>Portable Fire Extinguisher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Residential</strong>
+                            Hotel
+                        </td>
+                        <td rowspan="3">
+                            <ul>
+                                <li>Four (4) or less storey in height, use NFPA 13R.</li>
+                                <li>Five (5) or more storey in height, use NFPA 13.</li>
+                                <li>Three (3) or less storey in height are not required to be protected with AFSS, however, should owners opt to install, they may use NFPA 13R as the standard.</li>
+                                <li>Supplemental Memorandum dated 03 February 2020: Clarification and Proper Interpretation on the Provision of RIRR of RA 9514 Concerning Extinguishing Requirements for Apartment Buildings and alike.</li>
+                            </ul>
+                        </td>
+                        <td rowspan="3">4 or more storeys in height</td>
+                        <td rowspan="2">Less than 15 occupants or guests</td>
+                        <td rowspan="2">15 or more occupants or guests</td>
+                        <td rowspan="4"><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Residential</strong>
+                            Dormitories
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Residential</strong>
+                            Apartment Buildings
+                        </td>
+                        <td>Not more than 3 storeys in height</td>
+                        <td>4 storeys or more in height, or more than 12 apartment units</td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Residential</strong>
+                            Lodging/Rooming Houses
+                        </td>
+                        <td>Not Required</td>
+                        <td>Not Required</td>
+                        <td>Single-Station smoke or heat detector (i.e. battery operated detectors, aka smoke alarm)</td>
+                        <td>Not required</td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Residential</strong>
+                            Single and Two Family Dwellings
+                        </td>
+                        <td>Not required</td>
+                        <td>Not required</td>
+                        <td>Single-Station smoke or heat detector (i.e. battery operated detectors, aka smoke alarm)</td>
+                        <td>Not required</td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Health Care Facilities</strong>
+                        </td>
+                        <td>All hospitals except one storey building with bed capacity not exceeding 5</td>
+                        <td>4 or more storey in height</td>
+                        <td>Manual fire alarm alone is not permitted. The minimum requirement is automatic fire alarm</td>
+                        <td>Every Building</td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Business</strong>
+                        </td>
+                        <td>Buildings with 15 meters or more in height</td>
+                        <td>
+                            <ul>
+                                <li>4 or more storey in height</li>
+                                <li>Exceeds 1,860 sqm per floor</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ol type="a">
+                                <li>One storey in height</li>
+                                <li>Less than 50 occupants (for new buildings) and less than 100 occupants (for existing buildings) above and below the level of exit discharge</li>
+                                <li>Less than 300 occupants (for new buildings) and less than 1000 occupants (for existing buildings)</li>
+                            </ol>
+                        </td>
+                        <td>
+                            When any of the following exists:
+                            <ul>
+                                <li>2 or more storeys in height above the level of exit discharge</li>
+                                <li>New buildings having 50 or more occupants above or below the level of exit discharge (100 if existing building)</li>
+                                <li>New buildings with a total of 300 or more (1000 if existing building)</li>
+                            </ul>
+                        </td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Storage</strong>
+                        </td>
+                        <td>Every high hazard occupancy</td>
+                        <td>Exceeding 1,860 sqm per floor</td>
+                        <td>Ordinary or low hazard building not exceeding 2,000 sqm</td>
+                        <td>All Storage occupancies except ordinary or low hazard building not exceeding 2,000 sqm</td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Educational</strong>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Buildings 15m or more in height</li>
+                                <li>Basement used as a classroom or laboratory</li>
+                            </ul>
+                        </td>
+                        <td>4 or more storeys in height</td>
+                        <td>Every educational building</td>
+                        <td>If the building has an automatic fire suppression system, its operation shall automatically actuate the fire alarm system</td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Industrial</strong>
+                        </td>
+                        <td>Every high hazard occupancy</td>
+                        <td>4 or more storeys in height</td>
+                        <td>Less than 25 occupants</td>
+                        <td>25 or more occupants</td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Assembly</strong>
+                        </td>
+                        <td>
+                            <p><span class="arrow">➤</span>Assembly occupancies with an occupant load of 150 or more:</p>
+                            <ol type="a">
+                                <li>Bars with live entertainment</li>
+                                <li>Dance halls</li>
+                                <li>Discotheques</li>
+                                <li>Assembly occupancy with festival seating</li>
+                            </ol>
+                            <p><span class="arrow">➤</span>Buildings containing assembly occupancies with an occupant load of more than 300 persons</p>
+                        </td>
+                        <td>Occupant load exceeding 1,000 persons</td>
+                        <td>All assembly occupancy</td>
+                        <td>Occupant load exceeding 300 persons</td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td class="occupancy-cell">
+                            <strong>Mercantile</strong>
+                            <p style="margin-top: 0.75rem;"><strong style="color: #ffd93d;">Class A:</strong> 2,788 sqm or more than 3 floors</p>
+                            <p><strong style="color: #ffd93d;">Class B:</strong> Less than 2,787 sqm but more than 279 sqm</p>
+                            <p><strong style="color: #ffd93d;">Class C:</strong> 278 sqm below the street floor</p>
+                        </td>
+                        <td>
+                            <p><span class="arrow">➤</span>Three (3) or more storeys in height with at least one of the floor having an area of 232 sqm</p>
+                            <p><span class="arrow">➤</span>Exceeding 1,115 sqm in gross area</p>
+                            <p><span class="arrow">➤</span>Below street floors exceeding 232 sqm used for sale, storage or handling of combustible goods and merchandise</p>
+                        </td>
+                        <td>
+                            <p><span class="arrow">➤</span>4 or more storeys in height</p>
+                            <p><span class="arrow">➤</span>Exceeding 1,860 sqm per floor</p>
+                        </td>
+                        <td>Class C Mercantile</td>
+                        <td>Class A and B Mercantile</td>
+                        <td><span class="badge">Required</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
-

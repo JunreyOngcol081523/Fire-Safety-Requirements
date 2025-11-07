@@ -1,104 +1,652 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIRE EXIT DRILL</title>
-    <link rel="stylesheet" href="../FireCodeRequirements/styles.css">
-
-</head>
-<body>
     <style>
+        /* ===================================
+           CUSTOM FONT
+           =================================== */
         @font-face {
             font-family: 'RedHatTextVariableFont_wght';
-            src: url('file:///android_asset/Resources/FireCodeRequirements/RedHatTextVariableFont_wght.ttf') format('truetype'); /* For Android */
-            url('file:///Resources/FireCodeRequirements/RedHatTextVariableFont_wght.ttf') format('truetype'); /* For iOS */
-            url('ms-appx-web:///Resources/FireCodeRequirements/RedHatTextVariableFont_wght.ttf') format('truetype'); /* For Windows */
+            src: url('RedHatTextVariableFont_wght.ttf') format('truetype');
         }
 
+        /* ===================================
+           BASE STYLES
+           =================================== */
         body {
-            font-family: 'RedHatTextVariableFont_wght';
+            font-family: 'RedHatTextVariableFont_wght', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 12px;
+            padding-top: 70px;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
+
+        /* ===================================
+           TABLE COMPONENT
+           =================================== */
+        .table_component {
+            overflow: auto;
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            background: white;
+        }
+
+            .table_component table {
+                border: 1px solid #dededf;
+                width: 100%;
+                table-layout: fixed;
+                border-collapse: collapse;
+                border-spacing: 1px;
+                text-align: left;
+                transition: all 0.3s ease;
+                font-size: 12px;
+            }
+
+            .table_component th {
+                border: 1px solid #dededf;
+                background: linear-gradient(135deg, #ee5253 0%, #c0392b 100%);
+                color: white;
+                padding: 15px 12px;
+                text-align: center;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+                font-size: 12px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .table_component td {
+                border: 1px solid #dededf;
+                background-color: #ffffff;
+                color: #2c3e50;
+                padding: 15px 12px;
+                line-height: 1.8;
+                transition: all 0.3s ease;
+                vertical-align: top;
+            }
+
+            .table_component tr:hover td {
+                background-color: #f8f9fa;
+                transform: scale(1.01);
+            }
+
+            .table_component td:first-child {
+                font-weight: 600;
+                background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            }
+
+            .table_component td b {
+                color: #2c3e50;
+                font-weight: 700;
+            }
+
+            .table_component td p {
+                margin: 8px 0;
+                line-height: 1.8;
+            }
+
+                .table_component td p:last-child {
+                    margin-bottom: 0;
+                }
+
+            /* Header row styling */
+            .table_component tr:first-child td {
+                background: linear-gradient(135deg, #341f97 0%, #5f27cd 100%);
+                color: white;
+                font-size: 15px;
+                padding: 20px;
+                text-align: center;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+                .table_component tr:first-child td b {
+                    color: #ffd93d;
+                    font-size: 18px;
+                    display: block;
+                    margin-bottom: 8px;
+                }
+
+            /* Section reference styling */
+            .table_component td p b {
+                color: #ee5253;
+                font-size: 11px;
+                font-weight: 600;
+                background: #fff3cd;
+                padding: 4px 8px;
+                border-radius: 4px;
+                display: inline-block;
+                margin-top: 4px;
+            }
+
+        /* Drill frequency badge styling */
+        .drill-frequency {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+            .drill-frequency:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+            }
+
+        .drill-number {
+            background: white;
+            color: #667eea;
+            font-size: 20px;
+            font-weight: 900;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .drill-text {
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ===================================
+           PAGINATION
+           =================================== */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-in;
+        }
+
+            .page.active {
+                display: block;
+            }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navigation-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        /* ===================================
+           BUTTONS
+           =================================== */
+        button {
+            display: inline-block;
+            outline: 0;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 8px;
+            font-size: 14px;
+            height: 38px;
+            background: linear-gradient(135deg, #9147ff 0%, #7c38e0 100%);
+            color: white;
+            padding: 0 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(145, 71, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+            button:hover {
+                background: linear-gradient(135deg, #7c38e0 0%, #6b2fd4 100%);
+                box-shadow: 0 6px 20px rgba(145, 71, 255, 0.5);
+                transform: translateY(-2px);
+            }
+
+            button:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 8px rgba(145, 71, 255, 0.4);
+            }
+
+            button:disabled {
+                display: inline-block;
+                outline: 0;
+                border: none;
+                cursor: not-allowed;
+                font-weight: 600;
+                border-radius: 8px;
+                font-size: 14px;
+                height: 38px;
+                background-color: #e0e0e0;
+                color: #9e9e9e;
+                padding: 0 24px;
+                box-shadow: none;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+                opacity: 0.5;
+            }
+
+        /* ===================================
+           SEARCH CONTAINER
+           =================================== */
+        .search-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 15px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* ===================================
+           SEARCH INPUT
+           =================================== */
+        #searchInput {
+            flex: 1;
+            padding: 12px 18px;
+            font-size: 14px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-family: inherit;
+        }
+
+            #searchInput:focus {
+                outline: none;
+                border-color: #3498db;
+                box-shadow: 0 4px 16px rgba(52, 152, 219, 0.3);
+                transform: translateY(-1px);
+            }
+
+            #searchInput::placeholder {
+                color: #95a5a6;
+                font-style: italic;
+            }
+
+        /* ===================================
+           SEARCH RESULTS
+           =================================== */
+        .result-count {
+            color: white;
+            font-size: 13px;
+            min-width: 140px;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        /* ===================================
+           HIGHLIGHT MARKS
+           =================================== */
+        mark {
+            background: linear-gradient(120deg, #ffeb3b 0%, #fdd835 100%);
+            padding: 3px 4px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(255, 235, 59, 0.4);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+            mark:hover {
+                background: linear-gradient(120deg, #fdd835 0%, #fbc02d 100%);
+            }
+
+            mark.first {
+                background: linear-gradient(120deg, #ff9800 0%, #f57c00 100%);
+                font-weight: bold;
+                padding: 4px 6px;
+                box-shadow: 0 3px 8px rgba(255, 152, 0, 0.6);
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* ===================================
+           RESPONSIVE DESIGN
+           =================================== */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+                font-size: 11px;
+            }
+
+            .search-container {
+                padding: 12px 15px;
+            }
+
+            .search-box {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            #searchInput {
+                width: 100%;
+            }
+
+            .result-count {
+                min-width: auto;
+                text-align: center;
+                width: 100%;
+            }
+
+            .table_component {
+                padding: 15px;
+                margin: 10px;
+            }
+
+                .table_component th {
+                    font-size: 11px;
+                    padding: 10px 8px;
+                }
+
+                .table_component td {
+                    padding: 10px 8px;
+                    font-size: 11px;
+                }
+
+                .table_component tr:first-child td {
+                    font-size: 13px;
+                    padding: 15px;
+                }
+
+                    .table_component tr:first-child td b {
+                        font-size: 16px;
+                    }
+        }
+
+        /* ===================================
+           SCROLLBAR STYLING
+           =================================== */
+        .table_component::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        .table_component::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .table_component::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #9147ff 0%, #7c38e0 100%);
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+            .table_component::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(135deg, #7c38e0 0%, #6b2fd4 100%);
+            }
+
+        /* ===================================
+           ACCESSIBILITY ENHANCEMENTS
+           =================================== */
+        *:focus {
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===================================
+           ADDITIONAL ENHANCEMENTS
+           =================================== */
+        .table_component table {
+            position: relative;
+        }
+
+        .table_component tr {
+            transition: all 0.3s ease;
+        }
+
+            .table_component tr:not(:first-child):not(:nth-child(2)):hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
     </style>
-    <!-- Search Box - Add this right after <body> tag -->
+</head>
+<body>
+    <!-- Search Box -->
     <div class="search-container">
         <div class="search-box">
-            <input type="search" id="searchInput" placeholder="Search in document...">
+            <input type="search" id="searchInput" placeholder="Search fire exit drill requirements...">
             <span class="result-count" id="resultCount"></span>
         </div>
     </div>
+
     <!--page 1-->
     <div class="table_component page active">
-        <table border="1" style="font-size: 12px;">
+        <table border="1">
             <colgroup>
-                <col style="width: 50%;"> <!-- First column: 25% width -->
-                <col style="width: 50%;"> <!-- Second column: 75% width -->
+                <col style="width: 50%;">
+                <col style="width: 50%;">
             </colgroup>
             <tr>
-                <td style="font-size: 15px; text-align: center;" colspan=2><b>FIRE EXIT DRILL</b><br> shall be conducted in accordance with the Office of C/MFM<br><b>(Section 10.2.21.1)</b></td>
-
+                <td colspan="2">
+                    <b>FIRE EXIT DRILL</b><br>
+                    shall be conducted in accordance with the Office of C/MFM<br>
+                    <b>(Section 10.2.21.1)</b>
+                </td>
             </tr>
             <tr>
-                <th style="font-size: 12px">TYPE OF OCCUPANCY</th>
-                <th style="font-size: 12px">NUMBER OF FIRE EXIT DRILL</th>
-
+                <th>TYPE OF OCCUPANCY</th>
+                <th>NUMBER OF FIRE EXIT DRILL</th>
             </tr>
             <tr>
-                <td><b>ASSEMBLY</td>
+                <td><b>ASSEMBLY</b></td>
                 <td>
-                    <P>at least once a year</P>
+                    <div class="drill-frequency">
+                        <span class="drill-number">1</span>
+                        <span class="drill-text">Time a Year</span>
+                    </div>
+                    <p>At least once a year</p>
                     <p><b>Section 10.2.21.2 para A</b></p>
                 </td>
             </tr>
             <tr>
-                <td><b>EDUCATIONAL</td>
+                <td><b>EDUCATIONAL</b></td>
                 <td>
-                    <P>at least 4 times year</P>
+                    <div class="drill-frequency">
+                        <span class="drill-number">4</span>
+                        <span class="drill-text">Times a Year</span>
+                    </div>
+                    <p>At least 4 times a year</p>
                     <p><b>Section 10.2.21.3 para A2</b></p>
                 </td>
             </tr>
             <tr>
-                <td><b>DAY CARE</td>
+                <td><b>DAY CARE</b></td>
                 <td>
-                    <P>at least 4 times year</P>
+                    <div class="drill-frequency">
+                        <span class="drill-number">4</span>
+                        <span class="drill-text">Times a Year</span>
+                    </div>
+                    <p>At least 4 times a year</p>
                     <p><b>Section 10.2.21.4 para A1</b></p>
                 </td>
             </tr>
             <tr>
-                <td><b>HEALTH CARE</td>
+                <td><b>HEALTH CARE</b></td>
                 <td>
-                    <p>at least 4 times a year - on each shift to familiriazed hospital with signals & emergency action required under varied conditions</p>
+                    <div class="drill-frequency">
+                        <span class="drill-number">4</span>
+                        <span class="drill-text">Times a Year</span>
+                    </div>
+                    <p>At least 4 times a year - on each shift to familiarize hospital with signals & emergency action required under varied conditions</p>
                     <p><b>Section 10.2.21.5 para A</b></p>
                 </td>
             </tr>
             <tr>
-                <td><b>RESIDENTIAL BOARD AND CARE</td>
+                <td><b>RESIDENTIAL BOARD AND CARE</b></td>
                 <td>
-                    <p>at least 4 times a year, with not less than 2 drills conducted during night</p>
+                    <div class="drill-frequency">
+                        <span class="drill-number">4</span>
+                        <span class="drill-text">Times a Year</span>
+                    </div>
+                    <p>At least 4 times a year, with not less than 2 drills conducted during night</p>
                     <p><b>Section 10.2.21.6</b></p>
                 </td>
             </tr>
             <tr>
-                <td><b>RESIDENTIAL</td>
+                <td><b>RESIDENTIAL</b></td>
                 <td>
+                    <div class="drill-frequency">
+                        <span class="drill-number">2</span>
+                        <span class="drill-text">Times a Year</span>
+                    </div>
                     <p>2 times a year</p>
                     <p><b>Section 10.2.21.17 para A&B</b></p>
                 </td>
             </tr>
             <tr>
-                <td><b>MERCANTILE, BUSINESS, AND INDUSTRIAL</td>
+                <td><b>MERCANTILE, BUSINESS, AND INDUSTRIAL</b></td>
                 <td>
-                    <p>at least 2 times a year - occupancy with 50 or more persons</p>
+                    <div class="drill-frequency">
+                        <span class="drill-number">2</span>
+                        <span class="drill-text">Times a Year</span>
+                    </div>
+                    <p>At least 2 times a year - occupancy with 50 or more persons</p>
                     <p><b>Section 10.2.21.8</b></p>
                 </td>
             </tr>
         </table>
-
     </div>
     <!--end of page 1-->
 
-    <script src="../FireCodeRequirements/scripts.js"></script>
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const resultCount = document.getElementById('resultCount');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            // Remove all previous highlights
+            document.querySelectorAll('mark').forEach(mark => {
+                const parent = mark.parentNode;
+                parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                parent.normalize();
+            });
+
+            if (searchTerm === '') {
+                resultCount.textContent = '';
+                return;
+            }
+
+            let matchCount = 0;
+            const allTextNodes = [];
+
+            // Get all text nodes
+            const page = document.querySelector('.page.active');
+            const walker = document.createTreeWalker(
+                page,
+                NodeFilter.SHOW_TEXT,
+                {
+                    acceptNode: function (node) {
+                        if (node.parentElement.tagName === 'SCRIPT' ||
+                            node.parentElement.tagName === 'STYLE') {
+                            return NodeFilter.FILTER_REJECT;
+                        }
+                        return NodeFilter.FILTER_ACCEPT;
+                    }
+                }
+            );
+
+            let node;
+            while (node = walker.nextNode()) {
+                allTextNodes.push(node);
+            }
+
+            // Highlight matches
+            let firstMatch = true;
+            allTextNodes.forEach(node => {
+                const text = node.textContent;
+                const lowerText = text.toLowerCase();
+                const index = lowerText.indexOf(searchTerm);
+
+                if (index !== -1) {
+                    const before = text.substring(0, index);
+                    const match = text.substring(index, index + searchTerm.length);
+                    const after = text.substring(index + searchTerm.length);
+
+                    const mark = document.createElement('mark');
+                    if (firstMatch) {
+                        mark.className = 'first';
+                        firstMatch = false;
+                    }
+                    mark.textContent = match;
+
+                    const fragment = document.createDocumentFragment();
+                    fragment.appendChild(document.createTextNode(before));
+                    fragment.appendChild(mark);
+                    fragment.appendChild(document.createTextNode(after));
+
+                    node.parentNode.replaceChild(fragment, node);
+                    matchCount++;
+                }
+            });
+
+            resultCount.textContent = matchCount > 0 ?
+                `${matchCount} match${matchCount !== 1 ? 'es' : ''} found` :
+                'No matches found';
+
+            // Scroll to first match
+            if (matchCount > 0) {
+                const firstMarkElement = document.querySelector('mark.first');
+                if (firstMarkElement) {
+                    firstMarkElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
 </body>
 </html>
