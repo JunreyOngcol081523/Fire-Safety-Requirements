@@ -90,6 +90,16 @@ namespace Fire_Safety_Requirements
             // Open the URL in the default browser
             await Launcher.OpenAsync(new Uri(url));
         }
+        private async void GoToBFPWebsite(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(WebViewPage)}?Url=https://bfp.gov.ph/");
+        }
+
+        private async void GoToComplaint(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(WebViewPage)}?Url=https://bfp.gov.ph/complaint-form/");
+        }
+
     }
 
 }

@@ -11,6 +11,7 @@
             Routing.RegisterRoute(nameof(MeansOfEgressPage), typeof(MeansOfEgressPage));
             Routing.RegisterRoute(nameof(InspectionFlowChartPage), typeof(InspectionFlowChartPage));
             Routing.RegisterRoute(nameof(OtherFeesCalc), typeof(OtherFeesCalc));
+            Routing.RegisterRoute(nameof(WebViewPage), typeof(WebViewPage));
         }
     }
 }

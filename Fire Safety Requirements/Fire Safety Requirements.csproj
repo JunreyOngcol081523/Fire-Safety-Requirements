@@ -98,6 +98,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="WebViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Update="Resources\Images\fsed.png">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>

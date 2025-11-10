@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Fire_Safety_Requirements.WebViewPage"
+             xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
+             x:DataType="viewmodel:WebViewViewModel"
+             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+             Title="WebViewPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <WebView x:Name="webView"
+             Source="{Binding HtmlSource}"
+             Navigating="WebView_Navigating"
+             Navigated="WebView_Navigated"
+             VerticalOptions="Fill"
+             android:WebView.EnableZoomControls="true"
+             android:WebView.DisplayZoomControls="true"/>
+
+            <!-- Spinner -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}"
+                       IsVisible="{Binding IsBusy}"
+                       Color="Red"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       WidthRequest="50"
+                       HeightRequest="50"/>
+        </Grid>
+
+
+        <!-- Back Button -->
+        <Button Text="Close"
+                Command="{Binding GoBackCommand}"
+                Grid.Row="1"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Padding="10,5"
+                MinimumHeightRequest="40"
+                BackgroundColor="#c0392b"/>
+
+        <!-- Ads -->
+        <controls:MTAdView BackgroundColor="Transparent"
+                           x:Name="myAds"
+                           AdsId="ca-app-pub-8158194714551266/7832271796"
+                           AdSize="AnchoredAdaptive"
+                           IsVisible="true"
+                           Grid.Row="2"/>
+    </Grid>
+</ContentPage>

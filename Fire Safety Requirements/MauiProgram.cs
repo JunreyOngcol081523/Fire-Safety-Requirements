@@ -39,6 +39,8 @@ namespace Fire_Safety_Requirements
             builder.Services.AddTransient<InspectionFlowChartPage>();
             builder.Services.AddTransient<OtherFeesCalc>();
             builder.Services.AddTransient<OtherFeesCalcViewModel>();
+            builder.Services.AddTransient<WebViewPage>();
+            builder.Services.AddTransient<WebViewViewModel>();
 
             builder.Logging.AddDebug();
             

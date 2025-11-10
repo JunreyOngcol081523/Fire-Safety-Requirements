@@ -281,7 +281,7 @@
                                        BackgroundColor="#A3E4D7"
                                        HorizontalOptions="Center">
                                     <ImageButton Source="complaint.png"
-                                                 Clicked="GoToOtherFeesCalcPage"
+                                                 Clicked="GoToComplaint"
                                                  Aspect="AspectFit"
                                                  BackgroundColor="Transparent"
                                                  Padding="12" />
@@ -308,7 +308,7 @@
                                        BackgroundColor="#A9CCE3"
                                        HorizontalOptions="Center">
                                     <ImageButton Source="website.png"
-                                                 Clicked="GoToOtherFeesCalcPage"
+                                                 Clicked="GoToBFPWebsite"
                                                  Aspect="AspectFit"
                                                  BackgroundColor="Transparent"
                                                  Padding="12" />
