@@ -4,118 +4,352 @@
              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              x:Class="Fire_Safety_Requirements.MainPage"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             Title="Main Page">
-    <Grid>
-        <!-- Define three rows in the grid -->
+             Title="Main Page"
+             BackgroundColor="#0033CC">
+
+    <Grid RowSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <!-- Content area above the buttons -->
             <RowDefinition Height="Auto" />
-            <!-- Buttons section -->
-            <RowDefinition Height="Auto" />
-            <!-- Footer section -->
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Main content above the buttons -->
-        <ScrollView Grid.Row="0">
-            <VerticalStackLayout
-                Padding="10,0"
-                Spacing="5">
-                <HorizontalStackLayout HorizontalOptions="Center">
-                    <Image
-                    Source="fsed.png"
-                    HeightRequest="150"
-                    Aspect="AspectFit"
-                    SemanticProperties.Description="Fire Safety Enforcement Division's Logo" />
-                    <Image
-                    Source="coverpageformain.png"
-                    HeightRequest="150"
-                    Aspect="AspectFit"
-                    SemanticProperties.Description="Fire Safety Enforcement Division's Logo" />
+        <!-- Header Section with Gradient (Behind) -->
+        <Grid Grid.Row="0" Grid.RowSpan="2" Padding="20,20,20,20" VerticalOptions="Start">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#0033CC" Offset="0.0" />
+                    <GradientStop Color="#0066FF" Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <!-- Title -->
+            <VerticalStackLayout Spacing="5">
+                <HorizontalStackLayout HorizontalOptions="Start" Spacing="10">
+                    <Image Source="bfplogo.png"
+                                   HeightRequest="50"
+                                   WidthRequest="50"
+                                   Aspect="AspectFit" />
+                    <Image Source="fsed.png"
+                                   HeightRequest="50"
+                                   WidthRequest="50"
+                                   Aspect="AspectFit" />
                 </HorizontalStackLayout>
-                <Label
-                    Text="Hello, Fire Safety Inspectors!"
-                    Style="{StaticResource SubHeadline}"
-                    SemanticProperties.HeadingLevel="Level5" 
-                    VerticalOptions="Center"/>
-
-                <Label 
-                    Text="{Binding preface}"
-                    FontSize="10"
-                    Margin="5"
-                    HorizontalTextAlignment="Center"  
-                    VerticalTextAlignment="Center"
-                    />
-                <Label Text="All rights reserved by the author of this book."
-                    FontSize="15"
-                    Margin="5"
-                    HorizontalTextAlignment="Center"  
-                    VerticalTextAlignment="Center"/>
-
+                <Label Text="RA 9514 Guide App"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+                <Label Text="Fire Safety Requirements"
+                       FontSize="13"
+                       TextColor="White"
+                       Opacity="0.8" />
             </VerticalStackLayout>
+        </Grid>
+
+        <!-- Main Content Card with Logos and Buttons (On Top) -->
+        <ScrollView Grid.Row="0">
+            <Frame Margin="0,140,0,-30"
+                   Padding="0"
+                   CornerRadius="30"
+                   HasShadow="True"
+                   BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="0">
+
+                    <!-- Icon Grid -->
+                    <Grid Padding="20,20,20,30"
+                          RowSpacing="15" 
+                          ColumnSpacing="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Fire Safety Manual -->
+                        <Frame Grid.Row="0" Grid.Column="0"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#E3F2FD"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="coverpageformain.png"
+                                                 Clicked="GoToOccupancyTypePage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Fire Safety&#x0a;Manual"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Requirements Summary -->
+                        <Frame Grid.Row="0" Grid.Column="1"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#FFE0E0"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="flame.png"
+                                                 Clicked="GoToSummaryPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Requirement&#x0a;Summary"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Flow Chart -->
+                        <Frame Grid.Row="0" Grid.Column="2"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#FFF3E0"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="flowchart.png"
+                                                 Clicked="GoToInspectionFlowChartPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Inspection&#x0a;Flow Chart"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Egress Calculator -->
+                        <Frame Grid.Row="1" Grid.Column="0"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#E8F5E9"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="calculator.png"
+                                                 Clicked="GoToMeansOfEgressPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Egress&#x0a;Calculator"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Revenue Calculator -->
+                        <Frame Grid.Row="1" Grid.Column="1"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#c7efcf"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="fire_code_revenue.png"
+                                                 Clicked="GoToOtherFeesCalcPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Revenue&#x0a;Calculator"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        <!-- Fire Ex Operation -->
+                        <Frame Grid.Row="1" Grid.Column="2"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#F3E5F5"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="extinguisher.png"
+                                                 Clicked="GoToOtherFeesCalcPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Fire Extinguisher Operation"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        <!-- Safety Tips -->
+                        <Frame Grid.Row="2" Grid.Column="0"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#f4f1bb"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="safetytips.png"
+                                                 Clicked="GoToMeansOfEgressPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Safety&#x0a;Tips"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Complaint Submission -->
+                        <Frame Grid.Row="2" Grid.Column="1"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#A3E4D7"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="complaint.png"
+                                                 Clicked="GoToOtherFeesCalcPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="Complaint&#x0a;Submission"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+                        <!-- BFP Official Website -->
+                        <Frame Grid.Row="2" Grid.Column="2"
+                               Padding="15"
+                               CornerRadius="20"
+                               HasShadow="False"
+                               BackgroundColor="#F8F9FB">
+                            <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                                <Frame Padding="0"
+                                       WidthRequest="60"
+                                       HeightRequest="60"
+                                       CornerRadius="15"
+                                       HasShadow="False"
+                                       BackgroundColor="#A9CCE3"
+                                       HorizontalOptions="Center">
+                                    <ImageButton Source="website.png"
+                                                 Clicked="GoToOtherFeesCalcPage"
+                                                 Aspect="AspectFit"
+                                                 BackgroundColor="Transparent"
+                                                 Padding="12" />
+                                </Frame>
+                                <Label Text="BFP Website"
+                                       FontSize="11"
+                                       TextColor="#666666"
+                                       HorizontalTextAlignment="Center"
+                                       LineBreakMode="WordWrap" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Frame>
         </ScrollView>
 
-        <StackLayout Grid.Row="1"
-                     Orientation="Vertical"
-                     HorizontalOptions="Fill"
-                     VerticalOptions="End"
-                     Spacing="10"
-                     Margin="0,0,0,5">
-            <!-- Add spacing between buttons -->
-            <Button Text="Fire Safety Requirements Manual" Clicked="GoToOccupancyTypePage" HeightRequest="50" StyleClass="ElevatedButton">
-                <Button.ImageSource>
-                    <FileImageSource File="coverpageformain.png" />
-                </Button.ImageSource>
-            </Button>
-            <Button Text="Fire Safety Requirements Summary" Clicked="GoToSummaryPage" HeightRequest="50" StyleClass="ElevatedButton">
-                <Button.ImageSource>
-                    <FileImageSource File="extinguisher.png" />
-                </Button.ImageSource>
-            </Button>
-            <Button Text="Inspection Flow Chart" Clicked="GoToInspectionFlowChartPage" HeightRequest="50" StyleClass="ElevatedButton">
-                <Button.ImageSource>
-                    <FileImageSource File="flowchart.png" />
-                </Button.ImageSource>
-            </Button>
-            <Button Text="Egress Calculator" Clicked="GoToMeansOfEgressPage" HeightRequest="50" StyleClass="ElevatedButton">
-                <Button.ImageSource>
-                    <FileImageSource File="calculator.png" />
-                </Button.ImageSource>
-            </Button>
-            <Button Text="Fire Code Revenue Calculator" Clicked="GoToOtherFeesCalcPage" HeightRequest="50" StyleClass="ElevatedButton">
-                <Button.ImageSource>
-                    <FileImageSource File="fire_code_revenue.png" />
-                </Button.ImageSource>
-            </Button>
-        </StackLayout>
-
-
-        <!-- Footer label at the bottom -->
-        <Grid Grid.Row="2" HorizontalOptions="Fill">
+        <!-- Footer Section -->
+        <Grid Grid.Row="1" 
+              BackgroundColor="#E8EDF5"
+              Padding="10,15">
             <material:ButtonView Tapped="GoToLink">
-                <Label 
-                    TextColor="{StaticResource Gray100}"
-                  Text="App developed by Junrey Ongcol © 2024" 
-                   FontAttributes="Italic"
-                   HorizontalOptions="Center" 
-                   VerticalOptions="Center" />
+                <Label Text="App developed by Junrey Ongcol © 2024"
+                       TextColor="#666666"
+                       FontSize="12"
+                       FontAttributes="Italic"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
             </material:ButtonView>
         </Grid>
-        <!-- Footer label at the bottom -->
-        <Grid Grid.Row="3" HorizontalOptions="Fill">
-            <!--<controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/4351389454"
-                                           AdSize="AnchoredAdaptive"
-                                           IsVisible="true"
-                                           />-->
+
+        <!-- Ad Banner Section -->
+        <Grid Grid.Row="2" 
+              BackgroundColor="#E8EDF5"
+              Padding="0,0,0,5">
             <controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/4351389454"
-                                           AdSize="Banner"
-                                           IsVisible="true"
-                                           />
+                               x:Name="myAds"
+                               AdsId="ca-app-pub-8158194714551266/4351389454"
+                               AdSize="Banner"
+                               IsVisible="true" />
         </Grid>
 
     </Grid>
