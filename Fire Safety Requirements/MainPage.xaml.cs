@@ -99,6 +99,15 @@ namespace Fire_Safety_Requirements
         {
             await Shell.Current.GoToAsync($"{nameof(WebViewPage)}?Url=https://bfp.gov.ph/complaint-form/");
         }
+        private async void GoToFSIS(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(WebViewPage)}?Url=https://fsis.e-bfp.com/");
+        }
+        private async void GoToSafetyTips(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(WebViewPage)}?Url=Resources/FireCodeRequirements/safetytips.html");
+
+        }
 
     }
 

@@ -6,7 +6,7 @@
              x:DataType="viewmodel:WebViewViewModel"
              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
              xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
-             Title="Web Page">
+             Title="RA9514 Guide App">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

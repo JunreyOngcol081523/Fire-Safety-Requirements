@@ -211,7 +211,7 @@
                                        LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </Frame>
-                        <!-- Fire Ex Operation -->
+                        <!-- FSIS -->
                         <Frame Grid.Row="1" Grid.Column="2"
                                Padding="15"
                                CornerRadius="20"
@@ -225,20 +225,20 @@
                                        HasShadow="False"
                                        BackgroundColor="#F3E5F5"
                                        HorizontalOptions="Center">
-                                    <ImageButton Source="extinguisher.png"
-                                                 Clicked="GoToOtherFeesCalcPage"
+                                    <ImageButton Source="fsislogo.png"
+                                                 Clicked="GoToFSIS"
                                                  Aspect="AspectFit"
                                                  BackgroundColor="Transparent"
                                                  Padding="12" />
                                 </Frame>
-                                <Label Text="Fire Extinguisher Operation"
+                                <Label Text="Fire Safety Inspection System"
                                        FontSize="11"
                                        TextColor="#666666"
                                        HorizontalTextAlignment="Center"
                                        LineBreakMode="WordWrap" />
                             </VerticalStackLayout>
                         </Frame>
-                        <!-- Safety Tips -->
+                        <!-- Fire Safety Tips -->
                         <Frame Grid.Row="2" Grid.Column="0"
                                Padding="15"
                                CornerRadius="20"
@@ -253,12 +253,12 @@
                                        BackgroundColor="#f4f1bb"
                                        HorizontalOptions="Center">
                                     <ImageButton Source="safetytips.png"
-                                                 Clicked="GoToMeansOfEgressPage"
+                                                 Clicked="GoToSafetyTips"
                                                  Aspect="AspectFit"
                                                  BackgroundColor="Transparent"
                                                  Padding="12" />
                                 </Frame>
-                                <Label Text="Safety&#x0a;Tips"
+                                <Label Text="Fire&#x0a;Safety&#x0a;Tips"
                                        FontSize="11"
                                        TextColor="#666666"
                                        HorizontalTextAlignment="Center"
