@@ -1,11 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android34.0</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">
-			$(TargetFrameworks);net8.0-windows10.0.19041.0
-		</TargetFrameworks>
-
+		<!-- Multi-targeting for Android and Windows -->
+		<TargetFrameworks>net10.0-android;net10.0-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>Fire_Safety_Requirements</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -13,16 +10,26 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<!-- Application info -->
 		<ApplicationTitle>Fire Safety Requirements</ApplicationTitle>
 		<ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
-
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23.0</SupportedOSPlatformVersion>
+		<!-- Android minimum API -->
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">23</SupportedOSPlatformVersion>
+
+		<!-- Windows minimum version -->
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 
+		<!-- Runtime identifiers -->
+		<RuntimeIdentifiers Condition="$(TargetFramework.Contains('-android'))">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+		<RuntimeIdentifiers Condition="$(TargetFramework.Contains('-windows'))">win-x64;win-x86;win-arm64</RuntimeIdentifiers>
+		<RuntimeIdentifier Condition="$(TargetFramework.Contains('-windows')) and '$(RuntimeIdentifier)' == ''">win-x64</RuntimeIdentifier>
+
+		<!-- Windows Packaging Settings -->
+		<WindowsPackageType>MSIX</WindowsPackageType>
 		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
 		<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
 		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
@@ -31,42 +38,44 @@
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
 		<AppInstallerUri>E:\Publish</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<PackageCertificateThumbprint>09B737B09D6DAEF7B79BA8D380309F8FEEFFACBD</PackageCertificateThumbprint>
-
-		<AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
-		<MinimumAndroidSdkVersion>23</MinimumAndroidSdkVersion>
-		<TargetAndroidSdkVersion>34</TargetAndroidSdkVersion>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<TargetFramework>net8.0-android</TargetFramework>
-		<ApplicationId>com.companyname.firesafetyrequirements</ApplicationId>
-		<MinimumAndroidSdkVersion>23</MinimumAndroidSdkVersion>
-		<TargetAndroidSdkVersion>34</TargetAndroidSdkVersion>
-		<WindowsPackageType>MSIX</WindowsPackageType>
 		<PackageIcon>fsed.png</PackageIcon>
+		<AndroidSigningKeyStore>ra9514guide.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
+	<!-- Debug Android Configuration -->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-android|AnyCPU'">
 		<AndroidKeyStore>True</AndroidKeyStore>
 		<ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
 		<ApplicationTitle>RA9514 Guide</ApplicationTitle>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-windows10.0.19041.0|AnyCPU'">
+	<!-- Release Android Configuration with Signing -->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-android|AnyCPU'">
+		<AndroidKeyStore>true</AndroidKeyStore>
+		<AndroidSigningKeyStore>C:\repos\JunreyOngcol081523\Fire-Safety-Requirements\Fire Safety Requirements\Platforms\Android\ra9514guide.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>ra9514guide</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass>jbo081523</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>jbo081523</AndroidSigningStorePass>
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<RuntimeIdentifiers>android-arm;android-arm64</RuntimeIdentifiers>
+		<AndroidLinkMode>SdkOnly</AndroidLinkMode>
+		<!-- or None to troubleshoot -->
+	</PropertyGroup>
+
+
+	<!-- Debug Windows Configuration -->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net10.0-windows10.0.19041.0|AnyCPU'">
 		<ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
 		<ApplicationTitle>RA9514 Guide</ApplicationTitle>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-windows10.0.19041.0|AnyCPU'">
+	<!-- Release Windows Configuration -->
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0-windows10.0.19041.0|AnyCPU'">
 		<ApplicationId>com.junreyongcol.firesafetyrequirements</ApplicationId>
 		<ApplicationTitle>RA9514 Guide</ApplicationTitle>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
-	</PropertyGroup>
-
+	<!-- Resources -->
 	<ItemGroup>
 		<MauiAsset Include="Resources\FireCodeRequirements\**" />
 		<MauiImage Include="Resources\Images\*" />
@@ -75,19 +84,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\AppIcon\calculator.png" />
-	  <None Remove="Resources\AppIcon\fire_code_revenue.png" />
+		<None Remove="Resources\AppIcon\calculator.png" />
+		<None Remove="Resources\AppIcon\fire_code_revenue.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.100" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.100" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="Plugin.MauiMTAdmob" Version="2.0.2" />
-		<PackageReference Include="UraniumUI.Material" Version="2.10.2" />
+		<!-- NuGet packages -->
+		<PackageReference Include="CommunityToolkit.Maui" Version="13.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.11" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="Plugin.MauiMTAdmob" Version="2.2.0" />
+		<PackageReference Include="UraniumUI.Material" Version="2.13.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -98,16 +108,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="WebViewPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<MauiXaml Update="WebViewPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="Resources\Images\fsed.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+		<None Update="Resources\Images\fsed.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
+	<ItemGroup>
+		<None Include="Platforms\Android\ra9514guide.keystore" />
+	</ItemGroup>
+
 
 </Project>

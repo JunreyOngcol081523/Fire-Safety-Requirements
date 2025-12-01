@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Fire_Safety_Requirements.OccupancyTypePage"
              Title="Fire Safety Requirements"
-             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:controls="clr-namespace:Plugin.MauiMtAdmob.Controls;assembly=Plugin.MauiMtAdmob"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:OccupancyTypeViewModel"
              xmlns:local="clr-namespace:Fire_Safety_Requirements.Converters"

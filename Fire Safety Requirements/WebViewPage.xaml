@@ -4,7 +4,7 @@
              x:Class="Fire_Safety_Requirements.WebViewPage"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:WebViewViewModel"
-             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:controls="clr-namespace:Plugin.MauiMtAdmob.Controls;assembly=Plugin.MauiMtAdmob"
              xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              Title="RA9514 Guide App">
     <Grid>

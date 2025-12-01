@@ -5,274 +5,482 @@
              Title="Means Of Egress Calculator"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:controls="clr-namespace:Plugin.MauiMtAdmob.Controls;assembly=Plugin.MauiMtAdmob"
              x:DataType="viewmodel:MeansOfEgressViewModel">
 
-    <VerticalStackLayout Padding="10">
-        <controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/4295549135"
-                                           AdSize="AnchoredAdaptive"
-                                           IsVisible="true"
-                                           />
-        <Label 
-        Text="{Binding Title}" 
-        FontSize="20"
-        HorizontalOptions="Center" 
-        VerticalOptions="Center" 
-        HorizontalTextAlignment="Center" 
-        VerticalTextAlignment="Center"/>
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="20">
 
-        <VerticalStackLayout Margin="0" Padding="10">
-           
-            <material:PickerField 
-                    Title="Select Occupancy Type"
-                    HorizontalOptions="Fill"
-                    ItemsSource="{Binding Occupancytypes}"
-                    SelectedItem="{Binding SelectedOccupancyType, Mode=TwoWay}"
-                TextColor="LightGray"/>
-            <!--Area-->
+            <!-- Top Ad Banner -->
+            <controls:MTAdView BackgroundColor="Transparent"
+                               x:Name="myAds"
+                               AdsId="ca-app-pub-8158194714551266/4295549135"
+                               AdSize="AnchoredAdaptive"
+                               IsVisible="true"/>
 
-            <material:TextField Title="Enter Floor Area in m²" Text="{Binding Result, Mode=TwoWay}"    
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="Fill"
-                    Keyboard="Numeric"
-                    Margin="0,5,0,5"/>
-            <!--first scrollview-->
-            
-            <Label Text="Scroll down ▼" FontSize="12" HorizontalOptions="Center"/>
-            <BoxView HeightRequest="1" HorizontalOptions="Fill" Margin="0,0,0,5"/>
-            <ScrollView
+            <!-- Page Title -->
+            <Label Text="{Binding Title}" 
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,8,0,0"/>
+
+            <!-- Input Section -->
+            <VerticalStackLayout Spacing="16" Padding="0">
+
+                <!-- Occupancy Type Picker -->
+                <Border StrokeThickness="1"
+                        Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                        StrokeShape="RoundRectangle 8"
+                        BackgroundColor="Transparent">
+                    <material:PickerField 
+                        Title="Select Occupancy Type"
                         HorizontalOptions="Fill"
-                        HeightRequest="130"
-                        Margin="0">
-                <CollectionView ItemsSource="{Binding Items}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="viewmodel:Item">
-                            <Frame Padding="5" 
-                                   BorderColor="DarkGreen" 
-                                   HorizontalOptions="Fill"
-                                   StyleClass="PrimaryContainer">
-                                <StackLayout Spacing="10">
-                                    <!-- Title -->
-                                    <Grid Padding="0" ColumnSpacing="20">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+                        ItemsSource="{Binding Occupancytypes}"
+                        SelectedItem="{Binding SelectedOccupancyType, Mode=TwoWay}"
+                        TextColor="LightGray"
+                        Margin="0"/>
+                </Border>
 
-                                        <!-- Title Label -->
-                                        <Label Grid.Column="0" Text="Title:" FontAttributes="Bold" FontSize="14" VerticalOptions="Center"/>
-                                        <Label Grid.Column="1" Text="{Binding Title}" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
-                                    </Grid>
+                <!-- Floor Area Input -->
+                <Border StrokeThickness="1"
+                        Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                        StrokeShape="RoundRectangle 8"
+                        BackgroundColor="Transparent">
+                    <material:TextField 
+                        Title="Enter Floor Area in m²" 
+                        Text="{Binding Result, Mode=TwoWay}"    
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Fill"
+                        Keyboard="Numeric"
+                        Margin="0"/>
+                </Border>
+            </VerticalStackLayout>
 
-                                    <!-- Occupant Load -->
-                                    <Grid Padding="0" ColumnSpacing="20">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+            <!-- Results Section -->
+            <VerticalStackLayout Spacing="12">
+                <Label Text="Calculation Results" 
+                       FontSize="18" 
+                       FontAttributes="Bold"
+                       Margin="0,8,0,4"/>
 
-                                        <Label Grid.Column="0" Text="Occupant Load:" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
-                                        <Label Grid.Column="1" Text="{Binding OccupantLoad}" FontSize="14" VerticalOptions="Center" FontAttributes="Italic"/>
-                                    </Grid>
+                <Label Text="Scroll to view all results ↓" 
+                       FontSize="12" 
+                       TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"
+                       HorizontalOptions="Center"/>
 
-                                    <!-- Required Number of Exits -->
-                                    <Grid Padding="0" ColumnSpacing="20">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+                <BoxView HeightRequest="1" 
+                         Color="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                         HorizontalOptions="Fill" 
+                         Margin="0,0,0,8"/>
 
-                                        <Label Grid.Column="0" Text="Req. Number of Exits:" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
-                                        <Label Grid.Column="1" Text="{Binding RequiredNumberOfExits}" FontSize="14" VerticalOptions="Center" FontAttributes="Italic"/>
-                                    </Grid>
+                <!-- Results Collection -->
+                <ScrollView HorizontalOptions="Fill"
+                            HeightRequest="160">
+                    <CollectionView ItemsSource="{Binding Items}" 
+                                    SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodel:Item">
+                                <Border StrokeThickness="2" 
+                                        Stroke="#2E7D32"
+                                        StrokeShape="RoundRectangle 12"
+                                        BackgroundColor="{AppThemeBinding Light=#F1F8F4, Dark=#1B3A2F}"
+                                        Margin="0,0,0,12"
+                                        Padding="16">
+                                    <VerticalStackLayout Spacing="12">
 
-                                    <!-- Stair Size -->
-                                    <Grid Padding="0" ColumnSpacing="20">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
+                                        <!-- Title -->
+                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                            <Label Grid.Column="0" 
+                                                   Text="Title:" 
+                                                   FontAttributes="Bold" 
+                                                   FontSize="15"
+                                                   TextColor="{AppThemeBinding Light=#1B5E20, Dark=#81C784}"
+                                                   VerticalOptions="Center"/>
+                                            <Label Grid.Column="1" 
+                                                   Text="{Binding Title}" 
+                                                   FontSize="15" 
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="Center"/>
+                                        </Grid>
 
-                                        <Label Grid.Column="0" Text="Stair Size:" FontSize="14" VerticalOptions="Center" FontAttributes="Bold"/>
-                                        <Label Grid.Column="1" Text="{Binding StairSize}" FontSize="14" VerticalOptions="Center" FontAttributes="Italic"/>
-                                    </Grid>
-                                </StackLayout>
-                            </Frame>
+                                        <!-- Separator -->
+                                        <BoxView HeightRequest="1" 
+                                                 Color="{AppThemeBinding Light=#C8E6C9, Dark=#2E7D32}"
+                                                 HorizontalOptions="Fill"/>
 
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+                                        <!-- Occupant Load -->
+                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                            <Label Grid.Column="0" 
+                                                   Text="Occupant Load:" 
+                                                   FontSize="14" 
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="Center"/>
+                                            <Label Grid.Column="1" 
+                                                   Text="{Binding OccupantLoad}" 
+                                                   FontSize="14" 
+                                                   FontAttributes="Italic"
+                                                   TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                                                   VerticalOptions="Center"/>
+                                        </Grid>
+
+                                        <!-- Required Number of Exits -->
+                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                            <Label Grid.Column="0" 
+                                                   Text="Req. Number of Exits:" 
+                                                   FontSize="14" 
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="Center"/>
+                                            <Label Grid.Column="1" 
+                                                   Text="{Binding RequiredNumberOfExits}" 
+                                                   FontSize="14" 
+                                                   FontAttributes="Italic"
+                                                   TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                                                   VerticalOptions="Center"/>
+                                        </Grid>
+
+                                        <!-- Stair Size -->
+                                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12">
+                                            <Label Grid.Column="0" 
+                                                   Text="Stair Size:" 
+                                                   FontSize="14" 
+                                                   FontAttributes="Bold"
+                                                   VerticalOptions="Center"/>
+                                            <Label Grid.Column="1" 
+                                                   Text="{Binding StairSize}" 
+                                                   FontSize="14" 
+                                                   FontAttributes="Italic"
+                                                   TextColor="{AppThemeBinding Light=#424242, Dark=#E0E0E0}"
+                                                   VerticalOptions="Center"/>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+            </VerticalStackLayout>
+
+            <!-- Tab Section -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="← Swipe to navigate tabs →" 
+                       FontSize="12" 
+                       TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"
+                       HorizontalOptions="Center"/>
+
+                <material:TabView TabPlacement="Top">
+
+                    <!-- Remoteness of Exits Tab -->
+                    <material:TabItem Title="Remoteness">
+                        <material:TabItem.ContentTemplate>
+                            <DataTemplate>
+                                <ScrollView>
+                                    <VerticalStackLayout Padding="16" Spacing="16">
+
+                                        <!-- Dimensions Input -->
+                                        <Label Text="Building Dimensions" 
+                                               FontSize="16" 
+                                               FontAttributes="Bold"
+                                               Margin="0,0,0,8"/>
+
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                            <Border Grid.Column="0" 
+                                                    StrokeThickness="1"
+                                                    Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                                    StrokeShape="RoundRectangle 8">
+                                                <material:TextField 
+                                                    Title="Height (m)" 
+                                                    Keyboard="Numeric" 
+                                                    Text="{Binding Height, Mode=TwoWay}" 
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Border>
+
+                                            <Border Grid.Column="1" 
+                                                    StrokeThickness="1"
+                                                    Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                                    StrokeShape="RoundRectangle 8">
+                                                <material:TextField 
+                                                    Title="Width (m)" 
+                                                    Keyboard="Numeric" 
+                                                    Text="{Binding Width, Mode=TwoWay}" 
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Border>
+                                        </Grid>
+
+                                        <!-- Diagonal Result -->
+                                        <Border StrokeThickness="1"
+                                                Stroke="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}"
+                                                StrokeShape="RoundRectangle 8"
+                                                BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#2C2C2C}">
+                                            <material:TextField 
+                                                Title="Diagonal Dimension" 
+                                                Text="{Binding Diagonal}" 
+                                                FontAttributes="Italic,Bold" 
+                                                IsReadOnly="True"
+                                                HorizontalTextAlignment="Center"
+                                                Margin="0"/>
+                                        </Border>
+
+                                        <!-- Remoteness Requirements -->
+                                        <Label Text="Minimum Exit Separation" 
+                                               FontSize="16" 
+                                               FontAttributes="Bold"
+                                               Margin="0,8,0,8"/>
+
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                            <Border Grid.Column="0" 
+                                                    StrokeThickness="2"
+                                                    Stroke="#1976D2"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#1A237E}">
+                                                <material:TextField 
+                                                    Title="Sprinklered" 
+                                                    Text="{Binding RemotenessSprinklered}" 
+                                                    FontAttributes="Italic,Bold" 
+                                                    IsReadOnly="True"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Border>
+
+                                            <Border Grid.Column="1" 
+                                                    StrokeThickness="2"
+                                                    Stroke="#D32F2F"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    BackgroundColor="{AppThemeBinding Light=#FFEBEE, Dark=#B71C1C}">
+                                                <material:TextField 
+                                                    Title="Non-Sprinklered" 
+                                                    Text="{Binding RemotenessNonSprinklered}" 
+                                                    FontAttributes="Italic,Bold" 
+                                                    IsReadOnly="True"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Border>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </ScrollView>
+                            </DataTemplate>
+                        </material:TabItem.ContentTemplate>
+                    </material:TabItem>
+
+                    <!-- Capacity of Egress Tab -->
+                    <material:TabItem Title="Capacity">
+                        <material:TabItem.ContentTemplate>
+                            <DataTemplate>
+                                <ScrollView>
+                                    <VerticalStackLayout Padding="16" Spacing="16">
+
+                                        <!-- Width Input -->
+                                        <Label Text="Egress Width" 
+                                               FontSize="16" 
+                                               FontAttributes="Bold"
+                                               Margin="0,0,0,8"/>
+
+                                        <Border StrokeThickness="1"
+                                                Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                                StrokeShape="RoundRectangle 8">
+                                            <material:TextField 
+                                                Title="Nominal Width (mm)" 
+                                                Keyboard="Numeric" 
+                                                Text="{Binding NominalWidth, Mode=TwoWay}" 
+                                                HorizontalTextAlignment="Center"
+                                                Margin="0"/>
+                                        </Border>
+
+                                        <!-- Capacity Results -->
+                                        <Label Text="Occupant Capacity" 
+                                               FontSize="16" 
+                                               FontAttributes="Bold"
+                                               Margin="0,8,0,8"/>
+
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                            <Border Grid.Column="0" 
+                                                    StrokeThickness="2"
+                                                    Stroke="#F57C00"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    BackgroundColor="{AppThemeBinding Light=#FFF3E0, Dark=#E65100}">
+                                                <material:TextField 
+                                                    Title="Stairways" 
+                                                    Text="{Binding CapacityinStairway}" 
+                                                    FontAttributes="Italic,Bold" 
+                                                    IsReadOnly="True"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Border>
+
+                                            <Border Grid.Column="1" 
+                                                    StrokeThickness="2"
+                                                    Stroke="#388E3C"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B5E20}">
+                                                <material:TextField 
+                                                    Title="Level Components" 
+                                                    Text="{Binding CapacityinLevelComponents}" 
+                                                    FontAttributes="Italic,Bold" 
+                                                    IsReadOnly="True"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Border>
+                                        </Grid>
+
+                                        <!-- Options -->
+                                        <Label Text="Additional Options" 
+                                               FontSize="16" 
+                                               FontAttributes="Bold"
+                                               Margin="0,8,0,8"/>
+
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                            <Border Grid.Column="0"
+                                                    StrokeThickness="1"
+                                                    Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    Padding="12">
+                                                <material:CheckBox 
+                                                    Text="High Hazard" 
+                                                    IsChecked="{Binding IsHighHazard, Mode=TwoWay}" 
+                                                    IsEnabled="{Binding HaveSelectedOccupancyType}"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+                                            </Border>
+
+                                            <Border Grid.Column="1"
+                                                    StrokeThickness="1"
+                                                    Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    Padding="12">
+                                                <material:CheckBox 
+                                                    Text="Sprinklered" 
+                                                    IsChecked="{Binding IsSprinklered, Mode=TwoWay}" 
+                                                    IsEnabled="{Binding IsSprinkleredEnable}"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"/>
+                                            </Border>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </ScrollView>
+                            </DataTemplate>
+                        </material:TabItem.ContentTemplate>
+                    </material:TabItem>
+
+                    <!-- Fire Extinguishers Tab -->
+                    <material:TabItem Title="Extinguishers">
+                        <material:TabItem.ContentTemplate>
+                            <DataTemplate>
+                                <ScrollView>
+                                    <VerticalStackLayout Padding="16" Spacing="16">
+
+                                        <!-- Area Display -->
+                                        <Border StrokeThickness="1"
+                                                Stroke="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray500}}"
+                                                StrokeShape="RoundRectangle 8"
+                                                BackgroundColor="{AppThemeBinding Light=#F5F5F5, Dark=#2C2C2C}">
+                                            <material:TextField 
+                                                Title="Floor Area (m²)" 
+                                                Text="{Binding Result}" 
+                                                HorizontalTextAlignment="Center" 
+                                                IsReadOnly="True"
+                                                FontAttributes="Bold"
+                                                Margin="0"/>
+                                        </Border>
+
+                                        <Label Text="Required Fire Extinguishers by Hazard Level" 
+                                               FontSize="16" 
+                                               FontAttributes="Bold"
+                                               Margin="0,8,0,8"/>
+
+                                        <!-- Low Hazard -->
+                                        <Border StrokeThickness="2"
+                                                Stroke="#4CAF50"
+                                                StrokeShape="RoundRectangle 12"
+                                                BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B5E20}"
+                                                Padding="12">
+                                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                                <material:TextField 
+                                                    Grid.Column="0"
+                                                    Text="{Binding Lowhazard}" 
+                                                    Title="Low Hazard" 
+                                                    IsReadOnly="True" 
+                                                    FontAttributes="Bold"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                                <material:TextField 
+                                                    Grid.Column="1"
+                                                    Text="15m" 
+                                                    Title="Max Travel" 
+                                                    IsReadOnly="True" 
+                                                    FontAttributes="Italic"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Grid>
+                                        </Border>
+
+                                        <!-- Moderate Hazard -->
+                                        <Border StrokeThickness="2"
+                                                Stroke="#FF9800"
+                                                StrokeShape="RoundRectangle 12"
+                                                BackgroundColor="{AppThemeBinding Light=#FFF3E0, Dark=#E65100}"
+                                                Padding="12">
+                                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                                <material:TextField 
+                                                    Grid.Column="0"
+                                                    Text="{Binding Moderatedhazard}" 
+                                                    Title="Moderate Hazard" 
+                                                    IsReadOnly="True" 
+                                                    FontAttributes="Bold"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                                <material:TextField 
+                                                    Grid.Column="1"
+                                                    Text="12m" 
+                                                    Title="Max Travel" 
+                                                    IsReadOnly="True" 
+                                                    FontAttributes="Italic"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Grid>
+                                        </Border>
+
+                                        <!-- High Hazard -->
+                                        <Border StrokeThickness="2"
+                                                Stroke="#F44336"
+                                                StrokeShape="RoundRectangle 12"
+                                                BackgroundColor="{AppThemeBinding Light=#FFEBEE, Dark=#B71C1C}"
+                                                Padding="12">
+                                            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                                <material:TextField 
+                                                    Grid.Column="0"
+                                                    Text="{Binding Highhazard}" 
+                                                    Title="High Hazard" 
+                                                    IsReadOnly="True" 
+                                                    FontAttributes="Bold"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                                <material:TextField 
+                                                    Grid.Column="1"
+                                                    Text="10m" 
+                                                    Title="Max Travel" 
+                                                    IsReadOnly="True" 
+                                                    FontAttributes="Italic"
+                                                    HorizontalTextAlignment="Center"
+                                                    Margin="0"/>
+                                            </Grid>
+                                        </Border>
+                                    </VerticalStackLayout>
+                                </ScrollView>
+                            </DataTemplate>
+                        </material:TabItem.ContentTemplate>
+                    </material:TabItem>
+                </material:TabView>
+            </VerticalStackLayout>
+
+            <!-- Bottom Ad Banner -->
+            <controls:MTAdView BackgroundColor="Transparent"
+                               x:Name="myAds1"
+                               AdsId="ca-app-pub-8158194714551266/8737357028"
+                               AdSize="AnchoredAdaptive"
+                               IsVisible="true"
+                               Margin="0,16,0,0"/>
         </VerticalStackLayout>
-        <Label Text="Swipe to side" FontSize="12" HorizontalOptions="Center"/>
-        <material:TabView>
-            <material:TabItem Title="Remoteness of Exits">
-                <material:TabItem.ContentTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="0" Margin="0,0,0,0">
-                            <Grid RowDefinitions="Auto, Auto,Auto" ColumnDefinitions="Auto,*">
-                                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,0" ColumnDefinitions="*,*" >
-
-                                    <material:TextField Title="Height in meters" Grid.Column="0"  
-                                       Keyboard="Numeric" 
-                                       Text="{Binding Height, Mode=TwoWay}" 
-                                       HorizontalOptions="Fill" 
-                                       VerticalOptions="Center"
-                                       Margin="0,0,5,0"
-                                       HorizontalTextAlignment="Center"
-                                       />
-
-                                    <material:TextField Grid.Column="1" Title="Width in meters" 
-                                       Keyboard="Numeric" 
-                                       Text="{Binding Width, Mode=TwoWay}" 
-                                       HorizontalOptions="Fill" 
-                                       VerticalOptions="Center"
-                                       Margin="5,0,0,0"
-                                       HorizontalTextAlignment="Center"/>      
-                            
-                            </Grid>
-                                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,0" ColumnDefinitions="*" >
-
-                                <material:TextField Title="Diagonal Dimension" 
-                                    Margin="0,0,5,0"
-                                    Text="{Binding Diagonal}" 
-                                    FontAttributes="Italic" 
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="Fill" 
-                                    IsReadOnly="True"
-                                    HorizontalTextAlignment="Center"/>
-
-
-                            </Grid>
-                            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,10" ColumnDefinitions="*,*" >
-                                <material:TextField Title="Sprinklered" 
-                                    Grid.Column="0" 
-                                    HorizontalTextAlignment="Center"
-                                    Text="{Binding RemotenessSprinklered}" 
-                                    FontAttributes="Italic" 
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="Fill"
-                                    IsReadOnly="True"
-                                    Margin="0,0,0,5"/>
-
-
-                                <material:TextField Title="Non-Sprinklered" 
-                                    Grid.Column="1" 
-                                    Margin="5,0,0,0"
-                                    Text="{Binding RemotenessNonSprinklered}"  
-                                    FontAttributes="Italic" 
-                                    VerticalOptions="Center" 
-                                    HorizontalOptions="Fill" 
-                                    IsReadOnly="True" 
-                                    HorizontalTextAlignment="Center"/>
-
-                            </Grid>
-                        </Grid>
-                    </StackLayout>
-                    </DataTemplate>
-                </material:TabItem.ContentTemplate>
-            </material:TabItem>
-            <material:TabItem Title="Capacity of Egress">
-                <material:TabItem.ContentTemplate>
-                    <DataTemplate>
-                    <StackLayout Padding="0" Margin="0,0,0,0">
-                    <Grid RowDefinitions="Auto, Auto,Auto" ColumnDefinitions="Auto,*">
-                        <Grid Grid.Row="0" Grid.Column="0" 
-                              Grid.ColumnSpan="2" 
-                              HorizontalOptions="Fill" 
-                              Margin="10,10,10,0" ColumnDefinitions="*" >
-
-                            <material:TextField Title="Nominal Width in mm" Grid.Column="0"  
-                               Keyboard="Numeric" 
-                               Text="{Binding NominalWidth, Mode=TwoWay}" 
-                               HorizontalOptions="Fill" 
-                               VerticalOptions="Center"
-                               Margin="0,0,5,0"
-                               HorizontalTextAlignment="Center"/>   
-                            
-
-                        </Grid>
-                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,0" ColumnDefinitions="*,*" >
-                             <material:TextField Title="Stairways" 
-                                Grid.Column="0" 
-                                Margin="0,0,5,0"
-                                Text="{Binding CapacityinStairway}" 
-                                FontAttributes="Italic" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Fill" 
-                                IsReadOnly="True"
-                                HorizontalTextAlignment="Center"/>
-                            <material:TextField Title="Level Components" 
-                                Grid.Column="1" 
-                                Margin="5,0,0,0"
-                                Text="{Binding CapacityinLevelComponents}"  
-                                FontAttributes="Italic" 
-                                VerticalOptions="Center" 
-                                HorizontalOptions="Fill" 
-                                IsReadOnly="True" 
-                                HorizontalTextAlignment="Center"/>
-
-                        </Grid>
-                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Fill" Margin="10,10,10,10" ColumnDefinitions="*,*" >
-                            <material:CheckBox Text ="High Hazard" 
-                                           Grid.Row="2" Grid.Column="0" 
-                                           IsChecked="{Binding IsHighHazard, Mode=TwoWay}" 
-                                           IsEnabled="{Binding HaveSelectedOccupancyType}"
-                                           HorizontalOptions="CenterAndExpand"/>
-
-                            <material:CheckBox Text="Sprinklered"  
-                                           Grid.Row="2" Grid.Column="1" 
-                                           IsChecked="{Binding IsSprinklered, Mode=TwoWay}" 
-                                           IsEnabled="{Binding IsSprinkleredEnable}"
-                                           HorizontalOptions="CenterAndExpand"/>
-
-                        </Grid>
-                    </Grid>
-                </StackLayout>   
-                    </DataTemplate>
-                </material:TabItem.ContentTemplate>
-            </material:TabItem>
-            <material:TabItem Title="Fire Extinguishers">
-                <material:TabItem.ContentTemplate>
-                    <DataTemplate>
-                        <StackLayout Padding="5" Margin="5,5,5,5" Spacing="5">
-                            <material:TextField Title="Floor area (m²)" Text="{Binding Result}" HorizontalTextAlignment="Center" IsReadOnly="True"/>
-                            <Label Text="Required number of Fire Extinguishers"/>
-                            <Grid RowDefinitions="*" 
-                                  ColumnDefinitions="*,*" 
-                                  HorizontalOptions="Fill"
-                                  ColumnSpacing="10"
-                                  >
-                                <material:TextField Text="{Binding Lowhazard}" Title="Low Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
-                                <material:TextField Text="15m" Title="Travel Distance" Grid.Column="1" IsReadOnly="True" HorizontalTextAlignment="Center"/>
-                            </Grid>
-                            <Grid RowDefinitions="*" 
-                                  ColumnDefinitions="*,*" 
-                                  HorizontalOptions="Fill"
-                                  ColumnSpacing="10">
-                                <material:TextField Text="{Binding Moderatedhazard}" Title="Moderate Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
-                                <material:TextField Text="12m" Title="Travel Distance" Grid.Column="1" IsReadOnly="True" HorizontalTextAlignment="Center"/>
-                            </Grid>
-                            <Grid RowDefinitions="*" 
-                                  ColumnDefinitions="*,*" 
-                                  HorizontalOptions="Fill"
-                                  ColumnSpacing="10">
-                                <material:TextField Text="{Binding Highhazard}" Title="High Hazard" Grid.Column="0" IsReadOnly="True" HorizontalTextAlignment="Center"/>
-                                <material:TextField Text="10m" Title="Travel Distance" Grid.Column="1" IsReadOnly="True" HorizontalTextAlignment="Center"/>
-                            </Grid>
-                        </StackLayout>
-                    </DataTemplate>
-                </material:TabItem.ContentTemplate>
-            </material:TabItem>
-            
-        </material:TabView>
-        <controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds1"
-                                           AdsId="ca-app-pub-8158194714551266/8737357028"
-                                           AdSize="AnchoredAdaptive"
-                                           IsVisible="true"
-                                           />
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

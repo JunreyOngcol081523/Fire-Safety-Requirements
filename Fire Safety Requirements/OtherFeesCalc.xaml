@@ -5,256 +5,516 @@
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              x:DataType="viewmodel:OtherFeesCalcViewModel"
-             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:controls="clr-namespace:Plugin.MauiMtAdmob.Controls;assembly=Plugin.MauiMtAdmob"
              Title="Fire Code Revenue Calculator">
-    <StackLayout Padding="10">
-        <controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds"
-                                           AdsId="ca-app-pub-8158194714551266/5337168064"
-                                           AdSize="AnchoredAdaptive"
-                                           IsVisible="true"
-                                           />
-        <Label Text="Swipe to Side" FontSize="15" HorizontalOptions="Center"/>
-        <BoxView HeightRequest="1" HorizontalOptions="Fill" />
-        <material:TabView>
-            <!--FSIF construction tax, sales,realty, premium, proceeds Fee Tab-->
-            <material:TabItem Title="Fire Code Revenue code 01-06">
-                <VerticalStackLayout Padding="5" Spacing="10">
 
-                    <!-- 01-06 -->
-                    <Picker Title="Select 01-06 Category"
-                ItemsSource="{Binding RevenueCategories}"
-                SelectedItem="{Binding SelectedRevenueCategory}"
-                FontSize="16" />
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="20">
 
+            <!-- Top Ad Banner -->
+            <controls:MTAdView BackgroundColor="Transparent"
+                               x:Name="myAds"
+                               AdsId="ca-app-pub-8158194714551266/5337168064"
+                               AdSize="AnchoredAdaptive"
+                               IsVisible="true"/>
 
-                    <!-- Basis of Computation Input -->
-                    <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                        <material:TextField Title="Basis of Computation"   
-                        Keyboard="Numeric" 
-                        Text="{Binding RevenueBasisOfComputation, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"/>
-                    </Frame>
-
-                    <!-- Revenue Fees Input -->
-                    <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                        <material:TextField Title="Annual Fees"   
-                        Keyboard="Numeric" 
-                        Text="{Binding RevenueFees, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"
-                        IsReadOnly="True"/>
-                    </Frame>
-                    <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                        <Button Text="Calculate" Command="{Binding CalculateRevenueCommand}"/>
-                    </Frame>
-
-                </VerticalStackLayout>
-            </material:TabItem>
-            <!--Storage Clearance Fee Tab-->
-        <material:TabItem Title="Storage Clearance Fee">
-            <VerticalStackLayout Padding="5" Spacing="10">
-                
-                <!-- Storage Category -->
-                <Picker Title="Select Storage Category"
-                ItemsSource="{Binding StorageCategories}"
-                SelectedItem="{Binding SelectedStorageCategory}"
-                FontSize="16" />
-
-                <!-- Material Type -->
-                <Picker Title="Select Material Type"
-                ItemsSource="{Binding MaterialTypes}"
-                SelectedItem="{Binding SelectedMaterialType}"
-                FontSize="16" />
-
-                <!-- Basis of Computation Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Basis of Computation (kg or liter)"   
-                        Keyboard="Numeric" 
-                        Text="{Binding BasisOfComputation, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"/>
-                </Frame>
-
-                <!-- Annual Fees Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Storage Fees"   
-                        Keyboard="Numeric" 
-                        Text="{Binding AnnualFees, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"
-                        IsReadOnly="True"/>
-                </Frame>
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <Button Text="Calculate" Command="{Binding CalculateStorageFeesCommand}"/>
-                </Frame>
-
+            <!-- Navigation Hint -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="← Swipe to navigate calculators →" 
+                       FontSize="13" 
+                       FontAttributes="Italic"
+                       TextColor="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray400}}"
+                       HorizontalOptions="Center"/>
+                <BoxView HeightRequest="1" 
+                         Color="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                         HorizontalOptions="Fill"/>
             </VerticalStackLayout>
-        </material:TabItem>
-        
-        <!--Other Fees Tab-->
-        <material:TabItem Title="Other Fees">
-            <VerticalStackLayout Padding="5" Spacing="0">
-                <!-- Other Fees -->
-                <Picker Title="Select Other Fees Category"
-                ItemsSource="{Binding OtherFees}"
-                SelectedItem="{Binding SelectedOtherFee}"
-                FontSize="16" />
 
-                <!-- Other fees Basis of Computation Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="{Binding OtherFeesBasisText}"   
-                        Keyboard="Numeric" 
-                        IsReadOnly="{Binding IsReadOnly}"
-                        Text="{Binding OtherFeesBasisOfComputation, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"/>
-                </Frame>
+            <!-- Tab View -->
+            <material:TabView TabPlacement="Top">
 
-                <!-- Annual Fees Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Annual Fees "   
-                        Keyboard="Numeric" 
-                        Text="{Binding OtherFeesAmount, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"
-                        IsReadOnly="True"/>
-                </Frame>
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <Button Text="{Binding OtherFeesButtonText}" Command="{Binding CalculateOtherFeesCommand}"/>
-                </Frame>
-            </VerticalStackLayout>
-        </material:TabItem>
-        
-        <!--Conveyance Clearance Fee Tab-->
-        <material:TabItem Title="Conveyance Clearance Fee">
-            <VerticalStackLayout Padding="5" Spacing="0">
-                <!-- Conveyance Clearance Fees -->
-                <Picker Title="Select Conveyance Type"
-                ItemsSource="{Binding ConveyanceType}"
-                SelectedItem="{Binding SelectedConveyanceType}"
-                FontSize="16" />
+                <!-- FSIF Construction Tax Tab (01-06) -->
+                <material:TabItem Title="Revenue 01-06">
+                    <material:TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <ScrollView>
+                                <VerticalStackLayout Padding="16" Spacing="16">
 
-                <!--Conveyance Clearance fees Basis of Computation Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Basis of Computation(kg or liters)"   
-                        Keyboard="Numeric" 
-                        Text="{Binding ConveyanceFeesBasisOfComputation, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"/>
-                </Frame>
+                                    <Label Text="Fire Code Revenue (01-06)" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           Margin="0,0,0,8"/>
 
-                <!-- Annual Fees Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Conveyance Clearance Fees"   
-                        Keyboard="Numeric" 
-                        Text="{Binding ConveyanceFeesAmount, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"
-                        IsReadOnly="True"/>
-                </Frame>
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <Button Text="Compute Conveyance Fee" Command="{Binding CalculateConveyanceFeesCommand}"/>
-                </Frame>
-            </VerticalStackLayout>
-        </material:TabItem>
-        
-        <!--Installation Clearance Fee Tab-->
-        <material:TabItem Title="Installation Clearance Fee">
-            <VerticalStackLayout Padding="5" Spacing="0">
-                <!-- Installation Clearance Fees -->
-                <Picker Title="Select Installation Type"
-                ItemsSource="{Binding InstallationType}"
-                SelectedItem="{Binding SelectedInstallationType}"
-                FontSize="16" />
+                                    <!-- Category Selection -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="Transparent"
+                                            Padding="4">
+                                        <Picker Title="Select 01-06 Category"
+                                                ItemsSource="{Binding RevenueCategories}"
+                                                SelectedItem="{Binding SelectedRevenueCategory}"
+                                                FontSize="16"
+                                                TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    </Border>
 
-                <!--Installation Clearance fees Basis of Computation Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField 
-                        IsEnabled="{Binding TextFieldInstallationBasis}"
-                        Title="Basis of Computation(kg or liters)"   
-                        Keyboard="Numeric" 
-                        Text="{Binding InstallationFeesBasisOfComputation, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"/>
-                </Frame>
+                                    <!-- Basis of Computation -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light=#2196F3, Dark=#1976D2}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Basis of Computation"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding RevenueBasisOfComputation, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            Margin="0"/>
+                                    </Border>
 
-                <!-- Installation Fees Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Installation Clearance Fees "   
-                        Keyboard="Numeric" 
-                        Text="{Binding InstallationFeesAmount, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"
-                        IsReadOnly="True"/>
-                </Frame>
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <Button Text="Compute Conveyance Fee" Command="{Binding CalculateInstallationFeesCommand}"/>
-                </Frame>
-            </VerticalStackLayout>
-        </material:TabItem>
-       
-        <!--Admin Fines Tab-->
-        <material:TabItem Title="Admin Fines">
-            <VerticalStackLayout Padding="5" Spacing="0">
-            <!-- Admin Fines -->
-            <Picker Title="Select Admin Fine Description"
-            ItemsSource="{Binding AdminFineType}"
-            SelectedItem="{Binding SelectedAdminFineType}"
-            FontSize="16" />
+                                    <!-- Annual Fees Result -->
+                                    <Border StrokeThickness="2"
+                                            Stroke="{AppThemeBinding Light=#4CAF50, Dark=#2E7D32}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B5E20}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Annual Fees"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding RevenueFees, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            IsReadOnly="True"
+                                            FontAttributes="Bold"
+                                            Margin="0"/>
+                                    </Border>
 
-            <!--Admin Fine Basis of Computation Input -->
-                <Frame CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="{Binding UnitMeasurement}"
-                        FontSize="14"
-                        FontAttributes="Bold"
-                        />
+                                    <!-- Calculate Button -->
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#FF6F00, Dark=#E65100}"
+                                            Padding="0">
+                                        <Button Text="Calculate" 
+                                                Command="{Binding CalculateRevenueCommand}"
+                                                BackgroundColor="Transparent"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HeightRequest="50"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </ScrollView>
+                        </DataTemplate>
+                    </material:TabItem.ContentTemplate>
+                </material:TabItem>
 
-                        <material:TextField 
-                        IsEnabled="true"
-                        Title="{Binding UnitMeasurement}"  
-                        Keyboard="Numeric" 
-                        Text="{Binding AdminFineBasisOfComputation, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"/>
-                    </VerticalStackLayout>
-                </Frame>
+                <!-- Storage Clearance Fee Tab -->
+                <material:TabItem Title="Storage Fee">
+                    <material:TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <ScrollView>
+                                <VerticalStackLayout Padding="16" Spacing="16">
 
+                                    <Label Text="Storage Clearance Fee" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           Margin="0,0,0,8"/>
 
-                <!--Admin Fine Input -->
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <material:TextField Title="Admin Fines "   
-                        Keyboard="Numeric" 
-                        Text="{Binding AdminFineAmount, Mode=TwoWay}" 
-                        VerticalOptions="Center"
-                        Margin="0,0,5,0"
-                        HorizontalTextAlignment="Center"
-                        IsReadOnly="True"/>
-                </Frame>
-                <Frame  CornerRadius="6" Padding="10,5" HasShadow="False">
-                    <Button Text="Compute Admin Fine" Command="{Binding CalculateAdminFineCommand}"/>
-                </Frame>
-            </VerticalStackLayout>
-        </material:TabItem>
-    </material:TabView>
-        <controls:MTAdView BackgroundColor="Transparent"
-                                           x:Name="myAds1"
-                                           AdsId="ca-app-pub-8158194714551266/3038307783"
-                                           AdSize="AnchoredAdaptive"
-                                           IsVisible="true"
-                                           />
-    </StackLayout>
+                                    <!-- Storage Category -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="Transparent"
+                                            Padding="4">
+                                        <Picker Title="Select Storage Category"
+                                                ItemsSource="{Binding StorageCategories}"
+                                                SelectedItem="{Binding SelectedStorageCategory}"
+                                                FontSize="16"
+                                                TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    </Border>
+
+                                    <!-- Material Type -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="Transparent"
+                                            Padding="4">
+                                        <Picker Title="Select Material Type"
+                                                ItemsSource="{Binding MaterialTypes}"
+                                                SelectedItem="{Binding SelectedMaterialType}"
+                                                FontSize="16"
+                                                TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    </Border>
+
+                                    <!-- Basis of Computation -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light=#2196F3, Dark=#1976D2}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Basis of Computation (kg or liter)"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding BasisOfComputation, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Storage Fees Result -->
+                                    <Border StrokeThickness="2"
+                                            Stroke="{AppThemeBinding Light=#4CAF50, Dark=#2E7D32}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B5E20}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Storage Fees"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding AnnualFees, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            IsReadOnly="True"
+                                            FontAttributes="Bold"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Calculate Button -->
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#FF6F00, Dark=#E65100}"
+                                            Padding="0">
+                                        <Button Text="Calculate" 
+                                                Command="{Binding CalculateStorageFeesCommand}"
+                                                BackgroundColor="Transparent"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HeightRequest="50"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </ScrollView>
+                        </DataTemplate>
+                    </material:TabItem.ContentTemplate>
+                </material:TabItem>
+
+                <!-- Other Fees Tab -->
+                <material:TabItem Title="Other Fees">
+                    <material:TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <ScrollView>
+                                <VerticalStackLayout Padding="16" Spacing="16">
+
+                                    <Label Text="Other Fees" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           Margin="0,0,0,8"/>
+
+                                    <!-- Other Fees Category -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="Transparent"
+                                            Padding="4">
+                                        <Picker Title="Select Other Fees Category"
+                                                ItemsSource="{Binding OtherFees}"
+                                                SelectedItem="{Binding SelectedOtherFee}"
+                                                FontSize="16"
+                                                TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    </Border>
+
+                                    <!-- Basis of Computation -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light=#2196F3, Dark=#1976D2}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="{Binding OtherFeesBasisText}"   
+                                            Keyboard="Numeric" 
+                                            IsReadOnly="{Binding IsReadOnly}"
+                                            Text="{Binding OtherFeesBasisOfComputation, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Annual Fees Result -->
+                                    <Border StrokeThickness="2"
+                                            Stroke="{AppThemeBinding Light=#4CAF50, Dark=#2E7D32}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B5E20}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Annual Fees"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding OtherFeesAmount, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            IsReadOnly="True"
+                                            FontAttributes="Bold"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Calculate Button -->
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#FF6F00, Dark=#E65100}"
+                                            Padding="0">
+                                        <Button Text="{Binding OtherFeesButtonText}" 
+                                                Command="{Binding CalculateOtherFeesCommand}"
+                                                BackgroundColor="Transparent"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HeightRequest="50"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </ScrollView>
+                        </DataTemplate>
+                    </material:TabItem.ContentTemplate>
+                </material:TabItem>
+
+                <!-- Conveyance Clearance Fee Tab -->
+                <material:TabItem Title="Conveyance">
+                    <material:TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <ScrollView>
+                                <VerticalStackLayout Padding="16" Spacing="16">
+
+                                    <Label Text="Conveyance Clearance Fee" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           Margin="0,0,0,8"/>
+
+                                    <!-- Conveyance Type -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="Transparent"
+                                            Padding="4">
+                                        <Picker Title="Select Conveyance Type"
+                                                ItemsSource="{Binding ConveyanceType}"
+                                                SelectedItem="{Binding SelectedConveyanceType}"
+                                                FontSize="16"
+                                                TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    </Border>
+
+                                    <!-- Basis of Computation -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light=#2196F3, Dark=#1976D2}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Basis of Computation (kg or liters)"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding ConveyanceFeesBasisOfComputation, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Conveyance Fees Result -->
+                                    <Border StrokeThickness="2"
+                                            Stroke="{AppThemeBinding Light=#4CAF50, Dark=#2E7D32}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B5E20}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Conveyance Clearance Fees"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding ConveyanceFeesAmount, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            IsReadOnly="True"
+                                            FontAttributes="Bold"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Calculate Button -->
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#FF6F00, Dark=#E65100}"
+                                            Padding="0">
+                                        <Button Text="Compute Conveyance Fee" 
+                                                Command="{Binding CalculateConveyanceFeesCommand}"
+                                                BackgroundColor="Transparent"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HeightRequest="50"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </ScrollView>
+                        </DataTemplate>
+                    </material:TabItem.ContentTemplate>
+                </material:TabItem>
+
+                <!-- Installation Clearance Fee Tab -->
+                <material:TabItem Title="Installation">
+                    <material:TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <ScrollView>
+                                <VerticalStackLayout Padding="16" Spacing="16">
+
+                                    <Label Text="Installation Clearance Fee" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           Margin="0,0,0,8"/>
+
+                                    <!-- Installation Type -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="Transparent"
+                                            Padding="4">
+                                        <Picker Title="Select Installation Type"
+                                                ItemsSource="{Binding InstallationType}"
+                                                SelectedItem="{Binding SelectedInstallationType}"
+                                                FontSize="16"
+                                                TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    </Border>
+
+                                    <!-- Basis of Computation -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light=#2196F3, Dark=#1976D2}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E3F2FD, Dark=#0D47A1}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            IsEnabled="{Binding TextFieldInstallationBasis}"
+                                            Title="Basis of Computation (kg or liters)"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding InstallationFeesBasisOfComputation, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Installation Fees Result -->
+                                    <Border StrokeThickness="2"
+                                            Stroke="{AppThemeBinding Light=#4CAF50, Dark=#2E7D32}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#E8F5E9, Dark=#1B5E20}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Installation Clearance Fees"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding InstallationFeesAmount, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            IsReadOnly="True"
+                                            FontAttributes="Bold"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Calculate Button -->
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#FF6F00, Dark=#E65100}"
+                                            Padding="0">
+                                        <Button Text="Compute Installation Fee" 
+                                                Command="{Binding CalculateInstallationFeesCommand}"
+                                                BackgroundColor="Transparent"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HeightRequest="50"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </ScrollView>
+                        </DataTemplate>
+                    </material:TabItem.ContentTemplate>
+                </material:TabItem>
+
+                <!-- Admin Fines Tab -->
+                <material:TabItem Title="Admin Fines">
+                    <material:TabItem.ContentTemplate>
+                        <DataTemplate>
+                            <ScrollView>
+                                <VerticalStackLayout Padding="16" Spacing="16">
+
+                                    <Label Text="Administrative Fines" 
+                                           FontSize="18" 
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           Margin="0,0,0,8"/>
+
+                                    <!-- Admin Fine Type -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}"
+                                            StrokeShape="RoundRectangle 8"
+                                            BackgroundColor="Transparent"
+                                            Padding="4">
+                                        <Picker Title="Select Admin Fine Description"
+                                                ItemsSource="{Binding AdminFineType}"
+                                                SelectedItem="{Binding SelectedAdminFineType}"
+                                                FontSize="16"
+                                                TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                                    </Border>
+
+                                    <!-- Unit Measurement Info & Input -->
+                                    <Border StrokeThickness="1"
+                                            Stroke="{AppThemeBinding Light=#FF9800, Dark=#F57C00}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#FFF3E0, Dark=#E65100}"
+                                            Padding="12">
+                                        <VerticalStackLayout Spacing="8">
+                                            <Label Text="{Binding UnitMeasurement}"
+                                                   FontSize="13"
+                                                   FontAttributes="Bold,Italic"
+                                                   TextColor="{AppThemeBinding Light=#E65100, Dark=#FFB74D}"
+                                                   HorizontalOptions="Start"/>
+
+                                            <material:TextField 
+                                                IsEnabled="true"
+                                                Title="{Binding UnitMeasurement}"  
+                                                Keyboard="Numeric" 
+                                                Text="{Binding AdminFineBasisOfComputation, Mode=TwoWay}" 
+                                                HorizontalTextAlignment="Center"
+                                                Margin="0"/>
+                                        </VerticalStackLayout>
+                                    </Border>
+
+                                    <!-- Admin Fine Result -->
+                                    <Border StrokeThickness="2"
+                                            Stroke="{AppThemeBinding Light=#F44336, Dark=#D32F2F}"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#FFEBEE, Dark=#B71C1C}"
+                                            Padding="12">
+                                        <material:TextField 
+                                            Title="Admin Fines"   
+                                            Keyboard="Numeric" 
+                                            Text="{Binding AdminFineAmount, Mode=TwoWay}" 
+                                            HorizontalTextAlignment="Center"
+                                            IsReadOnly="True"
+                                            FontAttributes="Bold"
+                                            Margin="0"/>
+                                    </Border>
+
+                                    <!-- Calculate Button -->
+                                    <Border StrokeThickness="0"
+                                            StrokeShape="RoundRectangle 10"
+                                            BackgroundColor="{AppThemeBinding Light=#D32F2F, Dark=#C62828}"
+                                            Padding="0">
+                                        <Button Text="Compute Admin Fine" 
+                                                Command="{Binding CalculateAdminFineCommand}"
+                                                BackgroundColor="Transparent"
+                                                TextColor="White"
+                                                FontAttributes="Bold"
+                                                FontSize="16"
+                                                HeightRequest="50"/>
+                                    </Border>
+                                </VerticalStackLayout>
+                            </ScrollView>
+                        </DataTemplate>
+                    </material:TabItem.ContentTemplate>
+                </material:TabItem>
+            </material:TabView>
+
+            <!-- Bottom Ad Banner -->
+            <controls:MTAdView BackgroundColor="Transparent"
+                               x:Name="myAds1"
+                               AdsId="ca-app-pub-8158194714551266/3038307783"
+                               AdSize="AnchoredAdaptive"
+                               IsVisible="true"
+                               Margin="0,16,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

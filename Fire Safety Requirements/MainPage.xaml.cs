@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui.Devices;
-using Plugin.MauiMTAdmob;
+using Plugin.MauiMtAdmob;
 using System.Diagnostics;
 namespace Fire_Safety_Requirements
 {

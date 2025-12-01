@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Fire_Safety_Requirements.ViewModel;
 using Microsoft.Extensions.Logging;
-using Plugin.MauiMTAdmob;
+using Plugin.MauiMtAdmob;
 using UraniumUI;
 
 namespace Fire_Safety_Requirements

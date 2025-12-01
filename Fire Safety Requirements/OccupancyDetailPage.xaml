@@ -4,7 +4,7 @@
              x:Class="Fire_Safety_Requirements.OccupancyDetailPage"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
              x:DataType="viewmodel:OccupancyDetailViewModel"
-             xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+             xmlns:controls="clr-namespace:Plugin.MauiMtAdmob.Controls;assembly=Plugin.MauiMtAdmob"
              xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              Title="{Binding Text}">
 

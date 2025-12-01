@@ -4,7 +4,7 @@
              x:Class="Fire_Safety_Requirements.SummaryPage"
              Title="Fire Safety Requirements Summary Table"
              xmlns:viewmodel="clr-namespace:Fire_Safety_Requirements.ViewModel"
-              xmlns:controls="clr-namespace:Plugin.MauiMTAdmob.Controls;assembly=Plugin.MauiMTAdmob"
+              xmlns:controls="clr-namespace:Plugin.MauiMtAdmob.Controls;assembly=Plugin.MauiMtAdmob"
             x:DataType="viewmodel:SummaryViewModel">
     <Grid>
         <Grid.RowDefinitions>

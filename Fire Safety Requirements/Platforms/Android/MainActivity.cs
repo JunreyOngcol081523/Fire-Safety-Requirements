@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Plugin.MauiMTAdmob;
+using Plugin.MauiMtAdmob;
 
 namespace Fire_Safety_Requirements
 {
