@@ -36,10 +36,11 @@
 		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
 		<AppxSymbolPackageEnabled>True</AppxSymbolPackageEnabled>
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
-		<AppInstallerUri>E:\Publish</AppInstallerUri>
+		<AppInstallerUri>C:\Publish</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 		<PackageIcon>fsed.png</PackageIcon>
 		<AndroidSigningKeyStore>ra9514guide.keystore</AndroidSigningKeyStore>
+		<PackageCertificateThumbprint>6E0C20E61D1D807E3C1ADC9FA105704EE665A564</PackageCertificateThumbprint>
 	</PropertyGroup>
 
 	<!-- Debug Android Configuration -->
