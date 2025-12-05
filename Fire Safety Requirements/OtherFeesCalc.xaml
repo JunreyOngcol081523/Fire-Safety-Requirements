@@ -381,7 +381,7 @@
                                             Padding="12">
                                         <material:TextField 
                                             IsEnabled="{Binding TextFieldInstallationBasis}"
-                                            Title="Basis of Computation (kg or liters)"   
+                                            Title="Basis(Bill of Materials)"   
                                             Keyboard="Numeric" 
                                             Text="{Binding InstallationFeesBasisOfComputation, Mode=TwoWay}" 
                                             HorizontalTextAlignment="Center"
